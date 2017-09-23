@@ -9,19 +9,23 @@
 /* Begin PBXBuildFile section */
 		0C20E9481F72C96500AE940E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C20E9471F72C96500AE940E /* AppDelegate.swift */; };
 		0C20E94A1F72C96500AE940E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C20E9491F72C96500AE940E /* ViewController.swift */; };
-		0C20E94D1F72C96500AE940E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C20E94B1F72C96500AE940E /* Main.storyboard */; };
+		0C20E94D1F72C96500AE940E /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C20E94B1F72C96500AE940E /* Profile.storyboard */; };
 		0C20E94F1F72C96500AE940E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C20E94E1F72C96500AE940E /* Assets.xcassets */; };
 		0C20E9521F72C96500AE940E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C20E9501F72C96500AE940E /* LaunchScreen.storyboard */; };
+		0C20E95A1F72D1B400AE940E /* Catalog.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C20E9591F72D1B400AE940E /* Catalog.xcassets */; };
+		0C9FE4C41F76D45D0096A950 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 0C9FE4C31F76D45D0096A950 /* .gitignore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0C20E9441F72C96500AE940E /* TinkoffChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinkoffChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C20E9471F72C96500AE940E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0C20E9491F72C96500AE940E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		0C20E94C1F72C96500AE940E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		0C20E94C1F72C96500AE940E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Profile.storyboard; sourceTree = "<group>"; };
 		0C20E94E1F72C96500AE940E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0C20E9511F72C96500AE940E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0C20E9531F72C96500AE940E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0C20E9591F72D1B400AE940E /* Catalog.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Catalog.xcassets; sourceTree = "<group>"; };
+		0C9FE4C31F76D45D0096A950 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,10 +60,12 @@
 			children = (
 				0C20E9471F72C96500AE940E /* AppDelegate.swift */,
 				0C20E9491F72C96500AE940E /* ViewController.swift */,
-				0C20E94B1F72C96500AE940E /* Main.storyboard */,
+				0C20E94B1F72C96500AE940E /* Profile.storyboard */,
 				0C20E94E1F72C96500AE940E /* Assets.xcassets */,
 				0C20E9501F72C96500AE940E /* LaunchScreen.storyboard */,
 				0C20E9531F72C96500AE940E /* Info.plist */,
+				0C20E9591F72D1B400AE940E /* Catalog.xcassets */,
+				0C9FE4C31F76D45D0096A950 /* .gitignore */,
 			);
 			path = TinkoffChat;
 			sourceTree = "<group>";
@@ -96,6 +102,7 @@
 				TargetAttributes = {
 					0C20E9431F72C96500AE940E = {
 						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = 9486727C5W;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -123,9 +130,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C9FE4C41F76D45D0096A950 /* .gitignore in Resources */,
 				0C20E9521F72C96500AE940E /* LaunchScreen.storyboard in Resources */,
 				0C20E94F1F72C96500AE940E /* Assets.xcassets in Resources */,
-				0C20E94D1F72C96500AE940E /* Main.storyboard in Resources */,
+				0C20E94D1F72C96500AE940E /* Profile.storyboard in Resources */,
+				0C20E95A1F72D1B400AE940E /* Catalog.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,12 +153,12 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		0C20E94B1F72C96500AE940E /* Main.storyboard */ = {
+		0C20E94B1F72C96500AE940E /* Profile.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				0C20E94C1F72C96500AE940E /* Base */,
 			);
-			name = Main.storyboard;
+			name = Profile.storyboard;
 			sourceTree = "<group>";
 		};
 		0C20E9501F72C96500AE940E /* LaunchScreen.storyboard */ = {
@@ -262,6 +271,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 9486727C5W;
 				INFOPLIST_FILE = TinkoffChat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.neifmetus.TinkoffChat;
@@ -274,6 +284,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 9486727C5W;
 				INFOPLIST_FILE = TinkoffChat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.neifmetus.TinkoffChat;
@@ -301,6 +312,7 @@
 				0C20E9581F72C96500AE940E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
