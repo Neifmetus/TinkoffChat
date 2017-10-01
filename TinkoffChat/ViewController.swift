@@ -56,7 +56,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         super.viewDidLoad()
         
         guard let uploadPhotoView = uploadPhotoView else {
-            print("lalala")
+            print("Unable to use uploadPhotoView")
             return
         }
         
@@ -65,7 +65,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         uploadPhotoView.layer.masksToBounds = true
 
         guard let photoImageView = photoImageView else {
-            print("lalala")
+            print("Unable to use photoImageView")
             return
         }
         
@@ -73,17 +73,17 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         photoImageView.layer.masksToBounds = true
         
         guard let editButton = editButton else {
-            print("lalala")
+            print("Unable to use editButton")
             return
         }
         
         editButton.layer.borderWidth = 2
         editButton.layer.borderColor = UIColor.black.cgColor
-        editButton.layer.cornerRadius = editButton.frame.height / 2
+        editButton.layer.cornerRadius = 10
         editButton.layer.masksToBounds = true
         
         guard let uploadImageButton = uploadImageButton else {
-            print("lalala")
+            print("Unable to use uploadImageButton")
             return
         }
         
