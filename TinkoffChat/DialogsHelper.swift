@@ -36,7 +36,7 @@ extension ConversationListViewController {
         let messages = createMessages()
         for index in 0...9 {
             let hasUnreadMessages = index >= 2 ? true : false
-            let friend = Friend(name: friendsNames[index], messages: messages[index]?.sorted(by: {$0.date!.compare($1.date! as Date) == .orderedDescending}), online: true, hasUnreadMessages: hasUnreadMessages)
+            let friend = Friend(name: friendsNames[index], messages: messages[index]?.sorted(by: {$0.date!.compare($1.date! as Date) == .orderedAscending}), online: true, hasUnreadMessages: hasUnreadMessages)
             imaginaryFriends.append(friend)
         }
     }
