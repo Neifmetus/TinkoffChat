@@ -14,6 +14,10 @@
 		0C20E9521F72C96500AE940E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C20E9501F72C96500AE940E /* LaunchScreen.storyboard */; };
 		0C20E95A1F72D1B400AE940E /* Catalog.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C20E9591F72D1B400AE940E /* Catalog.xcassets */; };
 		0C8712531F810CBF00565238 /* CameraHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8712521F810CBF00565238 /* CameraHandler.swift */; };
+		0C8C99031F8806C500BDE770 /* ConversationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8C99021F8806C500BDE770 /* ConversationListViewController.swift */; };
+		0C8C99051F88099300BDE770 /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8C99041F88099300BDE770 /* ConversationViewController.swift */; };
+		0C8C99091F89783B00BDE770 /* DialogsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8C99081F89783B00BDE770 /* DialogsHelper.swift */; };
+		0C8C990F1F898F5A00BDE770 /* String+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8C990E1F898F5A00BDE770 /* String+Random.swift */; };
 		0C9FE4C41F76D45D0096A950 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 0C9FE4C31F76D45D0096A950 /* .gitignore */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +31,10 @@
 		0C20E9531F72C96500AE940E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0C20E9591F72D1B400AE940E /* Catalog.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Catalog.xcassets; sourceTree = "<group>"; };
 		0C8712521F810CBF00565238 /* CameraHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraHandler.swift; sourceTree = "<group>"; };
+		0C8C99021F8806C500BDE770 /* ConversationListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationListViewController.swift; sourceTree = "<group>"; };
+		0C8C99041F88099300BDE770 /* ConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
+		0C8C99081F89783B00BDE770 /* DialogsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogsHelper.swift; sourceTree = "<group>"; };
+		0C8C990E1F898F5A00BDE770 /* String+Random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Random.swift"; sourceTree = "<group>"; };
 		0C9FE4C31F76D45D0096A950 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -60,9 +68,13 @@
 		0C20E9461F72C96500AE940E /* TinkoffChat */ = {
 			isa = PBXGroup;
 			children = (
+				0C8C990D1F898F3A00BDE770 /* Extensions */,
 				0C20E9471F72C96500AE940E /* AppDelegate.swift */,
 				0C20E9491F72C96500AE940E /* ViewController.swift */,
 				0C8712521F810CBF00565238 /* CameraHandler.swift */,
+				0C8C99081F89783B00BDE770 /* DialogsHelper.swift */,
+				0C8C99021F8806C500BDE770 /* ConversationListViewController.swift */,
+				0C8C99041F88099300BDE770 /* ConversationViewController.swift */,
 				0C20E94B1F72C96500AE940E /* Profile.storyboard */,
 				0C20E94E1F72C96500AE940E /* Assets.xcassets */,
 				0C20E9501F72C96500AE940E /* LaunchScreen.storyboard */,
@@ -72,6 +84,14 @@
 				0C20E9451F72C96500AE940E /* Products */,
 			);
 			path = TinkoffChat;
+			sourceTree = "<group>";
+		};
+		0C8C990D1F898F3A00BDE770 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0C8C990E1F898F5A00BDE770 /* String+Random.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,6 +171,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C8712531F810CBF00565238 /* CameraHandler.swift in Sources */,
+				0C8C99091F89783B00BDE770 /* DialogsHelper.swift in Sources */,
+				0C8C990F1F898F5A00BDE770 /* String+Random.swift in Sources */,
+				0C8C99031F8806C500BDE770 /* ConversationListViewController.swift in Sources */,
+				0C8C99051F88099300BDE770 /* ConversationViewController.swift in Sources */,
 				0C20E94A1F72C96500AE940E /* ViewController.swift in Sources */,
 				0C20E9481F72C96500AE940E /* AppDelegate.swift in Sources */,
 			);

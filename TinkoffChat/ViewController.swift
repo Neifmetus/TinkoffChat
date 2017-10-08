@@ -15,12 +15,17 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     @IBOutlet weak var editButton: UIButton?
     @IBOutlet weak var uploadImageButton: UIButton?
     
+    @IBAction func goBack(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     @IBAction func selectImage(_ sender: Any) {
         let camera = CameraHandler(delegate_: self)
         let optionMenu = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         optionMenu.popoverPresentationController?.sourceView = self.view
-
+        
         let takePhoto = UIAlertAction(title: "Take Photo", style: .default) { (alert : UIAlertAction!) in
+
             camera.getPhotoViaCamera(self, canEdit: true)
         }
         let sharePhoto = UIAlertAction(title: "Photo Library", style: .default) { (alert : UIAlertAction!) in
