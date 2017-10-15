@@ -11,9 +11,13 @@ import UIKit
 class ConversationListViewController: UITableViewController {
     
     var imaginaryFriends: [Friend] = []
+    private var onlineFriends: [Friend] = []
+    private var historyFriends: [Friend] = []
     
     override func viewDidLoad() {
         createImaginaryFriends()
+        onlineFriends = getFriendsWith(online: true)
+        historyFriends = getFriendsWith(online: false)
         
         self.tableView.rowHeight = UITableViewAutomaticDimension
     }
@@ -29,17 +33,14 @@ class ConversationListViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return imaginaryFriends.count
+        return 10
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as! FriendCell
-        let friend = imaginaryFriends[indexPath.row]
+        let friend = indexPath.section == 0 ? onlineFriends[indexPath.row] : historyFriends[indexPath.row]
         
-        if indexPath.section == 0 {
-            cell.online = true
-        }
-
+        cell.online = friend.online
         cell.name = friend.name
         if let messages = friend.messages {
             let lastMessage = messages[messages.count - 1]
@@ -63,6 +64,17 @@ class ConversationListViewController: UITableViewController {
                 navigator.pushViewController(viewController, animated: true)
             }
         }
+    }
+    
+    private func getFriendsWith(online status: Bool) -> [Friend] {
+        var friends: [Friend] = []
+        for friend in imaginaryFriends {
+            if friend.online == status {
+                friends.append(friend)
+            }
+        }
+        
+        return friends
     }
 }
 
@@ -120,7 +132,11 @@ class FriendCell: UITableViewCell, ConversationCellConfiguration {
         get { return _online }
         set {
             _online = newValue
-            if _online { self.backgroundColor = UIColor.init(red: 255/255, green: 255/255, blue: 224/255, alpha: 1) }
+            if _online {
+                self.backgroundColor = UIColor.init(red: 255/255, green: 255/255, blue: 224/255, alpha: 1)
+            } else {
+                self.backgroundColor = UIColor.white
+            }
         }
     }
     
@@ -128,7 +144,9 @@ class FriendCell: UITableViewCell, ConversationCellConfiguration {
         get { return _hasUnreadMessages }
         set {
             _hasUnreadMessages = newValue
-            if hasUnreadMessages { lastMessage.font = UIFont.boldSystemFont(ofSize: 16.0) }
+            if hasUnreadMessages { lastMessage.font = UIFont.boldSystemFont(ofSize: 14.0) } else {
+                lastMessage.font = UIFont.systemFont(ofSize: 14.0)
+            }
         }
     }
 }
