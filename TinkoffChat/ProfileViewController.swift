@@ -11,7 +11,7 @@ import UIKit
 struct UserInfo {
     var name: String = "Name Surname"
     var additionalInfo: String = "Chat participant"
-    var image: UIImage? = UIImage(named: "placeholder-user")
+    var image: UIImage = UIImage(named: "placeholder-user.jpg") ?? UIImage()
 }
 
 class ProfileViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
@@ -112,32 +112,41 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         uploadImageButton.tintColor = UIColor.white
         
         //load user Info
-        ProfileViewController.userInfo.name = ""
-        ProfileViewController.userInfo.additionalInfo = ""
-        ProfileViewController.userInfo.image = UIImage()
+        let dataManager = GCDManager()
+        dataManager.loadData { (userInfo) in
+            DispatchQueue.main.async {
+                if let profile = userInfo {
+                    ProfileViewController.userInfo = profile
+                    self.nameLabel?.text = profile.name
+                    self.additionalInfoLabel?.text = profile.additionalInfo
+                    self.photoImageView?.image = profile.image
+                }
+            }
+        }
     }
 
     @IBAction func saveWithGCD(_ sender: Any) {
-        activityIndicatorView.isHidden = false
-        activityIndicatorView.startAnimating()
-        gcdButton.isEnabled = false
-        operationButton.isEnabled = false
         
-        let dataManager = GCDManager()
-        
-        dataManager.saveData { (info) in
-            print(info)
-            DispatchQueue.main.async {
-                self.activityIndicatorView.stopAnimating()
-                self.gcdButton.isEnabled = true
-                self.operationButton.isEnabled = true
-                
-                if info != nil {
-                    self.showSuccessAlert()
-                } else {
-                    self.showErrorAlert(function: {
-                        self.saveWithGCD(sender)
-                    })
+        if updateUserInfo() {
+            activityIndicatorView.isHidden = false
+            activityIndicatorView.startAnimating()
+            gcdButton.isEnabled = false
+            operationButton.isEnabled = false
+            
+            let dataManager = GCDManager()
+            dataManager.saveData { (fileURL) in
+                DispatchQueue.main.async {
+                    self.activityIndicatorView.stopAnimating()
+                    self.gcdButton.isEnabled = true
+                    self.operationButton.isEnabled = true
+                    
+                    if fileURL != nil {
+                        self.showSuccessAlert()
+                    } else {
+                        self.showErrorAlert(function: {
+                            self.saveWithGCD(sender)
+                        })
+                    }
                 }
             }
         }
@@ -152,7 +161,6 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         let operationManager = OperationManager()
         
         operationManager.saveData { (info) in
-            print(info)
             OperationQueue.main.addOperation {
                 self.activityIndicatorView.stopAnimating()
                 self.gcdButton.isEnabled = true
@@ -232,17 +240,25 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     }
     
     private func updateUserInfo() -> Bool {
-        let user = ProfileViewController.userInfo
+        var user = ProfileViewController.userInfo
         
         var changed = user.name == nameLabel?.text
         changed = user.additionalInfo == additionalInfoLabel?.text
-        changed = user.image = photoImageView?.image
+        changed = user.image == photoImageView?.image
         
-        user.name = nameLabel?.text
-        user.additionalInfo = additionalInfoLabel?.text
-        user.image = photoImageView?.image
+        if let name = nameLabel?.text {
+            user.name = name
+        }
         
-        return changed
+        if let additionalInfo = additionalInfoLabel?.text {
+            user.additionalInfo = additionalInfo
+        }
+        
+        if let image = photoImageView?.image {
+            user.image = image
+        }
+        
+        return !changed
     }
 }
 
