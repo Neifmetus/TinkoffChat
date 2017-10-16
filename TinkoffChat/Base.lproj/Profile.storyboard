@@ -71,14 +71,14 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LBa-mA-Sz3">
                                                 <rect key="frame" x="22" y="362" width="274" height="68"/>
                                                 <subviews>
-                                                    <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Name" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LsY-6Q-Mdt">
-                                                        <rect key="frame" x="8" y="3" width="191" height="30"/>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Name" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LsY-6Q-Mdt">
+                                                        <rect key="frame" x="8" y="3" width="258" height="30"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
-                                                    <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Additional Info" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ju7-0h-GbD">
-                                                        <rect key="frame" x="8" y="38" width="191" height="30"/>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Additional Info" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ju7-0h-GbD">
+                                                        <rect key="frame" x="8" y="38" width="258" height="30"/>
                                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <textInputTraits key="textInputTraits"/>
@@ -86,9 +86,10 @@
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstItem="ju7-0h-GbD" firstAttribute="trailing" secondItem="LsY-6Q-Mdt" secondAttribute="trailing" id="4wZ-nP-0Gh"/>
                                                     <constraint firstItem="ju7-0h-GbD" firstAttribute="leading" secondItem="LsY-6Q-Mdt" secondAttribute="leading" id="7Sh-sY-OA7"/>
                                                     <constraint firstItem="ju7-0h-GbD" firstAttribute="top" secondItem="LsY-6Q-Mdt" secondAttribute="bottom" constant="5" id="Akg-Ej-QJN"/>
+                                                    <constraint firstItem="ju7-0h-GbD" firstAttribute="trailing" secondItem="LsY-6Q-Mdt" secondAttribute="trailing" id="NLo-yA-9pR"/>
+                                                    <constraint firstAttribute="trailing" secondItem="LsY-6Q-Mdt" secondAttribute="trailing" constant="8" id="YoC-YX-yq9"/>
                                                     <constraint firstItem="LsY-6Q-Mdt" firstAttribute="top" secondItem="LBa-mA-Sz3" secondAttribute="top" constant="3" id="hn6-Qt-IqA"/>
                                                     <constraint firstItem="LsY-6Q-Mdt" firstAttribute="leading" secondItem="LBa-mA-Sz3" secondAttribute="leading" constant="8" id="yza-WA-Ryi"/>
                                                 </constraints>
