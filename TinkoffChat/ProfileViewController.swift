@@ -230,14 +230,14 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     }
     
     private func showSuccessAlert() {
-        let alert = UIAlertController(title: "Данные успешно прогружены", message: nil, preferredStyle: .alert)
+        let alert = UIAlertController(title: "Данные сохранены", message: nil, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
     
         self.present(alert, animated: true, completion: nil)
     }
     
     private func showErrorAlert(function: @escaping () -> ()) {
-        let alert = UIAlertController(title: "Данные не были прогружены", message: nil, preferredStyle: .alert)
+        let alert = UIAlertController(title: "Ошибка", message: "Не удалось сохранить данные", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         
         let repeatAction = UIAlertAction(title: "Повторить", style: .default, handler: {
