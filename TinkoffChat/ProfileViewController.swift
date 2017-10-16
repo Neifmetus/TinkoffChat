@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct UserInfo {
+struct ProfileInfo {
     var name: String = "Name Surname"
     var additionalInfo: String = "Chat participant"
     var image: UIImage = UIImage(named: "placeholder-user.jpg") ?? UIImage()
@@ -19,13 +19,13 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     @IBOutlet weak var uploadPhotoView: UIView?
     @IBOutlet weak var photoImageView: UIImageView?
     @IBOutlet weak var uploadImageButton: UIButton?
-    @IBOutlet weak var additionalInfoLabel: UILabel?
-    @IBOutlet weak var nameLabel: UILabel?
+    @IBOutlet weak var additionalInfoTextEdit: UITextField!
+    @IBOutlet weak var nameTextEdit: UITextField!
     @IBOutlet weak var gcdButton: UIButton!
     @IBOutlet weak var operationButton: UIButton!
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     
-    static var userInfo = UserInfo()
+    static var profileInfo = ProfileInfo()
     
     @IBAction func goBack(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
@@ -112,20 +112,26 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         uploadImageButton.tintColor = UIColor.white
         
         //load user Info
-        let dataManager = GCDManager()
+        let dataManager: DataManager = GCDManager()
         dataManager.loadData { (userInfo) in
             DispatchQueue.main.async {
                 if let profile = userInfo {
-                    ProfileViewController.userInfo = profile
-                    self.nameLabel?.text = profile.name
-                    self.additionalInfoLabel?.text = profile.additionalInfo
+                    ProfileViewController.profileInfo = profile
+                    self.nameTextEdit?.text = profile.name
+                    self.additionalInfoTextEdit?.text = profile.additionalInfo
                     self.photoImageView?.image = profile.image
                 }
             }
         }
+        
+        // handle keyboard events
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: .UIKeyboardWillHide, object: nil)
     }
 
     @IBAction func saveWithGCD(_ sender: Any) {
+        nameTextEdit.endEditing(true)
+        additionalInfoTextEdit.endEditing(true)
         
         if updateUserInfo() {
             activityIndicatorView.isHidden = false
@@ -133,7 +139,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
             gcdButton.isEnabled = false
             operationButton.isEnabled = false
             
-            let dataManager = GCDManager()
+        let dataManager: DataManager = GCDManager()
             dataManager.saveData { (fileURL) in
                 DispatchQueue.main.async {
                     self.activityIndicatorView.stopAnimating()
@@ -153,25 +159,29 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     }
     
     @IBAction func saveWithOperation(_ sender: Any) {
+        nameTextEdit.endEditing(true)
+        additionalInfoTextEdit.endEditing(true)
+        
+        if updateUserInfo() {
         activityIndicatorView.isHidden = false
         activityIndicatorView.startAnimating()
         gcdButton.isEnabled = false
         operationButton.isEnabled = false
         
-        let operationManager = OperationManager()
-        
-        operationManager.saveData { (info) in
-            OperationQueue.main.addOperation {
-                self.activityIndicatorView.stopAnimating()
-                self.gcdButton.isEnabled = true
-                self.operationButton.isEnabled = true
-                
-                if info != nil {
-                    self.showSuccessAlert()
-                } else {
-                    self.showErrorAlert(function: {
-                        self.saveWithOperation(sender)
-                    })
+        let dataManager: DataManager = OperationManager()
+            dataManager.saveData { (info) in
+                OperationQueue.main.addOperation {
+                    self.activityIndicatorView.stopAnimating()
+                    self.gcdButton.isEnabled = true
+                    self.operationButton.isEnabled = true
+                    
+                    if info != nil {
+                        self.showSuccessAlert()
+                    } else {
+                        self.showErrorAlert(function: {
+                            self.saveWithOperation(sender)
+                        })
+                    }
                 }
             }
         }
@@ -227,7 +237,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     }
     
     private func showErrorAlert(function: @escaping () -> ()) {
-        let alert = UIAlertController(title: "Данные успешно прогружены", message: nil, preferredStyle: .alert)
+        let alert = UIAlertController(title: "Данные не были прогружены", message: nil, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         
         let repeatAction = UIAlertAction(title: "Повторить", style: .default, handler: {
@@ -240,32 +250,45 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     }
     
     private func updateUserInfo() -> Bool {
-        var user = ProfileViewController.userInfo
+        let user = ProfileViewController.profileInfo
         
-        var changed = user.name == nameLabel?.text
-        changed = user.additionalInfo == additionalInfoLabel?.text
-        changed = user.image == photoImageView?.image
+        let changed = (user.name == nameTextEdit?.text && user.additionalInfo == additionalInfoTextEdit?.text
+         && user.image == photoImageView?.image)
         
-        if let name = nameLabel?.text {
-            user.name = name
+        if let name = nameTextEdit?.text {
+            ProfileViewController.profileInfo.name = name
         }
         
-        if let additionalInfo = additionalInfoLabel?.text {
-            user.additionalInfo = additionalInfo
+        if let additionalInfo = additionalInfoTextEdit?.text {
+            ProfileViewController.profileInfo.additionalInfo = additionalInfo
         }
         
         if let image = photoImageView?.image {
-            user.image = image
+            ProfileViewController.profileInfo.image = image
         }
         
         return !changed
     }
+    
+    @objc private func handleKeyboardNotification(notification: NSNotification) {
+        if let userInfo = notification.userInfo {
+            let keyboardFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+            
+            let isShowing = notification.name == .UIKeyboardWillShow
+            
+            self.view.frame.origin.y = isShowing ? -keyboardFrame.height : 0
+            
+            UIView.animate(withDuration: 0, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+                self.view.layoutIfNeeded()
+            }, completion: nil)
+        }
+    }
+    
 }
 
+protocol DataManager {
+    func saveData(userInfo: @escaping(URL?) -> ())
 
-//protocol DataManager {
-//    func saveData((String, String) -> ())
-//
-//    func loadData() -> String
-//}
+    func loadData(userInfo: @escaping(ProfileInfo?) -> ())
+}
 

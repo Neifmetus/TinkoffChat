@@ -8,19 +8,19 @@
 
 import UIKit
 
-class GCDManager {
+class GCDManager: DataManager {
     
     func saveData(userInfo: @escaping(URL?) -> ()) {
         let queue = DispatchQueue.global(qos: .utility)
         queue.async{
             
-            let image = ProfileViewController.userInfo.image
+            let image = ProfileViewController.profileInfo.image
             var profile: [String : Any] = [:]
-            if let jpegData = UIImageJPEGRepresentation(image , 1.0) {
+            if let jpegData = UIImageJPEGRepresentation(image , 0.5) {
                 let encodedString = jpegData.base64EncodedString()
                 profile = [
-                    "Name" : ProfileViewController.userInfo.name,
-                    "Additional_info" : ProfileViewController.userInfo.additionalInfo,
+                    "Name" : ProfileViewController.profileInfo.name,
+                    "Additional_info" : ProfileViewController.profileInfo.additionalInfo,
                     "Profile_image" : encodedString
                 ]
             }
@@ -39,7 +39,7 @@ class GCDManager {
         }
     }
     
-    func loadData(userInfo: @escaping(UserInfo?) -> ()) {
+    func loadData(userInfo: @escaping(ProfileInfo?) -> ()) {
         let queue = DispatchQueue.global(qos: .utility)
         queue.async{
             
@@ -48,7 +48,7 @@ class GCDManager {
                 let fileUrl = documentDirectoryUrl.appendingPathComponent("Persons.json")
             
                 if let savedInfo = self.retrieveFromJsonFile(fileUrl: fileUrl) {
-                    var profile = UserInfo()
+                    var profile = ProfileInfo()
                     if let name = savedInfo["Name"] as? String, let additionalInfo = savedInfo["Additional_info"] as? String, let image = savedInfo["Profile_image"] as? String {
 
                         profile.name = name
