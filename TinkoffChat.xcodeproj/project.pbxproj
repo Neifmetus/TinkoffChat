@@ -15,6 +15,7 @@
 		0C20E94F1F72C96500AE940E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C20E94E1F72C96500AE940E /* Assets.xcassets */; };
 		0C20E9521F72C96500AE940E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C20E9501F72C96500AE940E /* LaunchScreen.storyboard */; };
 		0C20E95A1F72D1B400AE940E /* Catalog.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C20E9591F72D1B400AE940E /* Catalog.xcassets */; };
+		0C8170421F9CBFDD006C1640 /* Date+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8170411F9CBFDD006C1640 /* Date+Random.swift */; };
 		0C8712531F810CBF00565238 /* CameraHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8712521F810CBF00565238 /* CameraHandler.swift */; };
 		0C8C99031F8806C500BDE770 /* ConversationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8C99021F8806C500BDE770 /* ConversationListViewController.swift */; };
 		0C8C99051F88099300BDE770 /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8C99041F88099300BDE770 /* ConversationViewController.swift */; };
@@ -37,6 +38,7 @@
 		0C20E9511F72C96500AE940E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0C20E9531F72C96500AE940E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0C20E9591F72D1B400AE940E /* Catalog.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Catalog.xcassets; sourceTree = "<group>"; };
+		0C8170411F9CBFDD006C1640 /* Date+Random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Random.swift"; sourceTree = "<group>"; };
 		0C8712521F810CBF00565238 /* CameraHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraHandler.swift; sourceTree = "<group>"; };
 		0C8C99021F8806C500BDE770 /* ConversationListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationListViewController.swift; sourceTree = "<group>"; };
 		0C8C99041F88099300BDE770 /* ConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				0C8C990E1F898F5A00BDE770 /* String+Random.swift */,
+				0C8170411F9CBFDD006C1640 /* Date+Random.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -198,6 +201,7 @@
 				0C8C99091F89783B00BDE770 /* DialogsHelper.swift in Sources */,
 				0CB8A7CD1F922C83005C5242 /* OperationManager.swift in Sources */,
 				0CB8A7CB1F922C69005C5242 /* GCDManager.swift in Sources */,
+				0C8170421F9CBFDD006C1640 /* Date+Random.swift in Sources */,
 				0C094F0F1F9B94A4008B6413 /* MPCHandler.swift in Sources */,
 				0C8C990F1F898F5A00BDE770 /* String+Random.swift in Sources */,
 				0C8C99031F8806C500BDE770 /* ConversationListViewController.swift in Sources */,

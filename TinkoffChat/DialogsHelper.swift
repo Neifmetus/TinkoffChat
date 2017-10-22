@@ -12,12 +12,21 @@ enum MessageSource {
     case incoming
     case outgoing
 }
-struct Friend {
+
+class Friend {
     var name: String?
     var userID: String
-    var messages: [Message]?
+    var messages: [Message]
     var online: Bool
     var hasUnreadMessages: Bool
+    
+    init(name: String?, userID: String, messages: [Message], online: Bool, hasUnreadMessages: Bool) {
+        self.name = name
+        self.userID = userID
+        self.messages = messages
+        self.online = online
+        self.hasUnreadMessages = hasUnreadMessages
+    }
 }
 
 struct Message {
@@ -39,7 +48,7 @@ extension ConversationListViewController {
             let hasUnreadMessages = arc4random_uniform(2) == 0 ? true : false
             let online = index < 5 ? true : false
             let messages = createMessages()
-            let conversationMessage = (index == 4 || index == 9) ? nil : messages.sorted(by: {$0.date!.compare($1.date! as Date) == .orderedAscending})
+            let conversationMessage = (index == 4 || index == 9) ? [] : messages.sorted(by: {$0.date!.compare($1.date! as Date) == .orderedAscending})
             let friend = Friend(name: friendsNames[index],
                                 userID: "",
                                 messages: conversationMessage,
@@ -51,7 +60,7 @@ extension ConversationListViewController {
     
     func createMessages() -> [Message] {
         let messages = [
-            Message(text: "A", messageID: nil, date: randomDate(), source: .incoming),
+            Message(text: "A", messageID: nil, date: Date.randomDate(daysBack: 1), source: .incoming),
                 Message(text: String.randomWith(length: 30), messageID: nil, date: randomDate(), source: .incoming),
                 Message(text: String.randomWith(length: 300), messageID: nil, date: randomDate(), source: .incoming),
                 Message(text: "B", messageID: nil, date: randomDate(), source: .outgoing),

@@ -45,7 +45,15 @@ class MPCHandler: NSObject, Communicator, MCNearbyServiceAdvertiserDelegate, MCN
     }
     
     func sendMessage(string: String, to peer: MCPeerID, completionHandler: ((Bool, Error?) -> ())) {
-        completionHandler(true, nil)
+        if let message = string.data(using: .utf8) {
+            var peers: [MCPeerID] = []
+            peers.append(peer)
+            do {
+                try session.send(message, toPeers: peers, with: .reliable)
+            } catch {
+                print("Unable to send message")
+            }
+        }
     }
     
     func browser(_ browser: MCNearbyServiceBrowser, foundPeer peerID: MCPeerID, withDiscoveryInfo info: [String : String]?) {
@@ -74,6 +82,7 @@ extension MPCHandler: MCSessionDelegate {
     }
     
     func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
+        print("Data")
     }
     
     func session(_ session: MCSession, didStartReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, with progress: Progress) { }

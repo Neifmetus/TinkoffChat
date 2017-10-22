@@ -31,6 +31,12 @@ class ConversationListViewController: UITableViewController, UIViewControllerDel
         self.tableView.rowHeight = UITableViewAutomaticDimension
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    
     open func reloadFriends(_ friends: [Friend]) {
         self.imaginaryFriends = friends
         onlineFriends = getFriendsWith(online: true)
@@ -59,10 +65,10 @@ class ConversationListViewController: UITableViewController, UIViewControllerDel
         
         cell.online = friend.online
         cell.name = friend.name
-        if let messages = friend.messages {
-            let lastMessage = messages[messages.count - 1]
-            cell.message = lastMessage.text
-            cell.date = lastMessage.date
+        if friend.messages.count > 0 {
+            let lastMessage = friend.messages.last
+            cell.message = lastMessage?.text
+            cell.date = lastMessage?.date
             cell.hasUnreadMessages = friend.hasUnreadMessages
         } else {
             cell.message = nil
@@ -91,6 +97,9 @@ class ConversationListViewController: UITableViewController, UIViewControllerDel
                 friends.append(friend)
             }
         }
+        
+        friends = friends.sorted(by: {
+            $0.messages.last?.date?.compare(($1.messages.last!.date as! Date)) == .orderedDescending})
         
         return friends
     }

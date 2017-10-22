@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MultipeerConnectivity
 
 class ConversationViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -36,12 +37,20 @@ class ConversationViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     @IBAction func sendMessageToFriend(_ sender: Any) {
-            if dialogTextField.text != "" || dialogTextField.text != nil {
+        if dialogTextField.text != "" || dialogTextField.text != nil {
             let message = Message(text: dialogTextField.text, messageID: nil, date: Date(), source: .outgoing)
-            friend?.messages?.append(message)
+            friend?.messages.append(message)
             
             dialogTextField.text = ""
             self.conversationTableView.reloadData()
+            
+//            communicationManager?.manager?.sendMessage(string: "Test", to: MCPeerID(displayName: (friend?.userID)!)) {
+//                (success, error) in
+//
+//                if let error = error {
+//                    print(error)
+//                }
+//            }
         }
     }
     
@@ -57,8 +66,9 @@ class ConversationViewController: UIViewController, UITableViewDataSource, UITab
                 self.view.layoutIfNeeded()
             }, completion: { (completed) in
                 if isShowing {
-                    let indexPath = IndexPath(row: (self.friend?.messages?.count)! - 1, section: 0)
-                    self.conversationTableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+                    //scroll last for 
+//                    let indexPath = IndexPath(row: (self.friend?.messages?.count)! - 1, section: 0)
+//                    self.conversationTableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
                 }
             })
         }
@@ -77,7 +87,7 @@ class ConversationViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return friend?.messages?.count ?? 0
+        return friend?.messages.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
