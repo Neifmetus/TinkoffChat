@@ -14,6 +14,7 @@ enum MessageSource {
 }
 struct Friend {
     var name: String?
+    var userID: String
     var messages: [Message]?
     var online: Bool
     var hasUnreadMessages: Bool
@@ -21,6 +22,7 @@ struct Friend {
 
 struct Message {
     var text: String?
+    var messageID: String?
     var date: Date?
     var source: MessageSource
 }
@@ -33,12 +35,13 @@ extension ConversationListViewController {
                             "Mei", "Bastion", "Genzi", "Hanzo", "Junkrat",
                             "Symmetra", "Reinhardt", "Winston", "Roadhog", "Zenyatta"]
         
-        for index in 0...19 {
+        for index in 0...9 {
             let hasUnreadMessages = arc4random_uniform(2) == 0 ? true : false
-            let online = index < 10 ? true : false
+            let online = index < 5 ? true : false
             let messages = createMessages()
-            let conversationMessage = (index == 9 || index == 19) ? nil : messages.sorted(by: {$0.date!.compare($1.date! as Date) == .orderedAscending})
+            let conversationMessage = (index == 4 || index == 9) ? nil : messages.sorted(by: {$0.date!.compare($1.date! as Date) == .orderedAscending})
             let friend = Friend(name: friendsNames[index],
+                                userID: "",
                                 messages: conversationMessage,
                                 online: online,
                                 hasUnreadMessages: hasUnreadMessages)
@@ -48,12 +51,12 @@ extension ConversationListViewController {
     
     func createMessages() -> [Message] {
         let messages = [
-                Message(text: "A", date: randomDate(), source: .incoming),
-                Message(text: String.randomWith(length: 30), date: randomDate(), source: .incoming),
-                Message(text: String.randomWith(length: 300), date: randomDate(), source: .incoming),
-                Message(text: "B", date: randomDate(), source: .outgoing),
-                Message(text:String.randomWith(length: 30), date: randomDate(), source: .outgoing),
-                Message(text: String.randomWith(length: 100), date: randomDate(), source: .outgoing)
+            Message(text: "A", messageID: nil, date: randomDate(), source: .incoming),
+                Message(text: String.randomWith(length: 30), messageID: nil, date: randomDate(), source: .incoming),
+                Message(text: String.randomWith(length: 300), messageID: nil, date: randomDate(), source: .incoming),
+                Message(text: "B", messageID: nil, date: randomDate(), source: .outgoing),
+                Message(text:String.randomWith(length: 30), messageID: nil, date: randomDate(), source: .outgoing),
+                Message(text: String.randomWith(length: 100), messageID: nil, date: randomDate(), source: .outgoing)
         ]
         
         //let friend = Friend(name: "Tracer", messages: messages, online: true)

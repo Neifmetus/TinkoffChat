@@ -8,21 +8,38 @@
 
 import UIKit
 
-class ConversationListViewController: UITableViewController {
+protocol UIViewControllerDelegate {
+    func reloadFriends(_ friends: [Friend])
+}
+
+class ConversationListViewController: UITableViewController, UIViewControllerDelegate {
     
+    var communicationManager: CommunicationManager?
     var imaginaryFriends: [Friend] = []
     private var onlineFriends: [Friend] = []
     private var historyFriends: [Friend] = []
+    var delegate: CommunicationDelegate?
     
     override func viewDidLoad() {
         createImaginaryFriends()
         onlineFriends = getFriendsWith(online: true)
         historyFriends = getFriendsWith(online: false)
         
+        communicationManager = CommunicationManager()
+        communicationManager?.delegate = self
+        
         self.tableView.rowHeight = UITableViewAutomaticDimension
     }
     
-    // MARK: - Table view data source
+    open func reloadFriends(_ friends: [Friend]) {
+        self.imaginaryFriends = friends
+        onlineFriends = getFriendsWith(online: true)
+        historyFriends = getFriendsWith(online: false)
+
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 2
@@ -33,7 +50,7 @@ class ConversationListViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return section == 0 ? onlineFriends.count : historyFriends.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -59,6 +76,7 @@ class ConversationListViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         
         if let viewController = UIStoryboard(name: "Profile", bundle: nil).instantiateViewController(withIdentifier: "ConversationViewController") as? ConversationViewController {
+            viewController.communicationManager = self.communicationManager
             viewController.friend = imaginaryFriends[indexPath.row]
             if let navigator = navigationController {
                 navigator.pushViewController(viewController, animated: true)

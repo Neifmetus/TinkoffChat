@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C094F0F1F9B94A4008B6413 /* MPCHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C094F0E1F9B94A3008B6413 /* MPCHandler.swift */; };
+		0C094F111F9B955F008B6413 /* CommunicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C094F101F9B955F008B6413 /* CommunicationManager.swift */; };
 		0C20E9481F72C96500AE940E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C20E9471F72C96500AE940E /* AppDelegate.swift */; };
 		0C20E94A1F72C96500AE940E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C20E9491F72C96500AE940E /* ProfileViewController.swift */; };
 		0C20E94D1F72C96500AE940E /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C20E94B1F72C96500AE940E /* Profile.storyboard */; };
@@ -25,6 +27,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C094F0E1F9B94A3008B6413 /* MPCHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPCHandler.swift; sourceTree = "<group>"; };
+		0C094F101F9B955F008B6413 /* CommunicationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CommunicationManager.swift; path = ../../../../Desktop/CommunicationManager.swift; sourceTree = "<group>"; };
 		0C20E9441F72C96500AE940E /* TinkoffChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinkoffChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C20E9471F72C96500AE940E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0C20E9491F72C96500AE940E /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -55,6 +59,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C094F0C1F9B9474008B6413 /* Communication */ = {
+			isa = PBXGroup;
+			children = (
+				0C094F101F9B955F008B6413 /* CommunicationManager.swift */,
+				0C094F0E1F9B94A3008B6413 /* MPCHandler.swift */,
+			);
+			path = Communication;
+			sourceTree = "<group>";
+		};
 		0C20E93B1F72C96500AE940E = {
 			isa = PBXGroup;
 			children = (
@@ -74,6 +87,7 @@
 		0C20E9461F72C96500AE940E /* TinkoffChat */ = {
 			isa = PBXGroup;
 			children = (
+				0C094F0C1F9B9474008B6413 /* Communication */,
 				0C8C990D1F898F3A00BDE770 /* Extensions */,
 				0C20E9471F72C96500AE940E /* AppDelegate.swift */,
 				0C20E9491F72C96500AE940E /* ProfileViewController.swift */,
@@ -184,10 +198,12 @@
 				0C8C99091F89783B00BDE770 /* DialogsHelper.swift in Sources */,
 				0CB8A7CD1F922C83005C5242 /* OperationManager.swift in Sources */,
 				0CB8A7CB1F922C69005C5242 /* GCDManager.swift in Sources */,
+				0C094F0F1F9B94A4008B6413 /* MPCHandler.swift in Sources */,
 				0C8C990F1F898F5A00BDE770 /* String+Random.swift in Sources */,
 				0C8C99031F8806C500BDE770 /* ConversationListViewController.swift in Sources */,
 				0C8C99051F88099300BDE770 /* ConversationViewController.swift in Sources */,
 				0C20E94A1F72C96500AE940E /* ProfileViewController.swift in Sources */,
+				0C094F111F9B955F008B6413 /* CommunicationManager.swift in Sources */,
 				0C20E9481F72C96500AE940E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
