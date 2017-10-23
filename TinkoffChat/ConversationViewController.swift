@@ -9,7 +9,11 @@
 import UIKit
 import MultipeerConnectivity
 
-class ConversationViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+protocol ConverationDelegate {
+    func receiveMessage(text: String)
+}
+
+class ConversationViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, ConverationDelegate {
     
     @IBOutlet weak var dialogInputTextView: UIView!
     @IBOutlet weak var dialogTextField: UITextField!
@@ -37,20 +41,32 @@ class ConversationViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     @IBAction func sendMessageToFriend(_ sender: Any) {
-        if dialogTextField.text != "" || dialogTextField.text != nil {
+        if dialogTextField.text != "" && dialogTextField.text != nil {
             let message = Message(text: dialogTextField.text, messageID: nil, date: Date(), source: .outgoing)
             friend?.messages.append(message)
             
-            dialogTextField.text = ""
-            self.conversationTableView.reloadData()
+            DispatchQueue.main.async {
+                self.conversationTableView.reloadData()
+            }
             
-//            communicationManager?.manager?.sendMessage(string: "Test", to: MCPeerID(displayName: (friend?.userID)!)) {
-//                (success, error) in
-//
-//                if let error = error {
-//                    print(error)
-//                }
-//            }
+            communicationManager?.manager?.sendMessage(string: dialogTextField.text!, to: MCPeerID(displayName: (friend?.userID)!)) {
+                (success, error) in
+
+                if let error = error {
+                    print(error)
+                }
+            }
+            
+            dialogTextField.text = ""
+        }
+    }
+    
+    func receiveMessage(text: String) {
+        let message = Message(text: text, messageID: nil, date: Date(), source: .incoming)
+        friend?.messages.append(message)
+        
+        DispatchQueue.main.async {
+            self.conversationTableView.reloadData()
         }
     }
     

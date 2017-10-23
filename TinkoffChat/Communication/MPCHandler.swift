@@ -11,11 +11,7 @@ protocol Communicator {
 class MPCHandler: NSObject, Communicator, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowserDelegate  {
    
     let peerID: MCPeerID = MCPeerID(displayName: UIDevice.current.name)
-    lazy var session : MCSession = {
-        let session = MCSession(peer: peerID, securityIdentity: nil, encryptionPreference: .none)
-        session.delegate = self
-        return session
-    }()
+    var sessions = [String: MCSession]()
     
     var advertiser : MCNearbyServiceAdvertiser!
     var browser: MCNearbyServiceBrowser!
@@ -45,19 +41,28 @@ class MPCHandler: NSObject, Communicator, MCNearbyServiceAdvertiserDelegate, MCN
     }
     
     func sendMessage(string: String, to peer: MCPeerID, completionHandler: ((Bool, Error?) -> ())) {
-        if let message = string.data(using: .utf8) {
-            var peers: [MCPeerID] = []
-            peers.append(peer)
-            do {
-                try session.send(message, toPeers: peers, with: .reliable)
-            } catch {
-                print("Unable to send message")
+        let message = [
+            "eventType" : "TextMessage",
+            "messageId" : String.generateMessageId(),
+            "text" : string
+        ]
+        
+        do {
+            if let session = sessions[peer.displayName] {
+                let data = try JSONSerialization.data(withJSONObject: message, options: [])
+                try session.send(data, toPeers: session.connectedPeers, with: .reliable)
             }
+        } catch {
+            print("Unable to send message")
         }
     }
     
     func browser(_ browser: MCNearbyServiceBrowser, foundPeer peerID: MCPeerID, withDiscoveryInfo info: [String : String]?) {
-        browser.invitePeer(peerID, to: self.session, withContext: nil, timeout: 60)
+        let session = MCSession(peer: self.peerID, securityIdentity: nil, encryptionPreference: .none)
+        session.delegate = self
+        sessions[peerID.displayName] = session
+        
+        browser.invitePeer(peerID, to: session, withContext: nil, timeout: 60)
         delegate?.didFoundUser(userID: peerID.displayName, userName: info?["userName"])
     }
     
@@ -73,7 +78,11 @@ class MPCHandler: NSObject, Communicator, MCNearbyServiceAdvertiserDelegate, MCN
     }
     
     func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didReceiveInvitationFromPeer peerID: MCPeerID, withContext context: Data?, invitationHandler: @escaping (Bool, MCSession?) -> Void) {
-        invitationHandler(true, self.session)
+        let session = MCSession(peer: self.peerID, securityIdentity: nil, encryptionPreference: .none)
+        session.delegate = self
+        sessions[peerID.displayName] = session
+
+        invitationHandler(true, session)
     }
 }
 
@@ -82,7 +91,13 @@ extension MPCHandler: MCSessionDelegate {
     }
     
     func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
-        print("Data")
+        do {
+            if let receivedData = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
+                delegate?.didReceiveMessage(text: receivedData["text"] as! String, fromUser: peerID.displayName, toUser: self.peerID.displayName)
+            }
+        } catch {
+            print("Unable to receive data")
+        }
     }
     
     func session(_ session: MCSession, didStartReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, with progress: Progress) { }

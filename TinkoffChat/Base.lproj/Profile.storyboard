@@ -5,7 +5,7 @@
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -368,16 +368,20 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5RO-fL-f3A">
                                 <rect key="frame" x="0.0" y="521" width="320" height="47"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MWX-VF-3bK">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MWX-VF-3bK">
                                         <rect key="frame" x="9" y="8" width="256" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="256" id="V4G-sO-V2P"/>
+                                        </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eu1-Xe-bfm">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eu1-Xe-bfm">
                                         <rect key="frame" x="272" y="8" width="46" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="46" id="6Ds-c1-sBh"/>
+                                        </constraints>
                                         <state key="normal" title="Send"/>
                                         <connections>
                                             <action selector="sendMessageToFriend:" destination="Wt5-rT-Gma" eventType="touchUpInside" id="vSS-bF-PYm"/>
@@ -387,6 +391,13 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="47" id="F5f-EB-GFA"/>
+                                    <constraint firstAttribute="bottom" secondItem="eu1-Xe-bfm" secondAttribute="bottom" constant="9" id="Pef-Bv-Njw"/>
+                                    <constraint firstItem="MWX-VF-3bK" firstAttribute="leading" secondItem="5RO-fL-f3A" secondAttribute="leading" constant="9" id="SFm-KZ-7BY"/>
+                                    <constraint firstItem="eu1-Xe-bfm" firstAttribute="top" secondItem="5RO-fL-f3A" secondAttribute="top" constant="8" id="W3R-sb-BqX"/>
+                                    <constraint firstItem="MWX-VF-3bK" firstAttribute="top" secondItem="5RO-fL-f3A" secondAttribute="top" constant="8" id="juD-ss-hca"/>
+                                    <constraint firstItem="eu1-Xe-bfm" firstAttribute="leading" secondItem="MWX-VF-3bK" secondAttribute="trailing" constant="7" id="mrl-Ls-rWy"/>
+                                    <constraint firstAttribute="bottom" secondItem="MWX-VF-3bK" secondAttribute="bottom" constant="9" id="nRA-lG-nak"/>
+                                    <constraint firstAttribute="trailing" secondItem="eu1-Xe-bfm" secondAttribute="trailing" constant="2" id="tZu-Nh-Nys"/>
                                 </constraints>
                             </view>
                         </subviews>

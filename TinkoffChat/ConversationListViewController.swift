@@ -83,6 +83,7 @@ class ConversationListViewController: UITableViewController, UIViewControllerDel
         
         if let viewController = UIStoryboard(name: "Profile", bundle: nil).instantiateViewController(withIdentifier: "ConversationViewController") as? ConversationViewController {
             viewController.communicationManager = self.communicationManager
+            viewController.communicationManager?.conversationDelegate = viewController
             viewController.friend = imaginaryFriends[indexPath.row]
             if let navigator = navigationController {
                 navigator.pushViewController(viewController, animated: true)
