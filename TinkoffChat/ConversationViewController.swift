@@ -41,6 +41,7 @@ class ConversationViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     @IBAction func sendMessageToFriend(_ sender: Any) {
+        dialogTextField.endEditing(true)
         if dialogTextField.text != "" && dialogTextField.text != nil {
             let message = Message(text: dialogTextField.text, messageID: nil, date: Date(), source: .outgoing)
             friend?.messages.append(message)
