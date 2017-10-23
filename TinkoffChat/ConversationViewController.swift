@@ -82,7 +82,7 @@ class ConversationViewController: UIViewController, UITableViewDataSource, UITab
                 self.view.layoutIfNeeded()
             }, completion: { (completed) in
                 if isShowing {
-                    //scroll last for 
+                    //scroll last
 //                    let indexPath = IndexPath(row: (self.friend?.messages?.count)! - 1, section: 0)
 //                    self.conversationTableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
                 }
@@ -117,6 +117,7 @@ protocol MessageCellConfiguration: class {
 
 class MessageCell: UITableViewCell, MessageCellConfiguration {
     @IBOutlet weak var messageLabel: UILabel!
+    @IBOutlet weak var bubbleView: UIView!
     
     var message: String? {
         get { return messageLabel.text}

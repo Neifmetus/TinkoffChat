@@ -312,9 +312,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Nn-40-ZYW">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Nn-40-ZYW">
                                                     <rect key="frame" x="0.0" y="0.0" width="224" height="44"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N6m-tN-j2m">
                                                             <rect key="frame" x="8" y="0.0" width="173" height="44"/>
@@ -327,8 +326,15 @@
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </view>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="4Nn-40-ZYW" secondAttribute="trailing" constant="96" id="6Tt-1I-vXF"/>
+                                                <constraint firstItem="4Nn-40-ZYW" firstAttribute="top" secondItem="vWF-C4-zPU" secondAttribute="top" id="9U9-pC-RB3"/>
+                                                <constraint firstItem="4Nn-40-ZYW" firstAttribute="leading" secondItem="vWF-C4-zPU" secondAttribute="leading" id="ZJp-Vr-gHn"/>
+                                                <constraint firstAttribute="bottom" secondItem="4Nn-40-ZYW" secondAttribute="bottom" id="a0e-fA-nZF"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="bubbleView" destination="4Nn-40-ZYW" id="iHS-Ih-ReL"/>
                                             <outlet property="messageLabel" destination="N6m-tN-j2m" id="Aaa-aF-WVb"/>
                                         </connections>
                                     </tableViewCell>
@@ -339,9 +345,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="shD-gO-ZQT">
-                                                    <rect key="frame" x="121" y="-2" width="191" height="46"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="shD-gO-ZQT">
+                                                    <rect key="frame" x="121" y="0.0" width="191" height="44"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dgj-Jp-f2s">
                                                             <rect key="frame" x="22" y="0.0" width="165" height="46"/>
@@ -354,8 +359,15 @@
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </view>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="shD-gO-ZQT" firstAttribute="top" secondItem="8Wm-fk-0eF" secondAttribute="top" id="bEQ-YL-OZC"/>
+                                                <constraint firstItem="shD-gO-ZQT" firstAttribute="leading" secondItem="8Wm-fk-0eF" secondAttribute="leading" constant="121" id="czD-cR-La3"/>
+                                                <constraint firstAttribute="trailing" secondItem="shD-gO-ZQT" secondAttribute="trailing" constant="8" id="gHw-BD-ScM"/>
+                                                <constraint firstAttribute="bottom" secondItem="shD-gO-ZQT" secondAttribute="bottom" id="pzK-8Y-TnA"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="bubbleView" destination="shD-gO-ZQT" id="pPM-VX-4pY"/>
                                             <outlet property="messageLabel" destination="dgj-Jp-f2s" id="kNO-b9-SAf"/>
                                         </connections>
                                     </tableViewCell>

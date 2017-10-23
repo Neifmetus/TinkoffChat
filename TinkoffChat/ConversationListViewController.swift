@@ -99,8 +99,11 @@ class ConversationListViewController: UITableViewController, UIViewControllerDel
             }
         }
         
-        friends = friends.sorted(by: {
-            $0.messages.last?.date?.compare(($1.messages.last!.date as! Date)) == .orderedDescending})
+        friends.sort { (item1, item2) -> Bool in
+            let t1 = item1.messages.last?.date ?? Date.distantPast
+            let t2 = item2.messages.last!.date ?? Date.distantPast
+            return t1 > t2
+        }
         
         return friends
     }
@@ -149,6 +152,13 @@ class FriendCell: UITableViewCell, ConversationCellConfiguration {
             timeFormatter.setLocalizedDateFormatFromTemplate("HH:mm")
             
             if let newDate = newValue {
+                if (Calendar.current.dateComponents([.day], from: Date(), to: newDate).day ?? 0) > 7 {
+                    timeFormatter.setLocalizedDateFormatFromTemplate("dd/MM/yy")
+                } else if (Calendar.current.dateComponents([.hour], from: Date(), to: newDate).hour ?? 0) > 24 {
+                    timeFormatter.setLocalizedDateFormatFromTemplate("EEE")
+                }
+                
+                print(newDate)
                 dateLabel.text = timeFormatter.string(from: newDate)
             } else {
                 dateLabel.text = "No date"
