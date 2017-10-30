@@ -18,8 +18,7 @@ class ConversationListModel: IConversationListModel {
     var delegate: IConversationListModelDelegate?
     
     init() {
-        self.service = ConversationListService()
-        self.service?.delegate = self
+        self.service = ConversationListService(delegate: self)
     }
     
     func findOnlineFriends() {

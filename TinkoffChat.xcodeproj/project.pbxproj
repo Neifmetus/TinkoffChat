@@ -27,6 +27,9 @@
 		0C9FE4C41F76D45D0096A950 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 0C9FE4C31F76D45D0096A950 /* .gitignore */; };
 		0CB8A7CB1F922C69005C5242 /* GCDManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB8A7CA1F922C69005C5242 /* GCDManager.swift */; };
 		0CB8A7CD1F922C83005C5242 /* OperationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB8A7CC1F922C83005C5242 /* OperationManager.swift */; };
+		73468A1D1FA76F50000446E2 /* Conversation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73468A1C1FA76F50000446E2 /* Conversation.storyboard */; };
+		73468A1F1FA7719C000446E2 /* ConversationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73468A1E1FA7719C000446E2 /* ConversationModel.swift */; };
+		73468A211FA771B4000446E2 /* ConversationAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73468A201FA771B4000446E2 /* ConversationAssembly.swift */; };
 		7366D07D1F9DCDF4000FACAE /* CommunicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7366D07C1F9DCDF4000FACAE /* CommunicationManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +56,9 @@
 		0C9FE4C31F76D45D0096A950 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		0CB8A7CA1F922C69005C5242 /* GCDManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCDManager.swift; sourceTree = "<group>"; };
 		0CB8A7CC1F922C83005C5242 /* OperationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationManager.swift; sourceTree = "<group>"; };
+		73468A1C1FA76F50000446E2 /* Conversation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Conversation.storyboard; sourceTree = "<group>"; };
+		73468A1E1FA7719C000446E2 /* ConversationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationModel.swift; sourceTree = "<group>"; };
+		73468A201FA771B4000446E2 /* ConversationAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationAssembly.swift; sourceTree = "<group>"; };
 		7366D07C1F9DCDF4000FACAE /* CommunicationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -90,12 +96,12 @@
 				0C8170481FA4DC90006C1640 /* ServiceLayer */,
 				0C8170461FA4CCD5006C1640 /* PresentationLayer */,
 				0C8C990D1F898F3A00BDE770 /* Extensions */,
-				0C20E9471F72C96500AE940E /* AppDelegate.swift */,
-				0C847B741FA66BDB000283AA /* RootAssembly.swift */,
 				0C8712521F810CBF00565238 /* CameraHandler.swift */,
 				0CB8A7CA1F922C69005C5242 /* GCDManager.swift */,
 				0CB8A7CC1F922C83005C5242 /* OperationManager.swift */,
 				0C8C99081F89783B00BDE770 /* DialogsHelper.swift */,
+				0C20E9471F72C96500AE940E /* AppDelegate.swift */,
+				0C847B741FA66BDB000283AA /* RootAssembly.swift */,
 				0C20E94E1F72C96500AE940E /* Assets.xcassets */,
 				0C20E9501F72C96500AE940E /* LaunchScreen.storyboard */,
 				0C20E9531F72C96500AE940E /* Info.plist */,
@@ -165,6 +171,9 @@
 			isa = PBXGroup;
 			children = (
 				0C8C99041F88099300BDE770 /* ConversationViewController.swift */,
+				73468A1E1FA7719C000446E2 /* ConversationModel.swift */,
+				73468A201FA771B4000446E2 /* ConversationAssembly.swift */,
+				73468A1C1FA76F50000446E2 /* Conversation.storyboard */,
 			);
 			path = ConversationDialog;
 			sourceTree = "<group>";
@@ -242,6 +251,7 @@
 				0C9FE4C41F76D45D0096A950 /* .gitignore in Resources */,
 				0C20E9521F72C96500AE940E /* LaunchScreen.storyboard in Resources */,
 				0C20E94F1F72C96500AE940E /* Assets.xcassets in Resources */,
+				73468A1D1FA76F50000446E2 /* Conversation.storyboard in Resources */,
 				0C20E94D1F72C96500AE940E /* Profile.storyboard in Resources */,
 				0C20E95A1F72D1B400AE940E /* Catalog.xcassets in Resources */,
 			);
@@ -260,7 +270,9 @@
 				0C8C99091F89783B00BDE770 /* DialogsHelper.swift in Sources */,
 				0CB8A7CD1F922C83005C5242 /* OperationManager.swift in Sources */,
 				0CB8A7CB1F922C69005C5242 /* GCDManager.swift in Sources */,
+				73468A211FA771B4000446E2 /* ConversationAssembly.swift in Sources */,
 				0C8170421F9CBFDD006C1640 /* Date+Random.swift in Sources */,
+				73468A1F1FA7719C000446E2 /* ConversationModel.swift in Sources */,
 				0C847B6F1FA51B2E000283AA /* ConversationListModel.swift in Sources */,
 				0C094F0F1F9B94A4008B6413 /* MPCHandler.swift in Sources */,
 				0C8C990F1F898F5A00BDE770 /* String+Random.swift in Sources */,

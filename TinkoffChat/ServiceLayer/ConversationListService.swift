@@ -15,7 +15,8 @@ protocol IConversationListService: class {
 class ConversationListService: IConversationListService {
     var delegate: IConversationListModel?
     
-    init() {
+    init(delegate: IConversationListModel) {
+        self.delegate = delegate
     }
     
     func didFound(friend: Friend) {

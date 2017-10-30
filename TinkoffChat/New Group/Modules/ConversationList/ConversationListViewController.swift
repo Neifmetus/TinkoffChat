@@ -13,7 +13,7 @@ protocol IConversationListModelDelegate: class {
 }
 
 class ConversationListViewController: UITableViewController, IConversationListModelDelegate {
-    let model = ConversationListModel()
+    var model: ConversationListModel?
     
     var communicationManager: CommunicationManager?
     var imaginaryFriends: [Friend] = []
@@ -22,7 +22,8 @@ class ConversationListViewController: UITableViewController, IConversationListMo
     var delegate: CommunicationDelegate?
 
     override func viewDidLoad() {
-        model.delegate = self
+        self.model = ConversationListModel()
+        model?.delegate = self
         
         onlineFriends = getFriendsWith(online: true)
         historyFriends = getFriendsWith(online: false)
@@ -83,7 +84,7 @@ class ConversationListViewController: UITableViewController, IConversationListMo
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        if let viewController = UIStoryboard(name: "Profile", bundle: nil).instantiateViewController(withIdentifier: "ConversationViewController") as? ConversationViewController {
+        if let viewController = UIStoryboard(name: "Conversation", bundle: nil).instantiateViewController(withIdentifier: "ConversationViewController") as? ConversationViewController {
             viewController.communicationManager = self.communicationManager
             viewController.communicationManager?.conversationDelegate = viewController
             viewController.friend = imaginaryFriends[indexPath.row]
