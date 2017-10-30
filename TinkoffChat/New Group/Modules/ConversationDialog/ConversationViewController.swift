@@ -10,7 +10,7 @@ import UIKit
 import MultipeerConnectivity
 
 protocol ConverationDelegate {
-    func receiveMessage(text: String)
+    func receive(message: Message)
 }
 
 class ConversationViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, ConverationDelegate {
@@ -26,10 +26,16 @@ class ConversationViewController: UIViewController, UITableViewDataSource, UITab
         }
     }
     
-    var communicationManager: CommunicationManager?
+    var service: ConversationListService?
+    var model: ConversationModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let service = self.service {
+            model = ConversationModel(service: service)
+            model?.delegate = self
+        }
         
         if let friend = friend {
             sendMessageButton.isEnabled = friend.online
@@ -50,20 +56,15 @@ class ConversationViewController: UIViewController, UITableViewDataSource, UITab
                 self.conversationTableView.reloadData()
             }
             
-            communicationManager?.manager?.sendMessage(string: dialogTextField.text!, to: MCPeerID(displayName: (friend?.userID)!)) {
-                (success, error) in
-
-                if let error = error {
-                    print(error)
-                }
+            if let text = message.text, let userID = friend?.userID {
+                service?.sendMessage(text: text, userID: userID)
             }
             
             dialogTextField.text = ""
         }
     }
     
-    func receiveMessage(text: String) {
-        let message = Message(text: text, messageID: nil, date: Date(), source: .incoming)
+    func receive(message: Message) {
         friend?.messages.append(message)
         
         DispatchQueue.main.async {

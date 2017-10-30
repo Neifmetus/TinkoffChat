@@ -27,17 +27,19 @@ class MPCHandler: NSObject, Communicator, MCNearbyServiceAdvertiserDelegate, MCN
         
         super.init()
         self.delegate = delegate
-        
-        self.advertiser.delegate = self
-        self.advertiser.startAdvertisingPeer()
-        
-        self.browser.delegate = self
-        self.browser.startBrowsingForPeers()
     }
     
     deinit {
         self.advertiser.stopAdvertisingPeer()
         self.browser.stopBrowsingForPeers()
+    }
+    
+    func setupConnectivity() {
+        self.advertiser.delegate = self
+        self.advertiser.startAdvertisingPeer()
+        
+        self.browser.delegate = self
+        self.browser.startBrowsingForPeers()
     }
     
     func sendMessage(string: String, to peer: MCPeerID, completionHandler: ((Bool, Error?) -> ())) {

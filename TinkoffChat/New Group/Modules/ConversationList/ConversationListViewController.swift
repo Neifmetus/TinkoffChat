@@ -28,8 +28,7 @@ class ConversationListViewController: UITableViewController, IConversationListMo
         onlineFriends = getFriendsWith(online: true)
         historyFriends = getFriendsWith(online: false)
         
-        communicationManager = CommunicationManager()
-        communicationManager?.delegate = self
+        model?.findOnlineFriends()
         
         self.tableView.rowHeight = UITableViewAutomaticDimension
     }
@@ -85,8 +84,7 @@ class ConversationListViewController: UITableViewController, IConversationListMo
         tableView.deselectRow(at: indexPath, animated: true)
         
         if let viewController = UIStoryboard(name: "Conversation", bundle: nil).instantiateViewController(withIdentifier: "ConversationViewController") as? ConversationViewController {
-            viewController.communicationManager = self.communicationManager
-            viewController.communicationManager?.conversationDelegate = viewController
+            viewController.service = model?.service
             viewController.friend = imaginaryFriends[indexPath.row]
             if let navigator = navigationController {
                 navigator.pushViewController(viewController, animated: true)

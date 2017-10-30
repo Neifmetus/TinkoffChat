@@ -25,6 +25,7 @@ protocol CommunicationDelegate : class {
 class CommunicationManager: NSObject, CommunicationDelegate {
     var foundedFriends: [Friend] = []
     var delegate: IConversationListModelDelegate?
+    var serviceDelegate: IConversationListService?
     var conversationDelegate: ConverationDelegate?
     var manager: MPCHandler?
     var conversationListViewController: ConversationListViewController?
@@ -34,26 +35,26 @@ class CommunicationManager: NSObject, CommunicationDelegate {
         self.manager = MPCHandler(delegate: self)
     }
     
-    func sendMessage() {
-        
+    func communicateUsers() {
+        manager?.setupConnectivity()
+    }
+    
+    func sendMessage(text: String, userID: String) {
+        manager?.sendMessage(string: text, to: MCPeerID(displayName: userID)) {
+            (success, error) in
+            
+            if let error = error {
+                print(error)
+            }
+        }
     }
     
     func didFoundUser(userID: String, userName: String?) {
-        if let friend = foundedFriends.first(where: {$0.userID == userID}) {
-            friend.online = true
-        } else {
-            let newFriend = Friend(name: userName, userID: userID, messages: [], online: true, hasUnreadMessages: false)
-            foundedFriends.append(newFriend)
-        }
-        delegate?.reloadFriends(foundedFriends)
+        serviceDelegate?.didFound(userID: userID, userName: userName ?? "")
     }
     
     func didLostUser(userID: String) {
-        if let friend = foundedFriends.first(where: {$0.userID == userID}) {
-            friend.online = false
-        }
-        
-        delegate?.reloadFriends(foundedFriends)
+        serviceDelegate?.didLost(userID: userID)
     }
     
     
@@ -66,7 +67,7 @@ class CommunicationManager: NSObject, CommunicationDelegate {
     }
     
     func didReceiveMessage(text: String, fromUser: String, toUser: String) {
-        conversationDelegate?.receiveMessage(text: text)
+        serviceDelegate?.didReceive(text: text, date: Date())
     }
 }
 

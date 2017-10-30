@@ -10,10 +10,11 @@ import UIKit
 
 protocol IConversationListModel: class {
     var delegate: IConversationListModelDelegate? {get set}
-    func updateConversationListWith(friends: [Friend])
+    func updateConversationListWith(userID: String, userName: String?, online status: Bool)
 }
 
 class ConversationListModel: IConversationListModel {
+    var foundedFriends: [Friend] = []
     var service: ConversationListService?
     var delegate: IConversationListModelDelegate?
     
@@ -22,11 +23,32 @@ class ConversationListModel: IConversationListModel {
     }
     
     func findOnlineFriends() {
-        
+        service?.connectWithOnlineUsers()
     }
     
-    func updateConversationListWith(friends: [Friend]) {
-        delegate?.reloadFriends(friends)
+    func updateConversationListWith(userID: String, userName: String?, online status: Bool) {
+        if let friend = foundedFriends.first(where: {$0.userID == userID}) {
+            friend.online = status
+        } else {
+            let newFriend = Friend(name: userName, userID: userID, messages: [], online: true, hasUnreadMessages: false)
+            foundedFriends.append(newFriend)
+        }
+        delegate?.reloadFriends(foundedFriends)
     }
+}
+
+class Friend {
+    var name: String?
+    var userID: String
+    var messages: [Message]
+    var online: Bool
+    var hasUnreadMessages: Bool
     
+    init(name: String?, userID: String, messages: [Message], online: Bool, hasUnreadMessages: Bool) {
+        self.name = name
+        self.userID = userID
+        self.messages = messages
+        self.online = online
+        self.hasUnreadMessages = hasUnreadMessages
+    }
 }

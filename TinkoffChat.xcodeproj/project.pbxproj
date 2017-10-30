@@ -22,7 +22,6 @@
 		0C8712531F810CBF00565238 /* CameraHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8712521F810CBF00565238 /* CameraHandler.swift */; };
 		0C8C99031F8806C500BDE770 /* ConversationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8C99021F8806C500BDE770 /* ConversationListViewController.swift */; };
 		0C8C99051F88099300BDE770 /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8C99041F88099300BDE770 /* ConversationViewController.swift */; };
-		0C8C99091F89783B00BDE770 /* DialogsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8C99081F89783B00BDE770 /* DialogsHelper.swift */; };
 		0C8C990F1F898F5A00BDE770 /* String+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8C990E1F898F5A00BDE770 /* String+Random.swift */; };
 		0C9FE4C41F76D45D0096A950 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 0C9FE4C31F76D45D0096A950 /* .gitignore */; };
 		0CB8A7CB1F922C69005C5242 /* GCDManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB8A7CA1F922C69005C5242 /* GCDManager.swift */; };
@@ -51,7 +50,6 @@
 		0C8712521F810CBF00565238 /* CameraHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraHandler.swift; sourceTree = "<group>"; };
 		0C8C99021F8806C500BDE770 /* ConversationListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationListViewController.swift; sourceTree = "<group>"; };
 		0C8C99041F88099300BDE770 /* ConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
-		0C8C99081F89783B00BDE770 /* DialogsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogsHelper.swift; sourceTree = "<group>"; };
 		0C8C990E1F898F5A00BDE770 /* String+Random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Random.swift"; sourceTree = "<group>"; };
 		0C9FE4C31F76D45D0096A950 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		0CB8A7CA1F922C69005C5242 /* GCDManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCDManager.swift; sourceTree = "<group>"; };
@@ -97,9 +95,6 @@
 				0C8170461FA4CCD5006C1640 /* PresentationLayer */,
 				0C8C990D1F898F3A00BDE770 /* Extensions */,
 				0C8712521F810CBF00565238 /* CameraHandler.swift */,
-				0CB8A7CA1F922C69005C5242 /* GCDManager.swift */,
-				0CB8A7CC1F922C83005C5242 /* OperationManager.swift */,
-				0C8C99081F89783B00BDE770 /* DialogsHelper.swift */,
 				0C20E9471F72C96500AE940E /* AppDelegate.swift */,
 				0C847B741FA66BDB000283AA /* RootAssembly.swift */,
 				0C20E94E1F72C96500AE940E /* Assets.xcassets */,
@@ -125,8 +120,8 @@
 		0C8170471FA4DC6D006C1640 /* CoreLayer */ = {
 			isa = PBXGroup;
 			children = (
-				7366D07C1F9DCDF4000FACAE /* CommunicationManager.swift */,
-				0C094F0E1F9B94A3008B6413 /* MPCHandler.swift */,
+				0CCFD4D31FA7CBF300D594B5 /* MulitypeerConnectivity */,
+				0CCFD4D21FA7CBCE00D594B5 /* ProfileDataProvider */,
 			);
 			path = CoreLayer;
 			sourceTree = "<group>";
@@ -185,6 +180,24 @@
 				0C8170411F9CBFDD006C1640 /* Date+Random.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		0CCFD4D21FA7CBCE00D594B5 /* ProfileDataProvider */ = {
+			isa = PBXGroup;
+			children = (
+				0CB8A7CA1F922C69005C5242 /* GCDManager.swift */,
+				0CB8A7CC1F922C83005C5242 /* OperationManager.swift */,
+			);
+			path = ProfileDataProvider;
+			sourceTree = "<group>";
+		};
+		0CCFD4D31FA7CBF300D594B5 /* MulitypeerConnectivity */ = {
+			isa = PBXGroup;
+			children = (
+				7366D07C1F9DCDF4000FACAE /* CommunicationManager.swift */,
+				0C094F0E1F9B94A3008B6413 /* MPCHandler.swift */,
+			);
+			path = MulitypeerConnectivity;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,7 +280,6 @@
 				0C8712531F810CBF00565238 /* CameraHandler.swift in Sources */,
 				0C847B751FA66BDB000283AA /* RootAssembly.swift in Sources */,
 				7366D07D1F9DCDF4000FACAE /* CommunicationManager.swift in Sources */,
-				0C8C99091F89783B00BDE770 /* DialogsHelper.swift in Sources */,
 				0CB8A7CD1F922C83005C5242 /* OperationManager.swift in Sources */,
 				0CB8A7CB1F922C69005C5242 /* GCDManager.swift in Sources */,
 				73468A211FA771B4000446E2 /* ConversationAssembly.swift in Sources */,
