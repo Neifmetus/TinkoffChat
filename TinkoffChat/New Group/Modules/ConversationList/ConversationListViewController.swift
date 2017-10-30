@@ -8,20 +8,22 @@
 
 import UIKit
 
-protocol UIViewControllerDelegate {
+protocol IConversationListModelDelegate: class {
     func reloadFriends(_ friends: [Friend])
 }
 
-class ConversationListViewController: UITableViewController, UIViewControllerDelegate {
+class ConversationListViewController: UITableViewController, IConversationListModelDelegate {
+    let model = ConversationListModel()
     
     var communicationManager: CommunicationManager?
     var imaginaryFriends: [Friend] = []
     private var onlineFriends: [Friend] = []
     private var historyFriends: [Friend] = []
     var delegate: CommunicationDelegate?
-    
+
     override func viewDidLoad() {
-        createImaginaryFriends()
+        model.delegate = self
+        
         onlineFriends = getFriendsWith(online: true)
         historyFriends = getFriendsWith(online: false)
         
@@ -101,7 +103,7 @@ class ConversationListViewController: UITableViewController, UIViewControllerDel
         
         friends.sort { (item1, item2) -> Bool in
             let t1 = item1.messages.last?.date ?? Date.distantPast
-            let t2 = item2.messages.last!.date ?? Date.distantPast
+            let t2 = item2.messages.last?.date ?? Date.distantPast
             return t1 > t2
         }
         

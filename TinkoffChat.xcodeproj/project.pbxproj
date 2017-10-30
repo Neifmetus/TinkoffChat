@@ -15,6 +15,10 @@
 		0C20E9521F72C96500AE940E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C20E9501F72C96500AE940E /* LaunchScreen.storyboard */; };
 		0C20E95A1F72D1B400AE940E /* Catalog.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C20E9591F72D1B400AE940E /* Catalog.xcassets */; };
 		0C8170421F9CBFDD006C1640 /* Date+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8170411F9CBFDD006C1640 /* Date+Random.swift */; };
+		0C847B6F1FA51B2E000283AA /* ConversationListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C847B6E1FA51B2E000283AA /* ConversationListModel.swift */; };
+		0C847B711FA51B5E000283AA /* ConversationListAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C847B701FA51B5E000283AA /* ConversationListAssembly.swift */; };
+		0C847B731FA52BC6000283AA /* ConversationListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C847B721FA52BC6000283AA /* ConversationListService.swift */; };
+		0C847B751FA66BDB000283AA /* RootAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C847B741FA66BDB000283AA /* RootAssembly.swift */; };
 		0C8712531F810CBF00565238 /* CameraHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8712521F810CBF00565238 /* CameraHandler.swift */; };
 		0C8C99031F8806C500BDE770 /* ConversationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8C99021F8806C500BDE770 /* ConversationListViewController.swift */; };
 		0C8C99051F88099300BDE770 /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8C99041F88099300BDE770 /* ConversationViewController.swift */; };
@@ -23,7 +27,6 @@
 		0C9FE4C41F76D45D0096A950 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 0C9FE4C31F76D45D0096A950 /* .gitignore */; };
 		0CB8A7CB1F922C69005C5242 /* GCDManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB8A7CA1F922C69005C5242 /* GCDManager.swift */; };
 		0CB8A7CD1F922C83005C5242 /* OperationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB8A7CC1F922C83005C5242 /* OperationManager.swift */; };
-		0CDDACC31F8E87EE008CA804 /* Sample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDDACC21F8E87EE008CA804 /* Sample.swift */; };
 		7366D07D1F9DCDF4000FACAE /* CommunicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7366D07C1F9DCDF4000FACAE /* CommunicationManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +41,10 @@
 		0C20E9531F72C96500AE940E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0C20E9591F72D1B400AE940E /* Catalog.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Catalog.xcassets; sourceTree = "<group>"; };
 		0C8170411F9CBFDD006C1640 /* Date+Random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Random.swift"; sourceTree = "<group>"; };
+		0C847B6E1FA51B2E000283AA /* ConversationListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationListModel.swift; sourceTree = "<group>"; };
+		0C847B701FA51B5E000283AA /* ConversationListAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationListAssembly.swift; sourceTree = "<group>"; };
+		0C847B721FA52BC6000283AA /* ConversationListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationListService.swift; sourceTree = "<group>"; };
+		0C847B741FA66BDB000283AA /* RootAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootAssembly.swift; sourceTree = "<group>"; };
 		0C8712521F810CBF00565238 /* CameraHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraHandler.swift; sourceTree = "<group>"; };
 		0C8C99021F8806C500BDE770 /* ConversationListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationListViewController.swift; sourceTree = "<group>"; };
 		0C8C99041F88099300BDE770 /* ConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
@@ -46,7 +53,6 @@
 		0C9FE4C31F76D45D0096A950 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		0CB8A7CA1F922C69005C5242 /* GCDManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCDManager.swift; sourceTree = "<group>"; };
 		0CB8A7CC1F922C83005C5242 /* OperationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationManager.swift; sourceTree = "<group>"; };
-		0CDDACC21F8E87EE008CA804 /* Sample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sample.swift; sourceTree = "<group>"; };
 		7366D07C1F9DCDF4000FACAE /* CommunicationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -61,15 +67,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0C094F0C1F9B9474008B6413 /* Communication */ = {
-			isa = PBXGroup;
-			children = (
-				0C094F0E1F9B94A3008B6413 /* MPCHandler.swift */,
-				7366D07C1F9DCDF4000FACAE /* CommunicationManager.swift */,
-			);
-			path = Communication;
-			sourceTree = "<group>";
-		};
 		0C20E93B1F72C96500AE940E = {
 			isa = PBXGroup;
 			children = (
@@ -89,26 +86,87 @@
 		0C20E9461F72C96500AE940E /* TinkoffChat */ = {
 			isa = PBXGroup;
 			children = (
-				0C094F0C1F9B9474008B6413 /* Communication */,
+				0C8170471FA4DC6D006C1640 /* CoreLayer */,
+				0C8170481FA4DC90006C1640 /* ServiceLayer */,
+				0C8170461FA4CCD5006C1640 /* PresentationLayer */,
 				0C8C990D1F898F3A00BDE770 /* Extensions */,
 				0C20E9471F72C96500AE940E /* AppDelegate.swift */,
-				0C20E9491F72C96500AE940E /* ProfileViewController.swift */,
+				0C847B741FA66BDB000283AA /* RootAssembly.swift */,
 				0C8712521F810CBF00565238 /* CameraHandler.swift */,
 				0CB8A7CA1F922C69005C5242 /* GCDManager.swift */,
 				0CB8A7CC1F922C83005C5242 /* OperationManager.swift */,
 				0C8C99081F89783B00BDE770 /* DialogsHelper.swift */,
-				0C8C99021F8806C500BDE770 /* ConversationListViewController.swift */,
-				0C8C99041F88099300BDE770 /* ConversationViewController.swift */,
-				0C20E94B1F72C96500AE940E /* Profile.storyboard */,
 				0C20E94E1F72C96500AE940E /* Assets.xcassets */,
 				0C20E9501F72C96500AE940E /* LaunchScreen.storyboard */,
 				0C20E9531F72C96500AE940E /* Info.plist */,
 				0C20E9591F72D1B400AE940E /* Catalog.xcassets */,
 				0C9FE4C31F76D45D0096A950 /* .gitignore */,
 				0C20E9451F72C96500AE940E /* Products */,
-				0CDDACC21F8E87EE008CA804 /* Sample.swift */,
 			);
 			path = TinkoffChat;
+			sourceTree = "<group>";
+		};
+		0C8170461FA4CCD5006C1640 /* PresentationLayer */ = {
+			isa = PBXGroup;
+			children = (
+				0C847B6A1FA4E5A6000283AA /* Modules */,
+				0C20E94B1F72C96500AE940E /* Profile.storyboard */,
+			);
+			name = PresentationLayer;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		0C8170471FA4DC6D006C1640 /* CoreLayer */ = {
+			isa = PBXGroup;
+			children = (
+				7366D07C1F9DCDF4000FACAE /* CommunicationManager.swift */,
+				0C094F0E1F9B94A3008B6413 /* MPCHandler.swift */,
+			);
+			path = CoreLayer;
+			sourceTree = "<group>";
+		};
+		0C8170481FA4DC90006C1640 /* ServiceLayer */ = {
+			isa = PBXGroup;
+			children = (
+				0C847B721FA52BC6000283AA /* ConversationListService.swift */,
+			);
+			path = ServiceLayer;
+			sourceTree = "<group>";
+		};
+		0C847B6A1FA4E5A6000283AA /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				0C847B6D1FA4E5ED000283AA /* ConversationDialog */,
+				0C847B6C1FA4E5E0000283AA /* ConversationList */,
+				0C847B6B1FA4E5D7000283AA /* Profile */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		0C847B6B1FA4E5D7000283AA /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				0C20E9491F72C96500AE940E /* ProfileViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		0C847B6C1FA4E5E0000283AA /* ConversationList */ = {
+			isa = PBXGroup;
+			children = (
+				0C8C99021F8806C500BDE770 /* ConversationListViewController.swift */,
+				0C847B6E1FA51B2E000283AA /* ConversationListModel.swift */,
+				0C847B701FA51B5E000283AA /* ConversationListAssembly.swift */,
+			);
+			path = ConversationList;
+			sourceTree = "<group>";
+		};
+		0C847B6D1FA4E5ED000283AA /* ConversationDialog */ = {
+			isa = PBXGroup;
+			children = (
+				0C8C99041F88099300BDE770 /* ConversationViewController.swift */,
+			);
+			path = ConversationDialog;
 			sourceTree = "<group>";
 		};
 		0C8C990D1F898F3A00BDE770 /* Extensions */ = {
@@ -197,17 +255,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C8712531F810CBF00565238 /* CameraHandler.swift in Sources */,
-				0CDDACC31F8E87EE008CA804 /* Sample.swift in Sources */,
+				0C847B751FA66BDB000283AA /* RootAssembly.swift in Sources */,
 				7366D07D1F9DCDF4000FACAE /* CommunicationManager.swift in Sources */,
 				0C8C99091F89783B00BDE770 /* DialogsHelper.swift in Sources */,
 				0CB8A7CD1F922C83005C5242 /* OperationManager.swift in Sources */,
 				0CB8A7CB1F922C69005C5242 /* GCDManager.swift in Sources */,
 				0C8170421F9CBFDD006C1640 /* Date+Random.swift in Sources */,
+				0C847B6F1FA51B2E000283AA /* ConversationListModel.swift in Sources */,
 				0C094F0F1F9B94A4008B6413 /* MPCHandler.swift in Sources */,
 				0C8C990F1F898F5A00BDE770 /* String+Random.swift in Sources */,
 				0C8C99031F8806C500BDE770 /* ConversationListViewController.swift in Sources */,
 				0C8C99051F88099300BDE770 /* ConversationViewController.swift in Sources */,
 				0C20E94A1F72C96500AE940E /* ProfileViewController.swift in Sources */,
+				0C847B731FA52BC6000283AA /* ConversationListService.swift in Sources */,
+				0C847B711FA51B5E000283AA /* ConversationListAssembly.swift in Sources */,
 				0C20E9481F72C96500AE940E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

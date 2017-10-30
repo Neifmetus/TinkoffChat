@@ -24,7 +24,7 @@ protocol CommunicationDelegate : class {
 
 class CommunicationManager: NSObject, CommunicationDelegate {
     var foundedFriends: [Friend] = []
-    var delegate: UIViewControllerDelegate?
+    var delegate: IConversationListModelDelegate?
     var conversationDelegate: ConverationDelegate?
     var manager: MPCHandler?
     var conversationListViewController: ConversationListViewController?
