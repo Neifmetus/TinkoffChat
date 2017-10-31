@@ -20,7 +20,7 @@ class MPCHandler: NSObject, Communicator, MCNearbyServiceAdvertiserDelegate, MCN
     weak var delegate: CommunicationDelegate?
     
     init(delegate: CommunicationDelegate) {
-        let name = ProfileViewController.profileInfo.name
+        let name = "Test Name"
         self.advertiser = MCNearbyServiceAdvertiser(peer: peerID, discoveryInfo: ["userName": name], serviceType: "tinkoff-chat")
         self.browser = MCNearbyServiceBrowser(peer: peerID, serviceType: "tinkoff-chat")
         self.online = true

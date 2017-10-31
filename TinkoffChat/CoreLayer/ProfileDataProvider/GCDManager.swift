@@ -10,20 +10,9 @@ import UIKit
 
 class GCDManager: DataManager {
     
-    func saveData(userInfo: @escaping(URL?) -> ()) {
+    func saveData(profile: [String : Any], userInfo: @escaping(URL?) -> ()) {
         let queue = DispatchQueue.global(qos: .utility)
         queue.async{
-            
-            let image = ProfileViewController.profileInfo.image
-            var profile: [String : Any] = [:]
-            if let jpegData = UIImageJPEGRepresentation(image , 0.5) {
-                let encodedString = jpegData.base64EncodedString()
-                profile = [
-                    "Name" : ProfileViewController.profileInfo.name,
-                    "Additional_info" : ProfileViewController.profileInfo.additionalInfo,
-                    "Profile_image" : encodedString
-                ]
-            }
             
             // Save data in file
             if let fileUrl = self.saveToJSONFile(profile: profile) {

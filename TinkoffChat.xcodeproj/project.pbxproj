@@ -29,6 +29,8 @@
 		73468A1D1FA76F50000446E2 /* Conversation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73468A1C1FA76F50000446E2 /* Conversation.storyboard */; };
 		73468A1F1FA7719C000446E2 /* ConversationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73468A1E1FA7719C000446E2 /* ConversationModel.swift */; };
 		73468A211FA771B4000446E2 /* ConversationAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73468A201FA771B4000446E2 /* ConversationAssembly.swift */; };
+		73468A231FA877D7000446E2 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73468A221FA877D7000446E2 /* ProfileModel.swift */; };
+		73468A251FA878E6000446E2 /* ProfileDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73468A241FA878E6000446E2 /* ProfileDataService.swift */; };
 		7366D07D1F9DCDF4000FACAE /* CommunicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7366D07C1F9DCDF4000FACAE /* CommunicationManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +59,8 @@
 		73468A1C1FA76F50000446E2 /* Conversation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Conversation.storyboard; sourceTree = "<group>"; };
 		73468A1E1FA7719C000446E2 /* ConversationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationModel.swift; sourceTree = "<group>"; };
 		73468A201FA771B4000446E2 /* ConversationAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationAssembly.swift; sourceTree = "<group>"; };
+		73468A221FA877D7000446E2 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
+		73468A241FA878E6000446E2 /* ProfileDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDataService.swift; sourceTree = "<group>"; };
 		7366D07C1F9DCDF4000FACAE /* CommunicationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -94,7 +98,6 @@
 				0C8170481FA4DC90006C1640 /* ServiceLayer */,
 				0C8170461FA4CCD5006C1640 /* PresentationLayer */,
 				0C8C990D1F898F3A00BDE770 /* Extensions */,
-				0C8712521F810CBF00565238 /* CameraHandler.swift */,
 				0C20E9471F72C96500AE940E /* AppDelegate.swift */,
 				0C847B741FA66BDB000283AA /* RootAssembly.swift */,
 				0C20E94E1F72C96500AE940E /* Assets.xcassets */,
@@ -130,6 +133,8 @@
 			isa = PBXGroup;
 			children = (
 				0C847B721FA52BC6000283AA /* ConversationListService.swift */,
+				73468A241FA878E6000446E2 /* ProfileDataService.swift */,
+				0C8712521F810CBF00565238 /* CameraHandler.swift */,
 			);
 			path = ServiceLayer;
 			sourceTree = "<group>";
@@ -148,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				0C20E9491F72C96500AE940E /* ProfileViewController.swift */,
+				73468A221FA877D7000446E2 /* ProfileModel.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -285,7 +291,9 @@
 				73468A211FA771B4000446E2 /* ConversationAssembly.swift in Sources */,
 				0C8170421F9CBFDD006C1640 /* Date+Random.swift in Sources */,
 				73468A1F1FA7719C000446E2 /* ConversationModel.swift in Sources */,
+				73468A251FA878E6000446E2 /* ProfileDataService.swift in Sources */,
 				0C847B6F1FA51B2E000283AA /* ConversationListModel.swift in Sources */,
+				73468A231FA877D7000446E2 /* ProfileModel.swift in Sources */,
 				0C094F0F1F9B94A4008B6413 /* MPCHandler.swift in Sources */,
 				0C8C990F1F898F5A00BDE770 /* String+Random.swift in Sources */,
 				0C8C99031F8806C500BDE770 /* ConversationListViewController.swift in Sources */,

@@ -25,7 +25,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     @IBOutlet weak var operationButton: UIButton!
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     
-    static var profileInfo = ProfileInfo()
+    var profileInfo = ProfileInfo()
     
     @IBAction func goBack(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
@@ -116,7 +116,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         dataManager.loadData { (userInfo) in
             DispatchQueue.main.async {
                 if let profile = userInfo {
-                    ProfileViewController.profileInfo = profile
+                    self.profileInfo = profile
                     self.nameTextEdit?.text = profile.name
                     self.additionalInfoTextEdit?.text = profile.additionalInfo
                     self.photoImageView?.image = profile.image
@@ -139,13 +139,16 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
             gcdButton.isEnabled = false
             operationButton.isEnabled = false
             
-        let dataManager: DataManager = GCDManager()
-            dataManager.saveData { (fileURL) in
+            let dataManager: DataManager = GCDManager()
+            let service = ProfileDataService(dataManager: dataManager)
+            service.saveData(name: self.profileInfo.name,
+                            additionalInfo: self.profileInfo.additionalInfo,
+                            image: self.profileInfo.image) { (fileURL) in
                 DispatchQueue.main.async {
                     self.activityIndicatorView.stopAnimating()
                     self.gcdButton.isEnabled = true
                     self.operationButton.isEnabled = true
-                    
+
                     if fileURL != nil {
                         self.showSuccessAlert()
                     } else {
@@ -155,6 +158,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
                     }
                 }
             }
+
         }
     }
     
@@ -163,23 +167,26 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         additionalInfoTextEdit.endEditing(true)
         
         if updateUserInfo() {
-        activityIndicatorView.isHidden = false
-        activityIndicatorView.startAnimating()
-        gcdButton.isEnabled = false
-        operationButton.isEnabled = false
-        
-        let dataManager: DataManager = OperationManager()
-            dataManager.saveData { (info) in
+            activityIndicatorView.isHidden = false
+            activityIndicatorView.startAnimating()
+            gcdButton.isEnabled = false
+            operationButton.isEnabled = false
+            
+            let dataManager: DataManager = OperationManager()
+            let service = ProfileDataService(dataManager: dataManager)
+            service.saveData(name: self.profileInfo.name,
+                             additionalInfo: self.profileInfo.additionalInfo,
+                             image: self.profileInfo.image) { (fileURL) in
                 OperationQueue.main.addOperation {
                     self.activityIndicatorView.stopAnimating()
                     self.gcdButton.isEnabled = true
                     self.operationButton.isEnabled = true
                     
-                    if info != nil {
+                    if fileURL != nil {
                         self.showSuccessAlert()
                     } else {
                         self.showErrorAlert(function: {
-                            self.saveWithOperation(sender)
+                            self.saveWithGCD(sender)
                         })
                     }
                 }
@@ -250,21 +257,21 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     }
     
     private func updateUserInfo() -> Bool {
-        let user = ProfileViewController.profileInfo
+        let user = profileInfo
         
         let changed = (user.name == nameTextEdit?.text && user.additionalInfo == additionalInfoTextEdit?.text
          && user.image == photoImageView?.image)
         
         if let name = nameTextEdit?.text {
-            ProfileViewController.profileInfo.name = name
+            profileInfo.name = name
         }
         
         if let additionalInfo = additionalInfoTextEdit?.text {
-            ProfileViewController.profileInfo.additionalInfo = additionalInfo
+            profileInfo.additionalInfo = additionalInfo
         }
         
         if let image = photoImageView?.image {
-            ProfileViewController.profileInfo.image = image
+            profileInfo.image = image
         }
         
         return !changed
@@ -287,7 +294,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
 }
 
 protocol DataManager {
-    func saveData(userInfo: @escaping(URL?) -> ())
+    func saveData(profile: [String : Any], userInfo: @escaping(URL?) -> ())
 
     func loadData(userInfo: @escaping(ProfileInfo?) -> ())
 }
