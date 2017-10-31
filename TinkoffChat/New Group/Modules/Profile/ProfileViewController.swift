@@ -113,7 +113,8 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         
         //load user Info
         let dataManager: DataManager = GCDManager()
-        dataManager.loadData { (userInfo) in
+        let model = ProfileModel(dataManager: dataManager)
+        model.loadData { (userInfo) in
             DispatchQueue.main.async {
                 if let profile = userInfo {
                     self.profileInfo = profile
@@ -255,8 +256,9 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     private func updateUserInfo() -> Bool {
         let user = profileInfo
         
-        let changed = (user.name == nameTextEdit?.text && user.additionalInfo == additionalInfoTextEdit?.text
-         && user.image == photoImageView?.image)
+        let changed = (user.name == nameTextEdit?.text
+            && user.additionalInfo == additionalInfoTextEdit?.text
+            && user.image == photoImageView?.image)
         
         if let name = nameTextEdit?.text {
             profileInfo.name = name
@@ -292,6 +294,6 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
 protocol DataManager {
     func saveData(profile: [String : Any], userInfo: @escaping(URL?) -> ())
 
-    func loadData(userInfo: @escaping(ProfileInfo?) -> ())
+    func loadData(userInfo: @escaping([String : Any]) -> ())
 }
 

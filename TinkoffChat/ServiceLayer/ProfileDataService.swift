@@ -31,5 +31,14 @@ class ProfileDataService {
             userInfo(fileUrl)
         }
     }
+    
+    func loadData(userInfo: @escaping(_ name: String, _ additionalInfo: String, _ image: UIImage) -> ()) {
+        dataManager?.loadData { (profile) in
+            let name = profile["Name"] as? String ?? ""
+            let additionalInfo = profile["Additional_info"] as? String ?? ""
+            let image = profile["Profile_image"] as? UIImage ?? UIImage()
+            userInfo(name, additionalInfo, image)
+        }
+    }
         
 }

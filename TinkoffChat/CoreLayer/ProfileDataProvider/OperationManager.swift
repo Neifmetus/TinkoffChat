@@ -34,7 +34,7 @@ class OperationManager: DataManager {
         }
     }
     
-    func loadData(userInfo: @escaping(ProfileInfo?) -> ()) {
+    func loadData(userInfo: @escaping([String : Any]) -> ()) {
         let queue = OperationQueue()
         queue.name = "com.neifmetus.TinkoffChat.dataLoading"
         
@@ -44,20 +44,20 @@ class OperationManager: DataManager {
                 let fileUrl = documentDirectoryUrl.appendingPathComponent("Persons.json")
                 
                 if let savedInfo = self.retrieveFromJsonFile(fileUrl: fileUrl) {
-                    var profile = ProfileInfo()
+                    var profile: [String : Any] = [:]
                     if let name = savedInfo["Name"] as? String, let additionalInfo = savedInfo["Additional_info"] as? String, let image = savedInfo["Profile_image"] as? String {
-                        
-                        profile.name = name
-                        profile.additionalInfo = additionalInfo
+                        profile["Name"] = name
+                        profile["Additional_info"] = additionalInfo
                         
                         let dataDecoded : Data = Data(base64Encoded: image, options: .ignoreUnknownCharacters)!
                         let decodedimage = UIImage(data: dataDecoded)
-                        profile.image = decodedimage!
+                        profile["Profile_image"] = decodedimage ?? UIImage()
+
                         userInfo(profile)
                     }
                 } else {
                     print("error")
-                    userInfo(nil)
+                    userInfo([:])
                 }
             }
         }
