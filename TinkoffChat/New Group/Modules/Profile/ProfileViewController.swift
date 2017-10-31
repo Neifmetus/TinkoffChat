@@ -140,10 +140,8 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
             operationButton.isEnabled = false
             
             let dataManager: DataManager = GCDManager()
-            let service = ProfileDataService(dataManager: dataManager)
-            service.saveData(name: self.profileInfo.name,
-                            additionalInfo: self.profileInfo.additionalInfo,
-                            image: self.profileInfo.image) { (fileURL) in
+            let model = ProfileModel(dataManager: dataManager)
+            model.saveData(profileInfo: profileInfo) { (fileURL) in
                 DispatchQueue.main.async {
                     self.activityIndicatorView.stopAnimating()
                     self.gcdButton.isEnabled = true
@@ -173,10 +171,8 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
             operationButton.isEnabled = false
             
             let dataManager: DataManager = OperationManager()
-            let service = ProfileDataService(dataManager: dataManager)
-            service.saveData(name: self.profileInfo.name,
-                             additionalInfo: self.profileInfo.additionalInfo,
-                             image: self.profileInfo.image) { (fileURL) in
+            let model = ProfileModel(dataManager: dataManager)
+            model.saveData(profileInfo: profileInfo) { (fileURL) in
                 OperationQueue.main.addOperation {
                     self.activityIndicatorView.stopAnimating()
                     self.gcdButton.isEnabled = true
