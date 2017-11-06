@@ -28,7 +28,6 @@ class CommunicationManager: NSObject, CommunicationDelegate {
     var serviceDelegate: IConversationListService?
     var conversationDelegate: ConverationDelegate?
     var manager: MPCHandler?
-    var conversationListViewController: ConversationListViewController?
     
     override init() {
         super.init()

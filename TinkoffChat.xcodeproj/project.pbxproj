@@ -23,9 +23,12 @@
 		0C8C99031F8806C500BDE770 /* ConversationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8C99021F8806C500BDE770 /* ConversationListViewController.swift */; };
 		0C8C99051F88099300BDE770 /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8C99041F88099300BDE770 /* ConversationViewController.swift */; };
 		0C8C990F1F898F5A00BDE770 /* String+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8C990E1F898F5A00BDE770 /* String+Random.swift */; };
+		0C8E67521FAF5FB50067C7E1 /* tinkoff_chat_model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0C8E67501FAF5FB50067C7E1 /* tinkoff_chat_model.xcdatamodeld */; };
+		0C8E67761FAF913E0067C7E1 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8E67751FAF913E0067C7E1 /* CoreDataStack.swift */; };
 		0C9FE4C41F76D45D0096A950 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 0C9FE4C31F76D45D0096A950 /* .gitignore */; };
 		0CB8A7CB1F922C69005C5242 /* GCDManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB8A7CA1F922C69005C5242 /* GCDManager.swift */; };
 		0CB8A7CD1F922C83005C5242 /* OperationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB8A7CC1F922C83005C5242 /* OperationManager.swift */; };
+		0CCFD4DD1FAB27D900D594B5 /* TinkoffChatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCFD4DC1FAB27D900D594B5 /* TinkoffChatUITests.swift */; };
 		73468A1D1FA76F50000446E2 /* Conversation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73468A1C1FA76F50000446E2 /* Conversation.storyboard */; };
 		73468A1F1FA7719C000446E2 /* ConversationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73468A1E1FA7719C000446E2 /* ConversationModel.swift */; };
 		73468A211FA771B4000446E2 /* ConversationAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73468A201FA771B4000446E2 /* ConversationAssembly.swift */; };
@@ -33,6 +36,16 @@
 		73468A251FA878E6000446E2 /* ProfileDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73468A241FA878E6000446E2 /* ProfileDataService.swift */; };
 		7366D07D1F9DCDF4000FACAE /* CommunicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7366D07C1F9DCDF4000FACAE /* CommunicationManager.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0CCFD4DF1FAB27D900D594B5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0C20E93C1F72C96500AE940E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0C20E9431F72C96500AE940E;
+			remoteInfo = TinkoffChat;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		0C094F0E1F9B94A3008B6413 /* MPCHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPCHandler.swift; sourceTree = "<group>"; };
@@ -53,9 +66,14 @@
 		0C8C99021F8806C500BDE770 /* ConversationListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationListViewController.swift; sourceTree = "<group>"; };
 		0C8C99041F88099300BDE770 /* ConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
 		0C8C990E1F898F5A00BDE770 /* String+Random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Random.swift"; sourceTree = "<group>"; };
+		0C8E67511FAF5FB50067C7E1 /* tinkoff_chat_model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = tinkoff_chat_model.xcdatamodel; sourceTree = "<group>"; };
+		0C8E67751FAF913E0067C7E1 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		0C9FE4C31F76D45D0096A950 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		0CB8A7CA1F922C69005C5242 /* GCDManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCDManager.swift; sourceTree = "<group>"; };
 		0CB8A7CC1F922C83005C5242 /* OperationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationManager.swift; sourceTree = "<group>"; };
+		0CCFD4DA1FAB27D800D594B5 /* TinkoffChatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TinkoffChatUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0CCFD4DC1FAB27D900D594B5 /* TinkoffChatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TinkoffChatUITests.swift; sourceTree = "<group>"; };
+		0CCFD4DE1FAB27D900D594B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		73468A1C1FA76F50000446E2 /* Conversation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Conversation.storyboard; sourceTree = "<group>"; };
 		73468A1E1FA7719C000446E2 /* ConversationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationModel.swift; sourceTree = "<group>"; };
 		73468A201FA771B4000446E2 /* ConversationAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationAssembly.swift; sourceTree = "<group>"; };
@@ -72,6 +90,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0CCFD4D71FAB27D800D594B5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -79,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				0C20E9461F72C96500AE940E /* TinkoffChat */,
+				0CCFD4DB1FAB27D900D594B5 /* TinkoffChatUITests */,
 			);
 			sourceTree = "<group>";
 		};
@@ -86,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				0C20E9441F72C96500AE940E /* TinkoffChat.app */,
+				0CCFD4DA1FAB27D800D594B5 /* TinkoffChatUITests.xctest */,
 			);
 			name = Products;
 			path = ..;
@@ -106,6 +133,7 @@
 				0C20E9591F72D1B400AE940E /* Catalog.xcassets */,
 				0C9FE4C31F76D45D0096A950 /* .gitignore */,
 				0C20E9451F72C96500AE940E /* Products */,
+				0C8E67501FAF5FB50067C7E1 /* tinkoff_chat_model.xcdatamodeld */,
 			);
 			path = TinkoffChat;
 			sourceTree = "<group>";
@@ -113,6 +141,7 @@
 		0C8170461FA4CCD5006C1640 /* PresentationLayer */ = {
 			isa = PBXGroup;
 			children = (
+				0C8712521F810CBF00565238 /* CameraHandler.swift */,
 				0C847B6A1FA4E5A6000283AA /* Modules */,
 				0C20E94B1F72C96500AE940E /* Profile.storyboard */,
 			);
@@ -123,6 +152,7 @@
 		0C8170471FA4DC6D006C1640 /* CoreLayer */ = {
 			isa = PBXGroup;
 			children = (
+				0C8E67741FAF91280067C7E1 /* CoreData */,
 				0CCFD4D31FA7CBF300D594B5 /* MulitypeerConnectivity */,
 				0CCFD4D21FA7CBCE00D594B5 /* ProfileDataProvider */,
 			);
@@ -134,7 +164,6 @@
 			children = (
 				0C847B721FA52BC6000283AA /* ConversationListService.swift */,
 				73468A241FA878E6000446E2 /* ProfileDataService.swift */,
-				0C8712521F810CBF00565238 /* CameraHandler.swift */,
 			);
 			path = ServiceLayer;
 			sourceTree = "<group>";
@@ -188,6 +217,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		0C8E67741FAF91280067C7E1 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				0C8E67751FAF913E0067C7E1 /* CoreDataStack.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		0CCFD4D21FA7CBCE00D594B5 /* ProfileDataProvider */ = {
 			isa = PBXGroup;
 			children = (
@@ -204,6 +241,15 @@
 				0C094F0E1F9B94A3008B6413 /* MPCHandler.swift */,
 			);
 			path = MulitypeerConnectivity;
+			sourceTree = "<group>";
+		};
+		0CCFD4DB1FAB27D900D594B5 /* TinkoffChatUITests */ = {
+			isa = PBXGroup;
+			children = (
+				0CCFD4DC1FAB27D900D594B5 /* TinkoffChatUITests.swift */,
+				0CCFD4DE1FAB27D900D594B5 /* Info.plist */,
+			);
+			path = TinkoffChatUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -226,13 +272,31 @@
 			productReference = 0C20E9441F72C96500AE940E /* TinkoffChat.app */;
 			productType = "com.apple.product-type.application";
 		};
+		0CCFD4D91FAB27D800D594B5 /* TinkoffChatUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0CCFD4E31FAB27D900D594B5 /* Build configuration list for PBXNativeTarget "TinkoffChatUITests" */;
+			buildPhases = (
+				0CCFD4D61FAB27D800D594B5 /* Sources */,
+				0CCFD4D71FAB27D800D594B5 /* Frameworks */,
+				0CCFD4D81FAB27D800D594B5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0CCFD4E01FAB27D900D594B5 /* PBXTargetDependency */,
+			);
+			name = TinkoffChatUITests;
+			productName = TinkoffChatUITests;
+			productReference = 0CCFD4DA1FAB27D800D594B5 /* TinkoffChatUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		0C20E93C1F72C96500AE940E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0830;
+				LastSwiftUpdateCheck = 0900;
 				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = e.a.morozova;
 				TargetAttributes = {
@@ -241,6 +305,11 @@
 						DevelopmentTeam = 9486727C5W;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
+					};
+					0CCFD4D91FAB27D800D594B5 = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 0C20E9431F72C96500AE940E;
 					};
 				};
 			};
@@ -258,6 +327,7 @@
 			projectRoot = "";
 			targets = (
 				0C20E9431F72C96500AE940E /* TinkoffChat */,
+				0CCFD4D91FAB27D800D594B5 /* TinkoffChatUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -276,6 +346,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0CCFD4D81FAB27D800D594B5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -283,6 +360,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C8E67761FAF913E0067C7E1 /* CoreDataStack.swift in Sources */,
 				0C8712531F810CBF00565238 /* CameraHandler.swift in Sources */,
 				0C847B751FA66BDB000283AA /* RootAssembly.swift in Sources */,
 				7366D07D1F9DCDF4000FACAE /* CommunicationManager.swift in Sources */,
@@ -298,6 +376,7 @@
 				0C8C990F1F898F5A00BDE770 /* String+Random.swift in Sources */,
 				0C8C99031F8806C500BDE770 /* ConversationListViewController.swift in Sources */,
 				0C8C99051F88099300BDE770 /* ConversationViewController.swift in Sources */,
+				0C8E67521FAF5FB50067C7E1 /* tinkoff_chat_model.xcdatamodeld in Sources */,
 				0C20E94A1F72C96500AE940E /* ProfileViewController.swift in Sources */,
 				0C847B731FA52BC6000283AA /* ConversationListService.swift in Sources */,
 				0C847B711FA51B5E000283AA /* ConversationListAssembly.swift in Sources */,
@@ -305,7 +384,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0CCFD4D61FAB27D800D594B5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0CCFD4DD1FAB27D900D594B5 /* TinkoffChatUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0CCFD4E01FAB27D900D594B5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0C20E9431F72C96500AE940E /* TinkoffChat */;
+			targetProxy = 0CCFD4DF1FAB27D900D594B5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		0C20E94B1F72C96500AE940E /* Profile.storyboard */ = {
@@ -462,6 +557,44 @@
 			};
 			name = Release;
 		};
+		0CCFD4E11FAB27D900D594B5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = TinkoffChatUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.neifmetus.TinkoffChatUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = TinkoffChat;
+			};
+			name = Debug;
+		};
+		0CCFD4E21FAB27D900D594B5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = TinkoffChatUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.neifmetus.TinkoffChatUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = TinkoffChat;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -483,7 +616,29 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		0CCFD4E31FAB27D900D594B5 /* Build configuration list for PBXNativeTarget "TinkoffChatUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0CCFD4E11FAB27D900D594B5 /* Debug */,
+				0CCFD4E21FAB27D900D594B5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		0C8E67501FAF5FB50067C7E1 /* tinkoff_chat_model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				0C8E67511FAF5FB50067C7E1 /* tinkoff_chat_model.xcdatamodel */,
+			);
+			currentVersion = 0C8E67511FAF5FB50067C7E1 /* tinkoff_chat_model.xcdatamodel */;
+			path = tinkoff_chat_model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 0C20E93C1F72C96500AE940E /* Project object */;
 }
