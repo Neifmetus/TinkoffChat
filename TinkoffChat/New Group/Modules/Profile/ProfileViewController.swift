@@ -54,8 +54,6 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        
-        // Фрейм не выводится, поскольку фактически инициализация элементов ViewController происходит
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
