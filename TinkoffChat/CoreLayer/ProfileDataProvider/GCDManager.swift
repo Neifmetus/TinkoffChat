@@ -10,7 +10,7 @@ import UIKit
 
 class GCDManager: DataManager {
     
-    let coreDataManager = CoreDataManager()
+    //let coreDataManager = CoreDataManager()
     
     func saveData(profile: [String : Any], userInfo: @escaping(Bool) -> ()) {
         
@@ -35,14 +35,11 @@ class GCDManager: DataManager {
         let queue = DispatchQueue.global(qos: .utility)
         queue.async{
             
-            if let appUser = self.coreDataManager.getAppUser()?.currentUser {
+            if let appUser = CoreDataManager.getAppUser()?.currentUser {
                 var profile: [String : Any] = [:]
                 profile["Name"] = appUser.name
                 profile["Additional_info"] = appUser.additionalInfo
-                
-                if let image = appUser.image {
-                    profile["Profile_image"] = UIImage(data: image)
-                }
+                profile["Profile_image"] = appUser.image
                 
                 userInfo(profile)
             } else {
@@ -55,13 +52,13 @@ class GCDManager: DataManager {
     private func saveToStorage(profile: [String : Any]) -> Bool {
         
         if let name = profile["Name"], let additionalInfo = profile["Additional_info"], let image = profile["Profile_image"] {
-            if let context = self.coreDataManager.coreDataStack.saveContext {
-                if let appUser = self.coreDataManager.findOrInsertAppUser(in: context)?.currentUser {
+            if let context = CoreDataManager.coreDataStack?.saveContext {
+                if let appUser = CoreDataManager.findOrInsertAppUser(in: context)?.currentUser {
                     appUser.name = name as? String
                     appUser.additionalInfo = additionalInfo as? String
                     appUser.image = image as? Data
                     
-                    coreDataManager.coreDataStack.performSave(context: context, completion: {})
+                    CoreDataManager.coreDataStack?.performSave(context: context, completion: {})
                     
                     return true
                 }

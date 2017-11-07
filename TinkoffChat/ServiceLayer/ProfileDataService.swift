@@ -18,12 +18,11 @@ class ProfileDataService {
     
     func saveData(name: String, additionalInfo: String, image: UIImage, userInfo: @escaping(Bool) -> ()) {
         var profile: [String : Any] = [:]
-        if let jpegData = UIImageJPEGRepresentation(image , 0.5) {
-            let encodedString = jpegData.base64EncodedString()
+        if let jpegData = UIImageJPEGRepresentation(image , 0.5) as NSData? {
             profile = [
                 "Name" : name,
                 "Additional_info" : additionalInfo,
-                "Profile_image" : encodedString
+                "Profile_image" : jpegData
             ]
         }
 
@@ -36,7 +35,14 @@ class ProfileDataService {
         dataManager?.loadData { (profile) in
             let name = profile["Name"] as? String ?? ""
             let additionalInfo = profile["Additional_info"] as? String ?? ""
-            let image = profile["Profile_image"] as? UIImage ?? UIImage()
+            
+            var image = UIImage()
+            if let profileImage = profile["Profile_image"] {
+                if let imageAsData = profileImage as? Data {
+                    image = UIImage(data: imageAsData) ?? UIImage()
+                }
+            }
+            
             userInfo(name, additionalInfo, image)
         }
     }

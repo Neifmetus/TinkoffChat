@@ -43,7 +43,7 @@ class OperationManager: DataManager {
         
         let loadData = {
             
-            if let appUser = self.coreDataManager.getAppUser()?.currentUser {
+            if let appUser = CoreDataManager.getAppUser()?.currentUser {
                 var profile: [String : Any] = [:]
                 profile["Name"] = appUser.name
                 profile["Additional_info"] = appUser.additionalInfo
@@ -68,13 +68,13 @@ class OperationManager: DataManager {
     private func saveToStorage(profile: [String : Any]) -> Bool {
         
         if let name = profile["Name"], let additionalInfo = profile["Additional_info"], let image = profile["Profile_image"] {
-            if let context = self.coreDataManager.coreDataStack.saveContext {
-                if let appUser = self.coreDataManager.findOrInsertAppUser(in: context)?.currentUser {
+            if let context = CoreDataManager.coreDataStack?.saveContext {
+                if let appUser = CoreDataManager.findOrInsertAppUser(in: context)?.currentUser {
                     appUser.name = name as? String
                     appUser.additionalInfo = additionalInfo as? String
                     appUser.image = image as? Data
                     
-                    coreDataManager.coreDataStack.performSave(context: context, completion: {})
+                    CoreDataManager.coreDataStack?.performSave(context: context, completion: {})
                     
                     return true
                 }

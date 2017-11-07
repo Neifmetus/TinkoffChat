@@ -25,6 +25,8 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     @IBOutlet weak var operationButton: UIButton!
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     
+    let dataManager: DataManager = GCDManager()
+    var model: ProfileModel?
     var profileInfo = ProfileInfo()
     
     @IBAction func goBack(_ sender: Any) {
@@ -51,7 +53,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         optionMenu.addAction(cancelAction)
         self.present(optionMenu, animated: true, completion: nil)
     }
-    
+
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
@@ -110,9 +112,8 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         uploadImageButton.tintColor = UIColor.white
         
         //load user Info
-        let dataManager: DataManager = GCDManager()
-        let model = ProfileModel(dataManager: dataManager)
-        model.loadData { (userInfo) in
+        self.model = ProfileModel(dataManager: self.dataManager)
+        model?.loadData { (userInfo) in
             DispatchQueue.main.async {
                 if let profile = userInfo {
                     self.profileInfo = profile

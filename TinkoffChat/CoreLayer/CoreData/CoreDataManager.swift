@@ -11,19 +11,29 @@ import CoreData
 
 class CoreDataManager {
     
-    let coreDataStack = CoreDataStack()
+    //let coreDataStack = CoreDataStack()
     
-    func getAppUser() -> AppUser? {
-        if let context = self.coreDataStack.saveContext {
+    private static var _coreDataStack: CoreDataStack?
+    public static var coreDataStack: CoreDataStack? {
+        get {
+            if _coreDataStack == nil {
+                _coreDataStack = CoreDataStack()
+            }
+            return _coreDataStack
+        }
+    }
+    
+    static func getAppUser() -> AppUser? {
+        if let context = self.coreDataStack?.saveContext {
             return findOrInsertAppUser(in: context)
         }
         
         return nil
     }
     
-    func save() {
-        if let context = self.coreDataStack.saveContext {
-            self.coreDataStack.performSave(context: context, completion: {
+    static func save() {
+        if let context = self.coreDataStack?.saveContext {
+            self.coreDataStack?.performSave(context: context, completion: {
                 print("Save context success!")
             })
         } else {
@@ -31,7 +41,7 @@ class CoreDataManager {
         }
     }
     
-    func findOrInsertAppUser(in context: NSManagedObjectContext) -> AppUser? {
+    static func findOrInsertAppUser(in context: NSManagedObjectContext) -> AppUser? {
         guard let model = context.persistentStoreCoordinator?.managedObjectModel else {
             print("Model is not availible in context!")
             assert(false)
