@@ -7,25 +7,28 @@
 //
 
 import UIKit
+import Foundation
 
 class OperationManager: DataManager {
     
-    func saveData(profile: [String : Any], userInfo: @escaping(URL?) -> ()) {
+    let coreDataManager = CoreDataManager()
+    
+    func saveData(profile: [String : Any], userInfo: @escaping(Bool) -> ()) {
         let queue = OperationQueue()
         queue.name = "com.neifmetus.TinkoffChat.dataSaving"
         
         let recordData = {
             
             // Save data in file
-            if let fileUrl = self.saveToJSONFile(profile: profile) {
+            if self.saveToStorage(profile: profile) {
                 DispatchQueue.main.async {
                     print("Save user's data")
                 }
                 
-                userInfo(fileUrl)
+                userInfo(true)
             } else {
                 print("error")
-                userInfo(nil)
+                userInfo(false)
             }
         }
         
@@ -39,26 +42,20 @@ class OperationManager: DataManager {
         queue.name = "com.neifmetus.TinkoffChat.dataLoading"
         
         let loadData = {
-            // Load data from file
-            if let documentDirectoryUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
-                let fileUrl = documentDirectoryUrl.appendingPathComponent("Persons.json")
+            
+            if let appUser = self.coreDataManager.getAppUser()?.currentUser {
+                var profile: [String : Any] = [:]
+                profile["Name"] = appUser.name
+                profile["Additional_info"] = appUser.additionalInfo
                 
-                if let savedInfo = self.retrieveFromJsonFile(fileUrl: fileUrl) {
-                    var profile: [String : Any] = [:]
-                    if let name = savedInfo["Name"] as? String, let additionalInfo = savedInfo["Additional_info"] as? String, let image = savedInfo["Profile_image"] as? String {
-                        profile["Name"] = name
-                        profile["Additional_info"] = additionalInfo
-                        
-                        let dataDecoded : Data = Data(base64Encoded: image, options: .ignoreUnknownCharacters)!
-                        let decodedimage = UIImage(data: dataDecoded)
-                        profile["Profile_image"] = decodedimage ?? UIImage()
-
-                        userInfo(profile)
-                    }
-                } else {
-                    print("error")
-                    userInfo([:])
+                if let image = appUser.image {
+                    profile["Profile_image"] = UIImage(data: image)
                 }
+                
+                userInfo(profile)
+            } else {
+                print("error")
+                userInfo([:])
             }
         }
         
@@ -68,22 +65,23 @@ class OperationManager: DataManager {
         
     }
     
-    private func saveToJSONFile(profile: [String : Any]) -> URL? {
-        guard let documentDirectoryUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil}
-        let fileUrl = documentDirectoryUrl.appendingPathComponent("Persons.json")
+    private func saveToStorage(profile: [String : Any]) -> Bool {
         
-        let personArray = profile
-        
-        // Transform array into data and save it into file
-        do {
-            let data = try JSONSerialization.data(withJSONObject: personArray, options: [])
-            try data.write(to: fileUrl, options: [])
-        } catch {
-            print(error)
-            return nil
+        if let name = profile["Name"], let additionalInfo = profile["Additional_info"], let image = profile["Profile_image"] {
+            if let context = self.coreDataManager.coreDataStack.saveContext {
+                if let appUser = self.coreDataManager.findOrInsertAppUser(in: context)?.currentUser {
+                    appUser.name = name as? String
+                    appUser.additionalInfo = additionalInfo as? String
+                    appUser.image = image as? Data
+                    
+                    coreDataManager.coreDataStack.performSave(context: context, completion: {})
+                    
+                    return true
+                }
+            }
         }
         
-        return fileUrl
+        return false
     }
     
     func retrieveFromJsonFile(fileUrl: URL?) -> [String : Any]? {

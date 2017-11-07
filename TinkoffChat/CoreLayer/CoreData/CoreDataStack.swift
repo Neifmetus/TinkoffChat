@@ -21,7 +21,7 @@ class CoreDataStack {
     }
 
     // NSManagedObjectModel
-    private let managedObjectModelName = "Storage"
+    private let managedObjectModelName = "tinkoff_chat_model"
     private var _managedObjectModel: NSManagedObjectModel?
     private var managedObjectModel: NSManagedObjectModel? {
         get {
@@ -90,7 +90,7 @@ class CoreDataStack {
     
     // NSManagedObjectContext (main)
     private var _mainContext: NSManagedObjectContext?
-    private var mainContext: NSManagedObjectContext? {
+    public var mainContext: NSManagedObjectContext? {
         get {
             if _mainContext == nil {
                 let context = NSManagedObjectContext(concurrencyType:
@@ -113,7 +113,7 @@ class CoreDataStack {
     
     // NSManagedObjectContext (save)
     private var _saveContext: NSManagedObjectContext?
-    private var saveContext: NSManagedObjectContext? {
+    public var saveContext: NSManagedObjectContext? {
         get {
             if _saveContext == nil {
                 let context = NSManagedObjectContext(concurrencyType:

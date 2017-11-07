@@ -25,7 +25,7 @@ extension AppUser {
         if let appUser = NSEntityDescription.insertNewObject(forEntityName: "AppUser", into: context) as? AppUser {
             if appUser.currentUser == nil {
                 let currentUser = User.findOrInsertUser(with: User.generateUserIdString(), in: context)
-                currentUser?.name = User.generateCurrentUserNameString()
+                currentUser?.name = "Name Surname"
                 appUser.currentUser = currentUser
             }
             return appUser

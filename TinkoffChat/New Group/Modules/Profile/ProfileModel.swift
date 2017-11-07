@@ -18,13 +18,13 @@ class ProfileModel {
         self.service = ProfileDataService(dataManager: dataManager)
     }
     
-    func saveData(profileInfo: ProfileInfo, userInfo: @escaping(URL?) -> ()) {
+    func saveData(profileInfo: ProfileInfo, userInfo: @escaping(Bool) -> ()) {
         let name = profileInfo.name
         let additionalInfo = profileInfo.additionalInfo
         let image = profileInfo.image
         
-        service.saveData(name: name, additionalInfo: additionalInfo, image: image) { (fileUrl) in
-            userInfo(fileUrl)
+        service.saveData(name: name, additionalInfo: additionalInfo, image: image) { (success) in
+            userInfo(success)
         }
     }
     

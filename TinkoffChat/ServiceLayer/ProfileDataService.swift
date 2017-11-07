@@ -16,7 +16,7 @@ class ProfileDataService {
         self.dataManager = dataManager
     }
     
-    func saveData(name: String, additionalInfo: String, image: UIImage, userInfo: @escaping(URL?) -> ()) {
+    func saveData(name: String, additionalInfo: String, image: UIImage, userInfo: @escaping(Bool) -> ()) {
         var profile: [String : Any] = [:]
         if let jpegData = UIImageJPEGRepresentation(image , 0.5) {
             let encodedString = jpegData.base64EncodedString()
@@ -27,8 +27,8 @@ class ProfileDataService {
             ]
         }
 
-        dataManager?.saveData(profile: profile) { (fileUrl) in
-            userInfo(fileUrl)
+        dataManager?.saveData(profile: profile) { (success) in
+            userInfo(success)
         }
     }
     

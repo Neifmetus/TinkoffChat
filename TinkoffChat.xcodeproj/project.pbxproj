@@ -37,6 +37,7 @@
 		73468A231FA877D7000446E2 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73468A221FA877D7000446E2 /* ProfileModel.swift */; };
 		73468A251FA878E6000446E2 /* ProfileDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73468A241FA878E6000446E2 /* ProfileDataService.swift */; };
 		7366D07D1F9DCDF4000FACAE /* CommunicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7366D07C1F9DCDF4000FACAE /* CommunicationManager.swift */; };
+		738931BA1FB1941D0006B33F /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738931B91FB1941D0006B33F /* CoreDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +85,7 @@
 		73468A221FA877D7000446E2 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 		73468A241FA878E6000446E2 /* ProfileDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDataService.swift; sourceTree = "<group>"; };
 		7366D07C1F9DCDF4000FACAE /* CommunicationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationManager.swift; sourceTree = "<group>"; };
+		738931B91FB1941D0006B33F /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,9 +158,9 @@
 		0C8170471FA4DC6D006C1640 /* CoreLayer */ = {
 			isa = PBXGroup;
 			children = (
+				0CCFD4D21FA7CBCE00D594B5 /* ProfileDataProvider */,
 				0C8E67741FAF91280067C7E1 /* CoreData */,
 				0CCFD4D31FA7CBF300D594B5 /* MulitypeerConnectivity */,
-				0CCFD4D21FA7CBCE00D594B5 /* ProfileDataProvider */,
 			);
 			path = CoreLayer;
 			sourceTree = "<group>";
@@ -225,6 +227,7 @@
 			isa = PBXGroup;
 			children = (
 				0C8E67751FAF913E0067C7E1 /* CoreDataStack.swift */,
+				738931B91FB1941D0006B33F /* CoreDataManager.swift */,
 				0C8E67781FB0EA960067C7E1 /* AppUser.swift */,
 				0C8E677A1FB0EAA30067C7E1 /* User.swift */,
 			);
@@ -372,6 +375,7 @@
 				7366D07D1F9DCDF4000FACAE /* CommunicationManager.swift in Sources */,
 				0CB8A7CD1F922C83005C5242 /* OperationManager.swift in Sources */,
 				0CB8A7CB1F922C69005C5242 /* GCDManager.swift in Sources */,
+				738931BA1FB1941D0006B33F /* CoreDataManager.swift in Sources */,
 				73468A211FA771B4000446E2 /* ConversationAssembly.swift in Sources */,
 				0C8170421F9CBFDD006C1640 /* Date+Random.swift in Sources */,
 				73468A1F1FA7719C000446E2 /* ConversationModel.swift in Sources */,

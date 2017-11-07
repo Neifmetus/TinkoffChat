@@ -9,7 +9,7 @@
 import UIKit
 
 struct ProfileInfo {
-    var name: String = "Name Surname"
+    var name: String = "Name"
     var additionalInfo: String = "Chat participant"
     var image: UIImage = UIImage(named: "placeholder-user.jpg") ?? UIImage()
 }
@@ -118,7 +118,12 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
                     self.profileInfo = profile
                     self.nameTextEdit?.text = profile.name
                     self.additionalInfoTextEdit?.text = profile.additionalInfo
-                    self.photoImageView?.image = profile.image
+                    
+                    if profile.image == UIImage() {
+                        self.photoImageView?.image = UIImage(named: "placeholder-user.jpg") ?? UIImage()
+                    } else {
+                        self.photoImageView?.image = profile.image
+                    }
                 }
             }
         }
@@ -140,13 +145,13 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
             
             let dataManager: DataManager = GCDManager()
             let model = ProfileModel(dataManager: dataManager)
-            model.saveData(profileInfo: profileInfo) { (fileURL) in
+            model.saveData(profileInfo: profileInfo) { (success) in
                 DispatchQueue.main.async {
                     self.activityIndicatorView.stopAnimating()
                     self.gcdButton.isEnabled = true
                     self.operationButton.isEnabled = true
 
-                    if fileURL != nil {
+                    if success {
                         self.showSuccessAlert()
                     } else {
                         self.showErrorAlert(function: {
@@ -171,13 +176,13 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
             
             let dataManager: DataManager = OperationManager()
             let model = ProfileModel(dataManager: dataManager)
-            model.saveData(profileInfo: profileInfo) { (fileURL) in
+            model.saveData(profileInfo: profileInfo) { (success) in
                 OperationQueue.main.addOperation {
                     self.activityIndicatorView.stopAnimating()
                     self.gcdButton.isEnabled = true
                     self.operationButton.isEnabled = true
                     
-                    if fileURL != nil {
+                    if success {
                         self.showSuccessAlert()
                     } else {
                         self.showErrorAlert(function: {
@@ -290,7 +295,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
 }
 
 protocol DataManager {
-    func saveData(profile: [String : Any], userInfo: @escaping(URL?) -> ())
+    func saveData(profile: [String : Any], userInfo: @escaping(Bool) -> ())
 
     func loadData(userInfo: @escaping([String : Any]) -> ())
 }
