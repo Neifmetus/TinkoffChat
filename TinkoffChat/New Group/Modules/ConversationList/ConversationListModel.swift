@@ -8,12 +8,11 @@
 
 import UIKit
 
-protocol IConversationListModel: class {
-    var delegate: IConversationListModelDelegate? {get set}
-    func updateConversationListWith(userID: String, userName: String?, online status: Bool)
+protocol IConversationListModelDelegate: class {
+    func reloadFriends(_ friends: [Friend])
 }
 
-class ConversationListModel: IConversationListModel {
+class ConversationListModel: IConversationServiceDelegate {
     var foundedFriends: [Friend] = []
     var service: ConversationListService?
     var delegate: IConversationListModelDelegate?

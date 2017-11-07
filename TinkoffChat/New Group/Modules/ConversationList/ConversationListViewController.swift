@@ -8,10 +8,6 @@
 
 import UIKit
 
-protocol IConversationListModelDelegate: class {
-    func reloadFriends(_ friends: [Friend])
-}
-
 class ConversationListViewController: UITableViewController, IConversationListModelDelegate {
     var model: ConversationListModel?
     

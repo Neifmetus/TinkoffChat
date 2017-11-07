@@ -9,6 +9,12 @@
 import UIKit
 import MultipeerConnectivity
 
+protocol ICommunicationManagerDelegate: class {
+    func didFound(userID: String, userName: String)
+    func didLost(userID: String)
+    func didReceive(text: String, date: Date)
+}
+
 protocol CommunicationDelegate : class {
     //discovering
     func didFoundUser(userID: String, userName: String?)
@@ -25,7 +31,7 @@ protocol CommunicationDelegate : class {
 class CommunicationManager: NSObject, CommunicationDelegate {
     var foundedFriends: [Friend] = []
     var delegate: IConversationListModelDelegate?
-    var serviceDelegate: IConversationListService?
+    var serviceDelegate: ICommunicationManagerDelegate?
     var conversationDelegate: ConverationDelegate?
     var manager: MPCHandler?
     

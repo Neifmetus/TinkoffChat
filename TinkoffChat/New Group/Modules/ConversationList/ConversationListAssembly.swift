@@ -15,7 +15,7 @@ class ConversationListAssembly {
         return ConversationListViewController()
     }
     
-    private func conversationListModel() -> IConversationListModel {
+    private func conversationListModel() -> IConversationServiceDelegate {
         return ConversationListModel()
     }
 }

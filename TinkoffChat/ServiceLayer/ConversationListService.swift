@@ -8,18 +8,17 @@
 
 import UIKit
 
-protocol IConversationListService: class {
-    func didFound(userID: String, userName: String)
-    func didLost(userID: String)
-    func didReceive(text: String, date: Date)
+protocol IConversationServiceDelegate: class {
+    var delegate: IConversationListModelDelegate? {get set}
+    func updateConversationListWith(userID: String, userName: String?, online status: Bool)
 }
 
-class ConversationListService: IConversationListService {
-    var delegate: IConversationListModel?
+class ConversationListService: ICommunicationManagerDelegate {
+    var delegate: IConversationServiceDelegate?
     var conversationDelegate: IConversationModel?
     var communicationManager: CommunicationManager?
     
-    init(delegate: IConversationListModel) {
+    init(delegate: IConversationServiceDelegate) {
         self.delegate = delegate
         self.communicationManager = CommunicationManager()
         self.communicationManager?.serviceDelegate = self
