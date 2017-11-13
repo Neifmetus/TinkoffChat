@@ -54,6 +54,16 @@ extension User {
         return fetchRequest
     }
     
+    static func fetchRequestFriends(model: NSManagedObjectModel) -> NSFetchRequest<User>? {
+        let templateName = "Friends"
+        guard let fetchRequest = model.fetchRequestTemplate(forName: templateName) as? NSFetchRequest<User> else {
+            assert(false, "No template with name \(templateName)!")
+            return nil
+        }
+        
+        return fetchRequest
+    }
+    
     static func insertAppUser(with: String, in context: NSManagedObjectContext) -> User? {
         return insertUser(in: context, name: "Name Surname", additionalInfo: "Some info", image: nil, userId: User.generateUserIdString())
     }

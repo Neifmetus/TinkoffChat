@@ -9,17 +9,21 @@
 import UIKit
 
 class ConversationListViewController: UITableViewController, IConversationListModelDelegate {
-    var model: ConversationListModel?
     
+    var model: ConversationListModel?
     var communicationManager: CommunicationManager?
     var imaginaryFriends: [Friend] = []
     private var onlineFriends: [Friend] = []
     private var historyFriends: [Friend] = []
     var delegate: CommunicationDelegate?
+    
+    var dataProvider: ConversationListDataProvider?
 
     override func viewDidLoad() {
         self.model = ConversationListModel()
         model?.delegate = self
+        
+        dataProvider = ConversationListDataProvider(delegate: self)
         
         onlineFriends = getFriendsWith(online: true)
         historyFriends = getFriendsWith(online: false)
@@ -54,7 +58,11 @@ class ConversationListViewController: UITableViewController, IConversationListMo
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == 0 ? onlineFriends.count : historyFriends.count
+        guard let count = self.dataProvider?.fetchedResultsController.sections?.count else {
+            return 0
+        }
+        
+        return count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -183,5 +191,19 @@ class FriendCell: UITableViewCell, ConversationCellConfiguration {
                 lastMessage.font = UIFont.systemFont(ofSize: 14.0)
             }
         }
+    }
+}
+
+extension ConversationListViewController: IConversationDataProviderDelegate {
+    func deleteFriends(at paths: [IndexPath]) {
+        self.tableView.deleteRows(at: paths, with: .automatic)
+    }
+    
+    func insertFriends(at paths: [IndexPath]) {
+        self.tableView.insertRows(at: paths, with: .automatic)
+    }
+    
+    func updateFriends(at paths: [IndexPath]) {
+        self.tableView.reloadRows(at: paths, with: .automatic)
     }
 }
