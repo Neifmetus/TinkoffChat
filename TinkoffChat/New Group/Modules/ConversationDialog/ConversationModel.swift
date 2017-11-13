@@ -37,9 +37,10 @@ enum MessageSource {
     case outgoing
 }
 
-struct Message {
-    var text: String?
-    var messageID: String?
-    var date: Date?
-    var source: MessageSource
-}
+//struct Message {
+//    var text: String?
+//    var messageID: String?
+//    var date: Date?
+//    var source: MessageSource
+//}
+
