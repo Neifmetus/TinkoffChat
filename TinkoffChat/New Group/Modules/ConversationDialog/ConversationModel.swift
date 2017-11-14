@@ -27,8 +27,7 @@ class ConversationModel: IConversationModel {
     }
     
     func receiveMessage(text: String, date: Date) {
-        let message = Message(text: text, messageID: nil, date: date, source: .incoming)
-        delegate?.receive(message: message)
+        delegate?.receive(text: text, messageID: nil)
     }
 }
 
@@ -37,10 +36,4 @@ enum MessageSource {
     case outgoing
 }
 
-//struct Message {
-//    var text: String?
-//    var messageID: String?
-//    var date: Date?
-//    var source: MessageSource
-//}
 

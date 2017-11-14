@@ -33,11 +33,11 @@ class ConversationListService: ICommunicationManagerDelegate {
     }
     
     func didFound(userID: String, userName: String) {
-        delegate?.updateConversationListWith(userID: userID, userName: userName, online: true)
+        User.saveUser(with: userID, name: userName, isOnline: true)
     }
     
     func didLost(userID: String) {
-        delegate?.updateConversationListWith(userID: userID, userName: nil, online: false)
+        User.saveUser(with: userID, name: "", isOnline: false)
     }
     
     func didReceive(text: String, date: Date) {

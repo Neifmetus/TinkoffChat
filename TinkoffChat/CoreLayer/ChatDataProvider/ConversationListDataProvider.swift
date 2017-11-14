@@ -6,39 +6,40 @@
 //  Copyright © 2017 e.a.morozova. All rights reserved.
 //
 
+import UIKit
 import Foundation
 import CoreData
 
-protocol IConversationDataProviderDelegate {
+protocol IConversationListDataProviderDelegate {
     func deleteFriends(at paths: [IndexPath])
     func insertFriends(at paths: [IndexPath])
     func updateFriends(at paths: [IndexPath])
 }
 
 class ConversationListDataProvider: NSObject {
-    var delegate: IConversationDataProviderDelegate?
-    var fetchedResultsController: NSFetchedResultsController<Message>
+    var delegate: IConversationListDataProviderDelegate?
+    var fetchedResultsController: NSFetchedResultsController<User>
     
-    init(delegate: IConversationDataProviderDelegate) {
-        if let context = CoreDataManager.getContext() {
-            let model = context.persistentStoreCoordinator?.managedObjectModel
-            let fetchRequest = User.fetchRequestFriends(model: model!)
-            
-            fetchedResultsController = NSFetchedResultsController<Message>(fetchRequest: fetchRequest as! NSFetchRequest<User>,
-                                                                          managedObjectContext: context,
-                                                                          sectionNameKeyPath: nil,
-                                                                          cacheName: nil)
+    init(delegate: IConversationListDataProviderDelegate) {
+        self.delegate = delegate
+        let context = CoreDataManager.coreDataStack?.saveContext
+        let model = context?.persistentStoreCoordinator?.managedObjectModel
+        let fetchRequest = User.fetchRequestFriends(model: model!)
+
+        let nameSortDescriptor = NSSortDescriptor(key: "name", ascending: true)
+        fetchRequest?.sortDescriptors = [nameSortDescriptor]
         
-            super.init()
+        fetchedResultsController = NSFetchedResultsController<User>(fetchRequest: fetchRequest!,
+                                                                      managedObjectContext: context!,
+                                                                      sectionNameKeyPath: "isOnline",
+                                                                      cacheName: nil)
+        super.init()
+        fetchedResultsController.delegate = self
         
-            self.delegate = delegate
-            fetchedResultsController.delegate = self
-            
-            do {
-                try fetchedResultsController.performFetch()
-            } catch {
-                print("Unable to perform fetch")
-            }
+        do {
+            try fetchedResultsController.performFetch()
+        } catch {
+            print("Unable to perform fetch")
         }
     }
 }

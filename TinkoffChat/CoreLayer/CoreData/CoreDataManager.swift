@@ -11,10 +11,6 @@ import CoreData
 
 class CoreDataManager {
     
-    static func getContext() -> NSManagedObjectContext? {
-        return self.coreDataStack?.saveContext
-    }
-    
     private static var _coreDataStack: CoreDataStack?
     public static var coreDataStack: CoreDataStack? {
         get {

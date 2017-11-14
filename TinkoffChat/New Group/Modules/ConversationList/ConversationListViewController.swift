@@ -25,8 +25,8 @@ class ConversationListViewController: UITableViewController, IConversationListMo
         
         dataProvider = ConversationListDataProvider(delegate: self)
         
-        onlineFriends = getFriendsWith(online: true)
-        historyFriends = getFriendsWith(online: false)
+//        onlineFriends = getFriendsWith(online: true)
+//        historyFriends = getFriendsWith(online: false)
         
         model?.findOnlineFriends()
         
@@ -50,7 +50,11 @@ class ConversationListViewController: UITableViewController, IConversationListMo
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        guard let count = self.dataProvider?.fetchedResultsController.sections?.count else {
+            return 0
+        }
+        
+        return count
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -58,27 +62,31 @@ class ConversationListViewController: UITableViewController, IConversationListMo
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let count = self.dataProvider?.fetchedResultsController.sections?.count else {
+        guard let sections = dataProvider?.fetchedResultsController.sections else {
             return 0
         }
         
-        return count
+        return sections[section].numberOfObjects
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as! FriendCell
-        let friend = indexPath.section == 0 ? onlineFriends[indexPath.row] : historyFriends[indexPath.row]
         
-        cell.online = friend.online
-        cell.name = friend.name
-        if friend.messages.count > 0 {
-            let lastMessage = friend.messages.last
-            cell.message = lastMessage?.text
-            cell.date = lastMessage?.date
-            cell.hasUnreadMessages = friend.hasUnreadMessages
-        } else {
-            cell.message = nil
-            cell.date = nil
+        if let friend = dataProvider?.fetchedResultsController.object(at: indexPath), let conversation = friend.conversations {
+            cell.online = friend.conversations?.isOnline ?? false
+            cell.conversationId = conversation.conversationId ?? ""
+            cell.name = friend.name
+            if conversation.lastMessage != nil {
+                let lastMessage = conversation.lastMessage
+                cell.message = lastMessage?.text
+                cell.date = lastMessage?.date
+                
+                let unreadMessageCount = conversation.unreadMessages?.count ?? 0
+                cell.hasUnreadMessages = unreadMessageCount > 0
+            } else {
+                cell.message = nil
+                cell.date = nil
+            }
         }
 
         return cell
@@ -87,11 +95,21 @@ class ConversationListViewController: UITableViewController, IConversationListMo
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        if let viewController = UIStoryboard(name: "Conversation", bundle: nil).instantiateViewController(withIdentifier: "ConversationViewController") as? ConversationViewController {
-            viewController.service = model?.service
-            viewController.friend = imaginaryFriends[indexPath.row]
-            if let navigator = navigationController {
-                navigator.pushViewController(viewController, animated: true)
+        if let user = dataProvider?.fetchedResultsController.object(at: indexPath), let conversation = user.conversations {
+            let unreadMessageCount = conversation.unreadMessages?.count ?? 0
+            let friend = Friend(name: user.name,
+                                userID: user.userId ?? "",
+                                online: conversation.isOnline,
+                                hasUnreadMessages: unreadMessageCount > 0)
+        
+            if let viewController = UIStoryboard(name: "Conversation", bundle: nil).instantiateViewController(withIdentifier: "ConversationViewController") as? ConversationViewController {
+                viewController.service = model?.service
+                viewController.friend = friend
+                viewController.conversationId = conversation.conversationId ?? ""
+                
+                if let navigator = navigationController {
+                    navigator.pushViewController(viewController, animated: true)
+                }
             }
         }
     }
@@ -104,11 +122,11 @@ class ConversationListViewController: UITableViewController, IConversationListMo
             }
         }
         
-        friends.sort { (item1, item2) -> Bool in
-            let t1 = item1.messages.last?.date ?? Date.distantPast
-            let t2 = item2.messages.last?.date ?? Date.distantPast
-            return t1 > t2
-        }
+//        friends.sort { (item1, item2) -> Bool in
+//            let t1 = item1.messages.last?.date ?? Date.distantPast
+//            let t2 = item2.messages.last?.date ?? Date.distantPast
+//            return t1 > t2
+//        }
         
         return friends
     }
@@ -120,6 +138,7 @@ protocol ConversationCellConfiguration: class {
     var date: Date? {get set}
     var online: Bool {get set}
     var hasUnreadMessages: Bool {get set}
+    var conversationId: String {get set}
 }
 
 class FriendCell: UITableViewCell, ConversationCellConfiguration {
@@ -130,6 +149,7 @@ class FriendCell: UITableViewCell, ConversationCellConfiguration {
     
     private var _online: Bool = false
     private var _hasUnreadMessages: Bool = false
+    private var _conversationId: String = ""
     
     var name: String? {
         get { return nameLabel.text}
@@ -192,9 +212,16 @@ class FriendCell: UITableViewCell, ConversationCellConfiguration {
             }
         }
     }
+    
+    var conversationId: String {
+        get { return _conversationId }
+        set {
+            _conversationId = newValue
+        }
+    }
 }
 
-extension ConversationListViewController: IConversationDataProviderDelegate {
+extension ConversationListViewController: IConversationListDataProviderDelegate {
     func deleteFriends(at paths: [IndexPath]) {
         self.tableView.deleteRows(at: paths, with: .automatic)
     }

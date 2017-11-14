@@ -10,7 +10,7 @@ import UIKit
 import MultipeerConnectivity
 
 protocol ConverationDelegate {
-    func receive(message: Message)
+    func receive(text: String, messageID: String?)
 }
 
 class ConversationViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, ConverationDelegate {
@@ -28,6 +28,8 @@ class ConversationViewController: UIViewController, UITableViewDataSource, UITab
     
     var service: ConversationListService?
     var model: ConversationModel?
+    var conversationId: String = ""
+    var dataProvider: ConversationDataProvider?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +43,8 @@ class ConversationViewController: UIViewController, UITableViewDataSource, UITab
             sendMessageButton.isEnabled = friend.online
         }
         
+        self.dataProvider = ConversationDataProvider(delegate: self, conversationId: conversationId)
+        
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: .UIKeyboardWillShow, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: .UIKeyboardWillHide, object: nil)
@@ -50,28 +54,18 @@ class ConversationViewController: UIViewController, UITableViewDataSource, UITab
         dialogTextField.endEditing(true)
         if let text = dialogTextField.text {
             if text != "" {
-                let message = Message(text: text, messageID: nil, date: Date(), source: .outgoing)
-                friend?.messages.append(message)
-                
-                DispatchQueue.main.async {
-                    self.conversationTableView.reloadData()
-                }
-                
-                if let text = message.text, let userID = friend?.userID {
+                if let userID = friend?.userID {
                     service?.sendMessage(text: text, userID: userID)
                 }
                 
+                Message.saveMessage(with: conversationId, text: text, isIncoming: false)
                 dialogTextField.text = ""
             }
         }
     }
     
-    func receive(message: Message) {
-        friend?.messages.append(message)
-        
-        DispatchQueue.main.async {
-            self.conversationTableView.reloadData()
-        }
+    func receive(text: String, messageID: String?) {
+        Message.saveMessage(with: conversationId, text: text, isIncoming: true)
     }
     
     @objc private func handleKeyboardNotification(notification: NSNotification) {
@@ -84,20 +78,13 @@ class ConversationViewController: UIViewController, UITableViewDataSource, UITab
             
             UIView.animate(withDuration: 0, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
                 self.view.layoutIfNeeded()
-            }, completion: { (completed) in
-                if isShowing {
-                    //scroll last
-//                    let indexPath = IndexPath(row: (self.friend?.messages?.count)! - 1, section: 0)
-//                    self.conversationTableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
-                }
-            })
+            }, completion: nil)
         }
     }
     
      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = MessageCell()
-        if let messages = friend?.messages {
-            let message = messages[indexPath.row]
+        if let message = dataProvider?.fetchedResultsController.object(at: indexPath) {
             let id = message.isIncoming ? "incoming" : "outgoing"
             cell = tableView.dequeueReusableCell(withIdentifier: id, for: indexPath) as! MessageCell
             cell.message = message.text
@@ -107,7 +94,11 @@ class ConversationViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return friend?.messages.count ?? 0
+        guard let sections = dataProvider?.fetchedResultsController.sections else {
+            return 0
+        }
+        
+        return sections[section].numberOfObjects
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -129,5 +120,19 @@ class MessageCell: UITableViewCell, MessageCellConfiguration {
             messageLabel.text = newValue
             messageLabel.numberOfLines = 0
         }
+    }
+}
+
+extension ConversationViewController: IConversationDataProviderDelegate {
+    func deleteMessages(at paths: [IndexPath]) {
+        conversationTableView.deleteRows(at: paths, with: .automatic)
+    }
+    
+    func insertMessages(at paths: [IndexPath]) {
+        conversationTableView.insertRows(at: paths, with: .automatic)
+    }
+    
+    func updateMessages(at paths: [IndexPath]) {
+        conversationTableView.reloadRows(at: paths, with: .automatic)
     }
 }

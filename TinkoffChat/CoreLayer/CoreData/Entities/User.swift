@@ -15,7 +15,7 @@ extension User {
         return "Test userId"
     }
     
-    static func findOrInsertUser(with: String, in context: NSManagedObjectContext) -> User? {
+    static func findOrInsertAppUser(with: String, in context: NSManagedObjectContext) -> User? {
         guard let model = context.persistentStoreCoordinator?.managedObjectModel else {
             print("Model is not availible in context!")
             assert(false)
@@ -44,6 +44,42 @@ extension User {
         return appUser
     }
     
+    static func findOrInsertUser(with id: String, name: String, isOnline: Bool, in context: NSManagedObjectContext) -> User? {
+        guard let model = context.persistentStoreCoordinator?.managedObjectModel else {
+            print("Unable to get model")
+            return nil
+        }
+        
+        var user: User?
+        if let fetchRequest = User.fetchRequestUser(with: id, model: model) {
+            do {
+                if let foundedUser = try context.fetch(fetchRequest).first {
+                    foundedUser.conversations?.isOnline = isOnline
+                    user = foundedUser
+                }
+            } catch {
+                print("Failed to fetch User: \(error)")
+                return nil
+            }
+        } else {
+            user = insertUser(in: context, name: name, userId: id)
+            user?.conversations?.isOnline = isOnline
+            user?.conversations?.conversationId = id
+        }
+        
+        CoreDataManager.save()
+        return user
+    }
+    
+    static func saveUser(with id: String, name: String, isOnline: Bool) {
+        guard let context = CoreDataManager.coreDataStack?.saveContext else {
+            print("Unable to get context")
+            return
+        }
+        
+        _ = findOrInsertUser(with: id, name: name, isOnline: isOnline, in: context)
+    }
+    
     static func fetchRequestUser(with: String, model: NSManagedObjectModel) -> NSFetchRequest<User>? {
         let templateName = "User"
         guard let fetchRequest = model.fetchRequestFromTemplate(withName: templateName, substitutionVariables: ["id" : with]) as? NSFetchRequest<User> else {
@@ -61,19 +97,20 @@ extension User {
             return nil
         }
         
-        return fetchRequest
+        return fetchRequest.copy() as? NSFetchRequest<User>
     }
     
     static func insertAppUser(with: String, in context: NSManagedObjectContext) -> User? {
-        return insertUser(in: context, name: "Name Surname", additionalInfo: "Some info", image: nil, userId: User.generateUserIdString())
+        let appUser = insertUser(in: context, name: "Name Surname", userId: User.generateUserIdString())
+        appUser?.additionalInfo = "Some info"
+        appUser?.image = nil
+        
+        return appUser
     }
     
-    static func insertUser(in context: NSManagedObjectContext, name: String, additionalInfo: String, image: Data?, userId: String) -> User? {
+    static func insertUser(in context: NSManagedObjectContext, name: String, userId: String) -> User? {
         let user = NSEntityDescription.insertNewObject(forEntityName: "User", into: context) as? User
-        
         user?.name = name
-        user?.additionalInfo = additionalInfo
-        user?.image = image
         user?.userId = userId
         
         return user

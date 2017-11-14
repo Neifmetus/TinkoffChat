@@ -29,7 +29,7 @@ class ConversationListModel: IConversationServiceDelegate {
         if let friend = foundedFriends.first(where: {$0.userID == userID}) {
             friend.online = status
         } else {
-            let newFriend = Friend(name: userName, userID: userID, messages: [], online: true, hasUnreadMessages: false)
+            let newFriend = Friend(name: userName, userID: userID, online: true, hasUnreadMessages: false)
             foundedFriends.append(newFriend)
         }
         delegate?.reloadFriends(foundedFriends)
@@ -39,14 +39,12 @@ class ConversationListModel: IConversationServiceDelegate {
 class Friend {
     var name: String?
     var userID: String
-    var messages: [Message]
     var online: Bool
     var hasUnreadMessages: Bool
     
-    init(name: String?, userID: String, messages: [Message], online: Bool, hasUnreadMessages: Bool) {
+    init(name: String?, userID: String, online: Bool, hasUnreadMessages: Bool) {
         self.name = name
         self.userID = userID
-        self.messages = messages
         self.online = online
         self.hasUnreadMessages = hasUnreadMessages
     }

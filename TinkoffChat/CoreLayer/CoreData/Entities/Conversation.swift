@@ -12,14 +12,14 @@ import CoreData
 extension Conversation {
     
     static func fetchRequestMessages(with id: String, model: NSManagedObjectModel) -> NSFetchRequest<Conversation>? {
-        let templateName = "СonversationById"
+        let templateName = "ConversationById"
         
         guard let fetchRequest = model.fetchRequestFromTemplate(withName: templateName, substitutionVariables: ["id" : id]) as? NSFetchRequest<Conversation> else {
             assert(false, "No template with name \(templateName)!")
             return nil
         }
         
-        return fetchRequest
+        return fetchRequest.copy() as? NSFetchRequest<Conversation>
     }
     
 }
