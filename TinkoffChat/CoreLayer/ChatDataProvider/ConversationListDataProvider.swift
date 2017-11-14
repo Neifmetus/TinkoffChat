@@ -14,6 +14,9 @@ protocol IConversationListDataProviderDelegate {
     func deleteFriends(at paths: [IndexPath])
     func insertFriends(at paths: [IndexPath])
     func updateFriends(at paths: [IndexPath])
+    
+    func beginUpdates()
+    func endUpdates()
 }
 
 class ConversationListDataProvider: NSObject {
@@ -26,12 +29,12 @@ class ConversationListDataProvider: NSObject {
         let model = context?.persistentStoreCoordinator?.managedObjectModel
         let fetchRequest = User.fetchRequestFriends(model: model!)
 
-        let nameSortDescriptor = NSSortDescriptor(key: "name", ascending: true)
-        fetchRequest?.sortDescriptors = [nameSortDescriptor]
+        let onlineSortDescriptor = NSSortDescriptor(key: "conversations.isOnline", ascending: true)
+        fetchRequest?.sortDescriptors = [onlineSortDescriptor]
         
         fetchedResultsController = NSFetchedResultsController<User>(fetchRequest: fetchRequest!,
                                                                       managedObjectContext: context!,
-                                                                      sectionNameKeyPath: "isOnline",
+                                                                      sectionNameKeyPath: "Online",
                                                                       cacheName: nil)
         super.init()
         fetchedResultsController.delegate = self
@@ -47,11 +50,11 @@ class ConversationListDataProvider: NSObject {
 extension ConversationListDataProvider: NSFetchedResultsControllerDelegate {
     
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        // beginUpdates
+        delegate?.beginUpdates()
     }
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        // endUpdates
+        delegate?.endUpdates()
     }
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,

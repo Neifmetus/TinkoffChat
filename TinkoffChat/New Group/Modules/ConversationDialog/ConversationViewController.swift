@@ -135,4 +135,12 @@ extension ConversationViewController: IConversationDataProviderDelegate {
     func updateMessages(at paths: [IndexPath]) {
         conversationTableView.reloadRows(at: paths, with: .automatic)
     }
+    
+    func beginUpdates() {
+        conversationTableView.beginUpdates()
+    }
+    
+    func endUpdates() {
+        conversationTableView.endUpdates()
+    }
 }

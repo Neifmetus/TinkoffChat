@@ -13,6 +13,9 @@ protocol IConversationDataProviderDelegate {
     func deleteMessages(at paths: [IndexPath])
     func insertMessages(at paths: [IndexPath])
     func updateMessages(at paths: [IndexPath])
+    
+    func beginUpdates()
+    func endUpdates()
 }
 
 class ConversationDataProvider: NSObject {
@@ -37,11 +40,11 @@ class ConversationDataProvider: NSObject {
 extension ConversationDataProvider: NSFetchedResultsControllerDelegate {
     
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        // beginUpdates
+        delegate?.beginUpdates()
     }
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        // endUpdates
+        delegate?.endUpdates()
     }
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,

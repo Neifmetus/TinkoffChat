@@ -40,12 +40,17 @@ class ConversationListViewController: UITableViewController, IConversationListMo
     }
     
     open func reloadFriends(_ friends: [Friend]) {
-        self.imaginaryFriends = friends
-        onlineFriends = getFriendsWith(online: true)
-        historyFriends = getFriendsWith(online: false)
-
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
+//        self.imaginaryFriends = friends
+//        onlineFriends = getFriendsWith(online: true)
+//        historyFriends = getFriendsWith(online: false)
+//
+//        DispatchQueue.main.async {
+//            self.tableView.reloadData()
+//        }
+        do {
+            try dataProvider?.fetchedResultsController.performFetch()
+        } catch {
+            print("Unable to perform fetch")
         }
     }
 
@@ -53,19 +58,29 @@ class ConversationListViewController: UITableViewController, IConversationListMo
         guard let count = self.dataProvider?.fetchedResultsController.sections?.count else {
             return 0
         }
-        
+
         return count
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return section == 0 ? "Online" : "History"
+        if let objects = self.dataProvider?.fetchedResultsController.sections?[section].objects {
+            if objects.count > 0 {
+                if let object = objects[0] as? User {
+                    if let isOnline = object.conversations?.isOnline {
+                        return isOnline ? "Online" : "History"
+                    }
+                }
+            }
+        }
+        
+        return ""
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let sections = dataProvider?.fetchedResultsController.sections else {
             return 0
         }
-        
+
         return sections[section].numberOfObjects
     }
 
@@ -232,5 +247,13 @@ extension ConversationListViewController: IConversationListDataProviderDelegate 
     
     func updateFriends(at paths: [IndexPath]) {
         self.tableView.reloadRows(at: paths, with: .automatic)
+    }
+    
+    func beginUpdates() {
+        self.tableView.beginUpdates()
+    }
+    
+    func endUpdates() {
+        self.endUpdates()
     }
 }

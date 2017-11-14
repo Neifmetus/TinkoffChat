@@ -55,11 +55,13 @@ class CommunicationManager: NSObject, CommunicationDelegate {
     }
     
     func didFoundUser(userID: String, userName: String?) {
+        User.saveUser(with: userID, name: userName ?? "", isOnline: true)
         serviceDelegate?.didFound(userID: userID, userName: userName ?? "")
     }
     
     func didLostUser(userID: String) {
-        serviceDelegate?.didLost(userID: userID)
+        User.saveUser(with: userID, name: "", isOnline: false)
+        //serviceDelegate?.didLost(userID: userID)
     }
     
     
