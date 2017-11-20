@@ -32,6 +32,12 @@
 		0CB8A7CB1F922C69005C5242 /* GCDManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB8A7CA1F922C69005C5242 /* GCDManager.swift */; };
 		0CB8A7CD1F922C83005C5242 /* OperationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB8A7CC1F922C83005C5242 /* OperationManager.swift */; };
 		0CCFD4DD1FAB27D900D594B5 /* TinkoffChatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCFD4DC1FAB27D900D594B5 /* TinkoffChatUITests.swift */; };
+		0CE498781FC082C500021B5D /* IRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE498771FC082C500021B5D /* IRequest.swift */; };
+		0CE4987A1FC0833600021B5D /* IRequestSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE498791FC0833600021B5D /* IRequestSender.swift */; };
+		0CE4987C1FC0843400021B5D /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE4987B1FC0843400021B5D /* Parser.swift */; };
+		0CE4987E1FC0A0D100021B5D /* RequestSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE4987D1FC0A0D100021B5D /* RequestSender.swift */; };
+		0CE498801FC1961B00021B5D /* PicturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE4987F1FC1961B00021B5D /* PicturesViewController.swift */; };
+		0CE498831FC1991200021B5D /* Pictures.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CE498821FC1991200021B5D /* Pictures.storyboard */; };
 		73468A1D1FA76F50000446E2 /* Conversation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73468A1C1FA76F50000446E2 /* Conversation.storyboard */; };
 		73468A1F1FA7719C000446E2 /* ConversationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73468A1E1FA7719C000446E2 /* ConversationModel.swift */; };
 		73468A211FA771B4000446E2 /* ConversationAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73468A201FA771B4000446E2 /* ConversationAssembly.swift */; };
@@ -84,6 +90,12 @@
 		0CCFD4DA1FAB27D800D594B5 /* TinkoffChatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TinkoffChatUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CCFD4DC1FAB27D900D594B5 /* TinkoffChatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TinkoffChatUITests.swift; sourceTree = "<group>"; };
 		0CCFD4DE1FAB27D900D594B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0CE498771FC082C500021B5D /* IRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRequest.swift; sourceTree = "<group>"; };
+		0CE498791FC0833600021B5D /* IRequestSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRequestSender.swift; sourceTree = "<group>"; };
+		0CE4987B1FC0843400021B5D /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
+		0CE4987D1FC0A0D100021B5D /* RequestSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestSender.swift; sourceTree = "<group>"; };
+		0CE4987F1FC1961B00021B5D /* PicturesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicturesViewController.swift; sourceTree = "<group>"; };
+		0CE498821FC1991200021B5D /* Pictures.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Pictures.storyboard; sourceTree = "<group>"; };
 		73468A1C1FA76F50000446E2 /* Conversation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Conversation.storyboard; sourceTree = "<group>"; };
 		73468A1E1FA7719C000446E2 /* ConversationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationModel.swift; sourceTree = "<group>"; };
 		73468A201FA771B4000446E2 /* ConversationAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationAssembly.swift; sourceTree = "<group>"; };
@@ -166,6 +178,8 @@
 		0C8170471FA4DC6D006C1640 /* CoreLayer */ = {
 			isa = PBXGroup;
 			children = (
+				0CE498741FC0806700021B5D /* RequestManager */,
+				0CE498731FC0805A00021B5D /* Networking */,
 				737601A81FB9E15600AD584D /* ChatDataProvider */,
 				0CCFD4D21FA7CBCE00D594B5 /* ProfileDataProvider */,
 				0C8E67741FAF91280067C7E1 /* CoreData */,
@@ -186,6 +200,7 @@
 		0C847B6A1FA4E5A6000283AA /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				0CE498811FC198F200021B5D /* ImagePicker */,
 				0C847B6D1FA4E5ED000283AA /* ConversationDialog */,
 				0C847B6C1FA4E5E0000283AA /* ConversationList */,
 				0C847B6B1FA4E5D7000283AA /* Profile */,
@@ -267,6 +282,49 @@
 				0CCFD4DE1FAB27D900D594B5 /* Info.plist */,
 			);
 			path = TinkoffChatUITests;
+			sourceTree = "<group>";
+		};
+		0CE498731FC0805A00021B5D /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				0CE498751FC0809800021B5D /* Parsers */,
+				0CE498761FC080A000021B5D /* Requests */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		0CE498741FC0806700021B5D /* RequestManager */ = {
+			isa = PBXGroup;
+			children = (
+				0CE498791FC0833600021B5D /* IRequestSender.swift */,
+				0CE4987D1FC0A0D100021B5D /* RequestSender.swift */,
+			);
+			path = RequestManager;
+			sourceTree = "<group>";
+		};
+		0CE498751FC0809800021B5D /* Parsers */ = {
+			isa = PBXGroup;
+			children = (
+				0CE4987B1FC0843400021B5D /* Parser.swift */,
+			);
+			path = Parsers;
+			sourceTree = "<group>";
+		};
+		0CE498761FC080A000021B5D /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				0CE498771FC082C500021B5D /* IRequest.swift */,
+			);
+			path = Requests;
+			sourceTree = "<group>";
+		};
+		0CE498811FC198F200021B5D /* ImagePicker */ = {
+			isa = PBXGroup;
+			children = (
+				0CE4987F1FC1961B00021B5D /* PicturesViewController.swift */,
+				0CE498821FC1991200021B5D /* Pictures.storyboard */,
+			);
+			path = ImagePicker;
 			sourceTree = "<group>";
 		};
 		737601A81FB9E15600AD584D /* ChatDataProvider */ = {
@@ -376,6 +434,7 @@
 			files = (
 				0C9FE4C41F76D45D0096A950 /* .gitignore in Resources */,
 				0C20E9521F72C96500AE940E /* LaunchScreen.storyboard in Resources */,
+				0CE498831FC1991200021B5D /* Pictures.storyboard in Resources */,
 				0C20E94F1F72C96500AE940E /* Assets.xcassets in Resources */,
 				73468A1D1FA76F50000446E2 /* Conversation.storyboard in Resources */,
 				0C20E94D1F72C96500AE940E /* Profile.storyboard in Resources */,
@@ -397,6 +456,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CE4987A1FC0833600021B5D /* IRequestSender.swift in Sources */,
 				0C8E67761FAF913E0067C7E1 /* CoreDataStack.swift in Sources */,
 				0C8712531F810CBF00565238 /* CameraHandler.swift in Sources */,
 				0C847B751FA66BDB000283AA /* RootAssembly.swift in Sources */,
@@ -410,15 +470,19 @@
 				737601AD1FB9EAB900AD584D /* Message.swift in Sources */,
 				73468A1F1FA7719C000446E2 /* ConversationModel.swift in Sources */,
 				73468A251FA878E6000446E2 /* ProfileDataService.swift in Sources */,
+				0CE498781FC082C500021B5D /* IRequest.swift in Sources */,
 				0C847B6F1FA51B2E000283AA /* ConversationListModel.swift in Sources */,
 				737601AA1FB9E17700AD584D /* ConversationListDataProvider.swift in Sources */,
+				0CE4987C1FC0843400021B5D /* Parser.swift in Sources */,
 				73468A231FA877D7000446E2 /* ProfileModel.swift in Sources */,
 				0C094F0F1F9B94A4008B6413 /* MPCHandler.swift in Sources */,
 				0C8C990F1F898F5A00BDE770 /* String+Random.swift in Sources */,
 				0C8E67791FB0EA960067C7E1 /* AppUser.swift in Sources */,
 				0C8C99031F8806C500BDE770 /* ConversationListViewController.swift in Sources */,
 				0C8C99051F88099300BDE770 /* ConversationViewController.swift in Sources */,
+				0CE4987E1FC0A0D100021B5D /* RequestSender.swift in Sources */,
 				0C8E67521FAF5FB50067C7E1 /* tinkoff_chat_model.xcdatamodeld in Sources */,
+				0CE498801FC1961B00021B5D /* PicturesViewController.swift in Sources */,
 				0C20E94A1F72C96500AE940E /* ProfileViewController.swift in Sources */,
 				0C847B731FA52BC6000283AA /* ConversationListService.swift in Sources */,
 				0C847B711FA51B5E000283AA /* ConversationListAssembly.swift in Sources */,

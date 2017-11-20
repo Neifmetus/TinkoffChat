@@ -35,4 +35,9 @@ class CameraHandler: NSObject {
         onVC.present(image, animated: true)
     }
     
+    func getPhotoViaWeb(_ onVC: UIViewController, canEdit: Bool) {
+        let image = UIImagePickerController()
+        
+    }
+    
 }

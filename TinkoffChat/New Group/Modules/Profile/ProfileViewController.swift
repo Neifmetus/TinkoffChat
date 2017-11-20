@@ -45,12 +45,17 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         let sharePhoto = UIAlertAction(title: "Photo Library", style: .default) { (alert : UIAlertAction!) in
             camera.getPhotoViaLibrary(self, canEdit: true)
         }
+        let loadPhoto = UIAlertAction(title: "Load Photo", style: .default) { (alert : UIAlertAction!) in
+            camera.getPhotoViaWeb(self, canEdit: true)
+        }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (alert : UIAlertAction!) in
         }
 
         optionMenu.addAction(takePhoto)
         optionMenu.addAction(sharePhoto)
+        optionMenu.addAction(loadPhoto)
         optionMenu.addAction(cancelAction)
+        
         self.present(optionMenu, animated: true, completion: nil)
     }
 

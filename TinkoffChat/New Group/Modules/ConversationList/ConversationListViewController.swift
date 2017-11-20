@@ -40,13 +40,6 @@ class ConversationListViewController: UITableViewController, IConversationListMo
     }
     
     open func reloadFriends(_ friends: [Friend]) {
-//        self.imaginaryFriends = friends
-//        onlineFriends = getFriendsWith(online: true)
-//        historyFriends = getFriendsWith(online: false)
-//
-//        DispatchQueue.main.async {
-//            self.tableView.reloadData()
-//        }
         do {
             try dataProvider?.fetchedResultsController.performFetch()
         } catch {
@@ -254,6 +247,6 @@ extension ConversationListViewController: IConversationListDataProviderDelegate 
     }
     
     func endUpdates() {
-        self.endUpdates()
+        self.tableView.endUpdates()
     }
 }

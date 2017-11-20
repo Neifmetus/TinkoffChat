@@ -51,20 +51,22 @@ extension User {
         }
         
         var user: User?
-        if let fetchRequest = User.fetchRequestUser(with: id, model: model) {
-            do {
-                if let foundedUser = try context.fetch(fetchRequest).first {
-                    foundedUser.conversations?.isOnline = isOnline
-                    user = foundedUser
-                }
-            } catch {
-                print("Failed to fetch User: \(error)")
-                return nil
+        guard let fetchRequest = User.fetchRequestUser(with: id, model: model) else {
+            return nil
+        }
+        
+        do {
+            if let foundedUser = try context.fetch(fetchRequest).first {
+                foundedUser.conversations?.isOnline = isOnline
+                user = foundedUser
+            } else {
+                user = insertUser(in: context, name: name, userId: id)
+                user?.conversations?.isOnline = isOnline
+                user?.conversations?.conversationId = id
             }
-        } else {
-            user = insertUser(in: context, name: name, userId: id)
-            user?.conversations?.isOnline = isOnline
-            user?.conversations?.conversationId = id
+        } catch {
+            print("Failed to fetch User: \(error)")
+            return nil
         }
         
         CoreDataManager.save()

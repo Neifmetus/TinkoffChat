@@ -61,7 +61,7 @@ class CommunicationManager: NSObject, CommunicationDelegate {
     
     func didLostUser(userID: String) {
         User.saveUser(with: userID, name: "", isOnline: false)
-        //serviceDelegate?.didLost(userID: userID)
+        serviceDelegate?.didLost(userID: userID)
     }
     
     

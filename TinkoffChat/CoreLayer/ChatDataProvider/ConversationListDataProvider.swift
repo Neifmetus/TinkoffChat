@@ -34,7 +34,7 @@ class ConversationListDataProvider: NSObject {
         
         fetchedResultsController = NSFetchedResultsController<User>(fetchRequest: fetchRequest!,
                                                                       managedObjectContext: context!,
-                                                                      sectionNameKeyPath: "Online",
+                                                                      sectionNameKeyPath: "conversations.isOnline",
                                                                       cacheName: nil)
         super.init()
         fetchedResultsController.delegate = self
