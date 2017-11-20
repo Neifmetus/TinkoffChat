@@ -10,9 +10,9 @@ import Foundation
 
 class RequestSender: IRequestSender {
     
-    func send<T>(config: RequestConfig<T>, completionHandler: @escaping(Result<T>?) -> Void) {
-        
-        let session = URLSession.shared
+    let session = URLSession.shared
+    
+    func send<T>(config: RequestConfig<T>, completionHandler: @escaping (Result<T>) -> Void) {
         
         guard let urlRequest = config.request.urlRequest else {
             completionHandler(Result.Fail("url string can't be parser to URL"))

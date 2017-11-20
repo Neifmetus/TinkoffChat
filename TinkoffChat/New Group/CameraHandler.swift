@@ -36,7 +36,12 @@ class CameraHandler: NSObject {
     }
     
     func getPhotoViaWeb(_ onVC: UIViewController, canEdit: Bool) {
-        let image = UIImagePickerController()
+        //let image = UIImagePickerController()
+        
+        if let viewController = UIStoryboard(name: "Pictures", bundle: nil).instantiateViewController(withIdentifier: "PicturesViewController") as? PicturesViewController {
+            //let navigator = navigationController
+            onVC.present(viewController, animated: true, completion: nil)
+        }
         
     }
     

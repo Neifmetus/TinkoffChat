@@ -48,6 +48,10 @@
 		737601AD1FB9EAB900AD584D /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737601AC1FB9EAB900AD584D /* Message.swift */; };
 		737601AF1FB9EAC900AD584D /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737601AE1FB9EAC900AD584D /* Conversation.swift */; };
 		738931BA1FB1941D0006B33F /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738931B91FB1941D0006B33F /* CoreDataManager.swift */; };
+		73F0EFFB1FC2DB100078FCFC /* PicturesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F0EFFA1FC2DB100078FCFC /* PicturesViewModel.swift */; };
+		73F0EFFD1FC2F1980078FCFC /* ImageRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F0EFFC1FC2F1980078FCFC /* ImageRequest.swift */; };
+		73F0EFFF1FC319980078FCFC /* ImageParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F0EFFE1FC319980078FCFC /* ImageParser.swift */; };
+		73F0F0011FC325F30078FCFC /* ImageLoadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F0F0001FC325F30078FCFC /* ImageLoadService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +110,10 @@
 		737601AC1FB9EAB900AD584D /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		737601AE1FB9EAC900AD584D /* Conversation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversation.swift; sourceTree = "<group>"; };
 		738931B91FB1941D0006B33F /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		73F0EFFA1FC2DB100078FCFC /* PicturesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicturesViewModel.swift; sourceTree = "<group>"; };
+		73F0EFFC1FC2F1980078FCFC /* ImageRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRequest.swift; sourceTree = "<group>"; };
+		73F0EFFE1FC319980078FCFC /* ImageParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageParser.swift; sourceTree = "<group>"; };
+		73F0F0001FC325F30078FCFC /* ImageLoadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoadService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +201,7 @@
 			children = (
 				0C847B721FA52BC6000283AA /* ConversationListService.swift */,
 				73468A241FA878E6000446E2 /* ProfileDataService.swift */,
+				73F0F0001FC325F30078FCFC /* ImageLoadService.swift */,
 			);
 			path = ServiceLayer;
 			sourceTree = "<group>";
@@ -306,6 +315,7 @@
 			isa = PBXGroup;
 			children = (
 				0CE4987B1FC0843400021B5D /* Parser.swift */,
+				73F0EFFE1FC319980078FCFC /* ImageParser.swift */,
 			);
 			path = Parsers;
 			sourceTree = "<group>";
@@ -314,6 +324,7 @@
 			isa = PBXGroup;
 			children = (
 				0CE498771FC082C500021B5D /* IRequest.swift */,
+				73F0EFFC1FC2F1980078FCFC /* ImageRequest.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -322,6 +333,7 @@
 			isa = PBXGroup;
 			children = (
 				0CE4987F1FC1961B00021B5D /* PicturesViewController.swift */,
+				73F0EFFA1FC2DB100078FCFC /* PicturesViewModel.swift */,
 				0CE498821FC1991200021B5D /* Pictures.storyboard */,
 			);
 			path = ImagePicker;
@@ -470,11 +482,14 @@
 				737601AD1FB9EAB900AD584D /* Message.swift in Sources */,
 				73468A1F1FA7719C000446E2 /* ConversationModel.swift in Sources */,
 				73468A251FA878E6000446E2 /* ProfileDataService.swift in Sources */,
+				73F0EFFB1FC2DB100078FCFC /* PicturesViewModel.swift in Sources */,
 				0CE498781FC082C500021B5D /* IRequest.swift in Sources */,
 				0C847B6F1FA51B2E000283AA /* ConversationListModel.swift in Sources */,
 				737601AA1FB9E17700AD584D /* ConversationListDataProvider.swift in Sources */,
 				0CE4987C1FC0843400021B5D /* Parser.swift in Sources */,
+				73F0EFFD1FC2F1980078FCFC /* ImageRequest.swift in Sources */,
 				73468A231FA877D7000446E2 /* ProfileModel.swift in Sources */,
+				73F0F0011FC325F30078FCFC /* ImageLoadService.swift in Sources */,
 				0C094F0F1F9B94A4008B6413 /* MPCHandler.swift in Sources */,
 				0C8C990F1F898F5A00BDE770 /* String+Random.swift in Sources */,
 				0C8E67791FB0EA960067C7E1 /* AppUser.swift in Sources */,
@@ -486,6 +501,7 @@
 				0C20E94A1F72C96500AE940E /* ProfileViewController.swift in Sources */,
 				0C847B731FA52BC6000283AA /* ConversationListService.swift in Sources */,
 				0C847B711FA51B5E000283AA /* ConversationListAssembly.swift in Sources */,
+				73F0EFFF1FC319980078FCFC /* ImageParser.swift in Sources */,
 				0C8E677D1FBA42B50067C7E1 /* ConversationDataProvider.swift in Sources */,
 				0C20E9481F72C96500AE940E /* AppDelegate.swift in Sources */,
 				0C8E677B1FB0EAA30067C7E1 /* User.swift in Sources */,

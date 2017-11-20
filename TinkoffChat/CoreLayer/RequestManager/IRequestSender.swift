@@ -19,5 +19,5 @@ enum Result<T> {
 }
 
 protocol IRequestSender {
-    func send<T>(config: RequestConfig<T>, completionHandler: @escaping(Result<T>?) -> Void)
+    func send<T>(config: RequestConfig<T>, completionHandler: @escaping (Result<T>) -> Void)
 }

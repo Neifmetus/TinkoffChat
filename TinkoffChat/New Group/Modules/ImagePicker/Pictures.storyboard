@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -28,7 +28,7 @@
         <!--Select Image-->
         <scene sceneID="Bjh-hZ-bqs">
             <objects>
-                <collectionViewController id="IYO-oy-1IW" customClass="PicturesViewController" customModule="TinkoffChat" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="PicturesViewController" id="IYO-oy-1IW" customClass="PicturesViewController" customModule="TinkoffChat" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="rRg-oR-MHo">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -40,13 +40,27 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="bWB-vH-V8b">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="image_cell" id="bWB-vH-V8b" customClass="ImageCell" customModule="TinkoffChat" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EAx-lp-w3a">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        </imageView>
+                                    </subviews>
                                 </view>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="EAx-lp-w3a" secondAttribute="trailing" id="VuN-NR-XgP"/>
+                                    <constraint firstItem="EAx-lp-w3a" firstAttribute="leading" secondItem="bWB-vH-V8b" secondAttribute="leading" id="dHH-eE-0BY"/>
+                                    <constraint firstItem="EAx-lp-w3a" firstAttribute="top" secondItem="bWB-vH-V8b" secondAttribute="top" id="gih-3o-oJf"/>
+                                    <constraint firstAttribute="bottom" secondItem="EAx-lp-w3a" secondAttribute="bottom" id="hgU-Wa-raA"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="imageView" destination="EAx-lp-w3a" id="g1H-6U-fbm"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -60,7 +74,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NRO-4U-pe0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-230" y="181"/>
+            <point key="canvasLocation" x="-231.19999999999999" y="180.35982008995504"/>
         </scene>
     </scenes>
 </document>
