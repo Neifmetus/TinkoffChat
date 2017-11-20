@@ -17,7 +17,7 @@ class PicturesViewModel {
         self.imageLoadService = ImageLoadService()
     }
     
-    func getImage(result: @escaping ([UIImage]) -> Void){
+    func getImageUrls(result: @escaping ([String]) -> Void){
         
         imageLoadService?.loadImages { (pictures, error) in
             if let error = error {
@@ -25,8 +25,14 @@ class PicturesViewModel {
                 result([])
             }
             
-            let images = self.getImages(pictures: pictures)
-            result(images)
+            var imageUrls: [String] = []
+            if let pictures = pictures {
+                for pic in pictures {
+                    imageUrls.append(pic.imageUrl)
+                }
+            }
+            
+            result(imageUrls)
         }
     }
     

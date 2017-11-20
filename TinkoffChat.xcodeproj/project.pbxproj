@@ -32,6 +32,7 @@
 		0CB8A7CB1F922C69005C5242 /* GCDManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB8A7CA1F922C69005C5242 /* GCDManager.swift */; };
 		0CB8A7CD1F922C83005C5242 /* OperationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB8A7CC1F922C83005C5242 /* OperationManager.swift */; };
 		0CCFD4DD1FAB27D900D594B5 /* TinkoffChatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCFD4DC1FAB27D900D594B5 /* TinkoffChatUITests.swift */; };
+		0CD3A6041FC379080095F980 /* UIImage+Crop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD3A6031FC379080095F980 /* UIImage+Crop.swift */; };
 		0CE498781FC082C500021B5D /* IRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE498771FC082C500021B5D /* IRequest.swift */; };
 		0CE4987A1FC0833600021B5D /* IRequestSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE498791FC0833600021B5D /* IRequestSender.swift */; };
 		0CE4987C1FC0843400021B5D /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE4987B1FC0843400021B5D /* Parser.swift */; };
@@ -94,6 +95,7 @@
 		0CCFD4DA1FAB27D800D594B5 /* TinkoffChatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TinkoffChatUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CCFD4DC1FAB27D900D594B5 /* TinkoffChatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TinkoffChatUITests.swift; sourceTree = "<group>"; };
 		0CCFD4DE1FAB27D900D594B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0CD3A6031FC379080095F980 /* UIImage+Crop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Crop.swift"; sourceTree = "<group>"; };
 		0CE498771FC082C500021B5D /* IRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRequest.swift; sourceTree = "<group>"; };
 		0CE498791FC0833600021B5D /* IRequestSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRequestSender.swift; sourceTree = "<group>"; };
 		0CE4987B1FC0843400021B5D /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 			children = (
 				0C8C990E1F898F5A00BDE770 /* String+Random.swift */,
 				0C8170411F9CBFDD006C1640 /* Date+Random.swift */,
+				0CD3A6031FC379080095F980 /* UIImage+Crop.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -501,6 +504,7 @@
 				0C20E94A1F72C96500AE940E /* ProfileViewController.swift in Sources */,
 				0C847B731FA52BC6000283AA /* ConversationListService.swift in Sources */,
 				0C847B711FA51B5E000283AA /* ConversationListAssembly.swift in Sources */,
+				0CD3A6041FC379080095F980 /* UIImage+Crop.swift in Sources */,
 				73F0EFFF1FC319980078FCFC /* ImageParser.swift in Sources */,
 				0C8E677D1FBA42B50067C7E1 /* ConversationDataProvider.swift in Sources */,
 				0C20E9481F72C96500AE940E /* AppDelegate.swift in Sources */,
