@@ -42,26 +42,16 @@ class PicturesViewModel {
         if let pictures = pictures {
             for object in pictures {
                 
-                let url = URL(string: object.imageUrl)
-                let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
-                if let image = UIImage(data: data!) {
-                    images.append(image)
+                do {
+                    if let url = URL(string: object.imageUrl) {
+                        let data = try Data(contentsOf: url) 
+                        if let image = UIImage(data: data) {
+                            images.append(image)
+                        }
+                    }
+                } catch {
+                    print(error.localizedDescription)
                 }
-                
-//                let url = URL(string: object.imageUrl)
-//
-//                DispatchQueue.global().async {
-//                    do {
-//                        let data = try Data(contentsOf: url!)
-//                        DispatchQueue.main.async {
-//                            if let image = UIImage(data: data) {
-//                                images.append(image)
-//                            }
-//                        }
-//                    } catch {
-//                        print("Error to get image by url \(error)")
-//                    }
-//                }
             }
         }
         

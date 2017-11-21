@@ -38,8 +38,9 @@ class CameraHandler: NSObject {
     func getPhotoViaWeb(_ onVC: UIViewController, canEdit: Bool) {
         
         if let viewController = UIStoryboard(name: "Pictures", bundle: nil).instantiateViewController(withIdentifier: "PicturesViewController") as? PicturesViewController {
-            //let navigator = navigationController
-            onVC.present(viewController, animated: true, completion: nil)
+            viewController.delegate = onVC as? ProfileViewController
+            let navController = UINavigationController(rootViewController: viewController)
+            onVC.present(navController, animated: true, completion: nil)
         }
         
     }
