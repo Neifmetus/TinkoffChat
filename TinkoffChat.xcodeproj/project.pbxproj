@@ -181,8 +181,7 @@
 				0C847B6A1FA4E5A6000283AA /* Modules */,
 				0C20E94B1F72C96500AE940E /* Profile.storyboard */,
 			);
-			name = PresentationLayer;
-			path = "New Group";
+			path = PresentationLayer;
 			sourceTree = "<group>";
 		};
 		0C8170471FA4DC6D006C1640 /* CoreLayer */ = {
