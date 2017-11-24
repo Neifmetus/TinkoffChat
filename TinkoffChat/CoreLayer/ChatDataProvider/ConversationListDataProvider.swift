@@ -48,15 +48,19 @@ class ConversationListDataProvider: NSObject {
 }
 
 extension ConversationListDataProvider: NSFetchedResultsControllerDelegate {
-    
+
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        delegate?.beginUpdates()
+        DispatchQueue.main.async {
+            self.delegate?.beginUpdates()
+        }
     }
-    
+
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        delegate?.endUpdates()
+        DispatchQueue.main.async {
+            self.delegate?.endUpdates()
+        }
     }
-    
+
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
                                                 didChange anObject: Any,
                                                 at indexPath: IndexPath?,
@@ -69,13 +73,15 @@ extension ConversationListDataProvider: NSFetchedResultsControllerDelegate {
                 }
             case .insert:
                 if let newIndexPath = newIndexPath {
-                    delegate?.insertFriends(at: [newIndexPath])
+                    DispatchQueue.main.async {
+                        self.delegate?.insertFriends(at: [newIndexPath])
+                    }
                 }
             case .move:
                 if let indexPath = indexPath {
                     delegate?.deleteFriends(at: [indexPath])
                 }
-                
+
                 if let newIndexPath = newIndexPath {
                     delegate?.insertFriends(at: [newIndexPath])
                 }
@@ -86,5 +92,4 @@ extension ConversationListDataProvider: NSFetchedResultsControllerDelegate {
         }
     }
 }
-
 

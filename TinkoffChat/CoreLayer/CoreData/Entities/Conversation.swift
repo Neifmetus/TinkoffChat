@@ -22,4 +22,11 @@ extension Conversation {
         return fetchRequest.copy() as? NSFetchRequest<Conversation>
     }
     
+    static func insertConversation(in context: NSManagedObjectContext, userId: String) -> Conversation? {
+        let conversation = NSEntityDescription.insertNewObject(forEntityName: "Conversation", into: context) as? Conversation
+        conversation?.conversationId = userId
+        conversation?.isOnline = true
+        
+        return conversation
+    }
 }

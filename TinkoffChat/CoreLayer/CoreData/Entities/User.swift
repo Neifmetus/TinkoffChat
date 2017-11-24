@@ -60,9 +60,12 @@ extension User {
                 foundedUser.conversations?.isOnline = isOnline
                 user = foundedUser
             } else {
-                user = insertUser(in: context, name: name, userId: id)
-                user?.conversations?.isOnline = isOnline
-                user?.conversations?.conversationId = id
+                context.perform {
+                    user = insertUser(in: context, name: name, userId: id)
+                    user?.conversations = Conversation.insertConversation(in: context, userId: id)
+                    user?.conversations?.isOnline = isOnline
+                    user?.conversations?.conversationId = id
+                }
             }
         } catch {
             print("Failed to fetch User: \(error)")
