@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -58,6 +58,8 @@
                                     <constraint firstItem="EAx-lp-w3a" firstAttribute="top" secondItem="bWB-vH-V8b" secondAttribute="top" id="gih-3o-oJf"/>
                                     <constraint firstAttribute="bottom" secondItem="EAx-lp-w3a" secondAttribute="bottom" id="hgU-Wa-raA"/>
                                 </constraints>
+                                <directionalEdgeInsets key="directionalLayoutMargins" top="8" leading="8" bottom="8" trailing="8"/>
+                                <size key="customSize" width="50" height="50"/>
                                 <connections>
                                     <outlet property="imageView" destination="EAx-lp-w3a" id="g1H-6U-fbm"/>
                                 </connections>
@@ -69,7 +71,11 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Select Image" id="PSM-u0-sz6">
-                        <barButtonItem key="backBarButtonItem" title="Cancel" id="by7-i1-h3c"/>
+                        <barButtonItem key="rightBarButtonItem" title="Cancel" id="by7-i1-h3c">
+                            <connections>
+                                <action selector="cancelSelectAction:" destination="IYO-oy-1IW" id="8v4-zX-W31"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NRO-4U-pe0" userLabel="First Responder" sceneMemberID="firstResponder"/>

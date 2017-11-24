@@ -14,7 +14,7 @@ struct ProfileInfo {
     var image: UIImage = UIImage(named: "placeholder-user.jpg") ?? UIImage()
 }
 
-class ProfileViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class ProfileViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, PicturesViewControllerDelegate {
     
     @IBOutlet weak var uploadPhotoView: UIView?
     @IBOutlet weak var photoImageView: UIImageView?
@@ -68,6 +68,10 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         photoImageView?.image = info[UIImagePickerControllerOriginalImage] as? UIImage
         
         picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func updateProfileImage(image: UIImage) {
+        photoImageView?.image = image
     }
     
     override func viewDidLoad() {
