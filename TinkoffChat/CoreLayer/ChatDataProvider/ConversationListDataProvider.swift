@@ -37,8 +37,11 @@ class ConversationListDataProvider: NSObject {
                                                                       sectionNameKeyPath: "conversations.isOnline",
                                                                       cacheName: nil)
         super.init()
-        fetchedResultsController.delegate = self
-        
+        fetchedResultsController.delegate = self as? NSFetchedResultsControllerDelegate
+        self.performFetch()
+    }
+    
+    func performFetch() {
         do {
             try fetchedResultsController.performFetch()
         } catch {
@@ -47,49 +50,49 @@ class ConversationListDataProvider: NSObject {
     }
 }
 
-extension ConversationListDataProvider: NSFetchedResultsControllerDelegate {
-
-    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        DispatchQueue.main.async {
-            self.delegate?.beginUpdates()
-        }
-    }
-
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        DispatchQueue.main.async {
-            self.delegate?.endUpdates()
-        }
-    }
-
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
-                                                didChange anObject: Any,
-                                                at indexPath: IndexPath?,
-                                                for type: NSFetchedResultsChangeType,
-                                                newIndexPath: IndexPath?) {
-        switch type {
-            case .delete:
-                if let indexPath = indexPath {
-                    delegate?.deleteFriends(at: [indexPath])
-                }
-            case .insert:
-                if let newIndexPath = newIndexPath {
-                    DispatchQueue.main.async {
-                        self.delegate?.insertFriends(at: [newIndexPath])
-                    }
-                }
-            case .move:
-                if let indexPath = indexPath {
-                    delegate?.deleteFriends(at: [indexPath])
-                }
-
-                if let newIndexPath = newIndexPath {
-                    delegate?.insertFriends(at: [newIndexPath])
-                }
-            case .update:
-                if let indexPath = indexPath {
-                    delegate?.updateFriends(at: [indexPath])
-                }
-        }
-    }
-}
+//extension ConversationListDataProvider: NSFetchedResultsControllerDelegate {
+//
+//    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+//        DispatchQueue.main.async {
+//            self.delegate?.beginUpdates()
+//        }
+//    }
+//
+//    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+//        DispatchQueue.main.async {
+//            self.delegate?.endUpdates()
+//        }
+//    }
+//
+//    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
+//                                                didChange anObject: Any,
+//                                                at indexPath: IndexPath?,
+//                                                for type: NSFetchedResultsChangeType,
+//                                                newIndexPath: IndexPath?) {
+//        switch type {
+//            case .delete:
+//                if let indexPath = indexPath {
+//                    delegate?.deleteFriends(at: [indexPath])
+//                }
+//            case .insert:
+//                if let newIndexPath = newIndexPath {
+//                    DispatchQueue.main.async {
+//                        self.delegate?.insertFriends(at: [newIndexPath])
+//                    }
+//                }
+//            case .move:
+//                if let indexPath = indexPath {
+//                    delegate?.deleteFriends(at: [indexPath])
+//                }
+//
+//                if let newIndexPath = newIndexPath {
+//                    delegate?.insertFriends(at: [newIndexPath])
+//                }
+//            case .update:
+//                if let indexPath = indexPath {
+//                    delegate?.updateFriends(at: [indexPath])
+//                }
+//        }
+//    }
+//}
 

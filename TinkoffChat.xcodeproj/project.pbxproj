@@ -33,6 +33,7 @@
 		0CB8A7CD1F922C83005C5242 /* OperationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB8A7CC1F922C83005C5242 /* OperationManager.swift */; };
 		0CCFD4DD1FAB27D900D594B5 /* TinkoffChatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCFD4DC1FAB27D900D594B5 /* TinkoffChatUITests.swift */; };
 		0CD3A6041FC379080095F980 /* UIImage+Crop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD3A6031FC379080095F980 /* UIImage+Crop.swift */; };
+		0CD3A6061FCAD0420095F980 /* ProfileInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CD3A6051FCAD0420095F980 /* ProfileInfo.storyboard */; };
 		0CE498781FC082C500021B5D /* IRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE498771FC082C500021B5D /* IRequest.swift */; };
 		0CE4987A1FC0833600021B5D /* IRequestSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE498791FC0833600021B5D /* IRequestSender.swift */; };
 		0CE4987C1FC0843400021B5D /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE4987B1FC0843400021B5D /* Parser.swift */; };
@@ -96,6 +97,7 @@
 		0CCFD4DC1FAB27D900D594B5 /* TinkoffChatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TinkoffChatUITests.swift; sourceTree = "<group>"; };
 		0CCFD4DE1FAB27D900D594B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0CD3A6031FC379080095F980 /* UIImage+Crop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Crop.swift"; sourceTree = "<group>"; };
+		0CD3A6051FCAD0420095F980 /* ProfileInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileInfo.storyboard; sourceTree = "<group>"; };
 		0CE498771FC082C500021B5D /* IRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRequest.swift; sourceTree = "<group>"; };
 		0CE498791FC0833600021B5D /* IRequestSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IRequestSender.swift; sourceTree = "<group>"; };
 		0CE4987B1FC0843400021B5D /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 			children = (
 				0C20E9491F72C96500AE940E /* ProfileViewController.swift */,
 				73468A221FA877D7000446E2 /* ProfileModel.swift */,
+				0CD3A6051FCAD0420095F980 /* ProfileInfo.storyboard */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -448,6 +451,7 @@
 			files = (
 				0C9FE4C41F76D45D0096A950 /* .gitignore in Resources */,
 				0C20E9521F72C96500AE940E /* LaunchScreen.storyboard in Resources */,
+				0CD3A6061FCAD0420095F980 /* ProfileInfo.storyboard in Resources */,
 				0CE498831FC1991200021B5D /* Pictures.storyboard in Resources */,
 				0C20E94F1F72C96500AE940E /* Assets.xcassets in Resources */,
 				73468A1D1FA76F50000446E2 /* Conversation.storyboard in Resources */,

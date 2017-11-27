@@ -25,12 +25,16 @@ class ConversationListViewController: UITableViewController, IConversationListMo
         
         dataProvider = ConversationListDataProvider(delegate: self)
         
-//        onlineFriends = getFriendsWith(online: true)
-//        historyFriends = getFriendsWith(online: false)
-        
         model?.findOnlineFriends()
         
         self.tableView.rowHeight = UITableViewAutomaticDimension
+    }
+    
+    @IBAction func openProfile(_ sender: Any) {
+        if let viewController = UIStoryboard(name: "ProfileInfo", bundle: nil).instantiateViewController(withIdentifier: "ProfileViewController") as? ProfileViewController {
+            let navController = UINavigationController(rootViewController: viewController)
+            self.present(navController, animated: true, completion: nil)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -41,7 +45,7 @@ class ConversationListViewController: UITableViewController, IConversationListMo
     
     open func reloadFriends(_ friends: [Friend]) {
         do {
-            try dataProvider?.fetchedResultsController.performFetch()
+            //try dataProvider?.performFetch()
         } catch {
             print("Unable to perform fetch")
         }

@@ -60,12 +60,10 @@ extension User {
                 foundedUser.conversations?.isOnline = isOnline
                 user = foundedUser
             } else {
-                context.perform {
                     user = insertUser(in: context, name: name, userId: id)
                     user?.conversations = Conversation.insertConversation(in: context, userId: id)
                     user?.conversations?.isOnline = isOnline
                     user?.conversations?.conversationId = id
-                }
             }
         } catch {
             print("Failed to fetch User: \(error)")
@@ -82,7 +80,9 @@ extension User {
             return
         }
         
-        _ = findOrInsertUser(with: id, name: name, isOnline: isOnline, in: context)
+        context.perform {
+            _ = findOrInsertUser(with: id, name: name, isOnline: isOnline, in: context)
+        }
     }
     
     static func fetchRequestUser(with: String, model: NSManagedObjectModel) -> NSFetchRequest<User>? {

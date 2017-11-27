@@ -26,14 +26,6 @@ class ConversationListModel: IConversationServiceDelegate {
     }
     
     func updateConversationListWith(userID: String, userName: String?, online status: Bool) {
-//        if let friend = foundedFriends.first(where: {$0.userID == userID}) {
-//            friend.online = status
-//        } else {
-//            let newFriend = Friend(name: userName, userID: userID, online: true, hasUnreadMessages: false)
-//            foundedFriends.append(newFriend)
-//        }
-//        delegate?.reloadFriends(foundedFriends)
-        
         delegate?.reloadFriends(foundedFriends)
     }
 }
