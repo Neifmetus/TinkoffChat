@@ -23,7 +23,7 @@ class ConversationListViewController: UITableViewController, IConversationListMo
         self.model = ConversationListModel()
         model?.delegate = self
         
-        dataProvider = ConversationListDataProvider(delegate: self)
+        dataProvider = ConversationListDataProvider(delegate: self, tableView: self.tableView)
         
         model?.findOnlineFriends()
         
@@ -44,11 +44,8 @@ class ConversationListViewController: UITableViewController, IConversationListMo
     }
     
     open func reloadFriends(_ friends: [Friend]) {
-        do {
-            //try dataProvider?.performFetch()
-        } catch {
-            print("Unable to perform fetch")
-        }
+        //dataProvider?.performFetch()
+        self.tableView.reloadData()
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {

@@ -10,7 +10,7 @@
 		0C094F0F1F9B94A4008B6413 /* MPCHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C094F0E1F9B94A3008B6413 /* MPCHandler.swift */; };
 		0C20E9481F72C96500AE940E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C20E9471F72C96500AE940E /* AppDelegate.swift */; };
 		0C20E94A1F72C96500AE940E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C20E9491F72C96500AE940E /* ProfileViewController.swift */; };
-		0C20E94D1F72C96500AE940E /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C20E94B1F72C96500AE940E /* Profile.storyboard */; };
+		0C20E94D1F72C96500AE940E /* ConversationList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C20E94B1F72C96500AE940E /* ConversationList.storyboard */; };
 		0C20E94F1F72C96500AE940E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C20E94E1F72C96500AE940E /* Assets.xcassets */; };
 		0C20E9521F72C96500AE940E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C20E9501F72C96500AE940E /* LaunchScreen.storyboard */; };
 		0C20E95A1F72D1B400AE940E /* Catalog.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C20E9591F72D1B400AE940E /* Catalog.xcassets */; };
@@ -71,7 +71,7 @@
 		0C20E9441F72C96500AE940E /* TinkoffChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinkoffChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C20E9471F72C96500AE940E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0C20E9491F72C96500AE940E /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		0C20E94C1F72C96500AE940E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Profile.storyboard; sourceTree = "<group>"; };
+		0C20E94C1F72C96500AE940E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ConversationList.storyboard; sourceTree = "<group>"; };
 		0C20E94E1F72C96500AE940E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0C20E9511F72C96500AE940E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0C20E9531F72C96500AE940E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -181,7 +181,6 @@
 			children = (
 				0C8712521F810CBF00565238 /* CameraHandler.swift */,
 				0C847B6A1FA4E5A6000283AA /* Modules */,
-				0C20E94B1F72C96500AE940E /* Profile.storyboard */,
 			);
 			path = PresentationLayer;
 			sourceTree = "<group>";
@@ -236,6 +235,7 @@
 				0C8C99021F8806C500BDE770 /* ConversationListViewController.swift */,
 				0C847B6E1FA51B2E000283AA /* ConversationListModel.swift */,
 				0C847B701FA51B5E000283AA /* ConversationListAssembly.swift */,
+				0C20E94B1F72C96500AE940E /* ConversationList.storyboard */,
 			);
 			path = ConversationList;
 			sourceTree = "<group>";
@@ -455,7 +455,7 @@
 				0CE498831FC1991200021B5D /* Pictures.storyboard in Resources */,
 				0C20E94F1F72C96500AE940E /* Assets.xcassets in Resources */,
 				73468A1D1FA76F50000446E2 /* Conversation.storyboard in Resources */,
-				0C20E94D1F72C96500AE940E /* Profile.storyboard in Resources */,
+				0C20E94D1F72C96500AE940E /* ConversationList.storyboard in Resources */,
 				0C20E95A1F72D1B400AE940E /* Catalog.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -534,12 +534,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		0C20E94B1F72C96500AE940E /* Profile.storyboard */ = {
+		0C20E94B1F72C96500AE940E /* ConversationList.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				0C20E94C1F72C96500AE940E /* Base */,
 			);
-			name = Profile.storyboard;
+			name = ConversationList.storyboard;
 			sourceTree = "<group>";
 		};
 		0C20E9501F72C96500AE940E /* LaunchScreen.storyboard */ = {

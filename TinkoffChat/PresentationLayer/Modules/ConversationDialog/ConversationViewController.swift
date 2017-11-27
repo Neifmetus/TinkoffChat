@@ -39,9 +39,9 @@ class ConversationViewController: UIViewController, UITableViewDataSource, UITab
             model?.delegate = self
         }
         
-        if let friend = friend {
-            sendMessageButton.isEnabled = friend.online
-        }
+//        if let friend = friend {
+//            sendMessageButton.isEnabled = friend.online
+//        }
         
         self.dataProvider = ConversationDataProvider(delegate: self, conversationId: conversationId)
         
@@ -51,6 +51,7 @@ class ConversationViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     @IBAction func sendMessageToFriend(_ sender: Any) {
+        self.moveUserTo(online: false)
         dialogTextField.endEditing(true)
         if let text = dialogTextField.text {
             if text != "" {
@@ -66,6 +67,32 @@ class ConversationViewController: UIViewController, UITableViewDataSource, UITab
     
     func receive(text: String, messageID: String?) {
         Message.saveMessage(with: conversationId, text: text, isIncoming: true)
+    }
+    
+    func moveUserTo(online status: Bool) {
+        let onlineColor = UIColor.blue
+        let offlineColor = UIColor.lightGray
+        
+        let originalButtonTransform = sendMessageButton.transform
+        let scaledButtonTransform = originalButtonTransform.scaledBy(x: 1.15, y: 1.15)
+        UIView.animate(withDuration: 0.5, animations: {
+            self.sendMessageButton.transform = scaledButtonTransform
+            self.sendMessageButton.setTitleColor(status ? onlineColor : offlineColor, for: .normal)
+
+        }, completion: { (completed) in
+            self.sendMessageButton.transform = originalButtonTransform.inverted()
+            self.sendMessageButton.isEnabled = status
+        })
+        
+        let originalTitleTransform = self.navigationItem.titleView?.transform
+        let scaledTitleTransform = originalTitleTransform?.scaledBy(x: 1.10, y: 1.10)
+        UIView.animate(withDuration: 1.0, animations: {
+            let textAttributes = [NSAttributedStringKey.foregroundColor:UIColor.green]
+            self.navigationController?.navigationItem.titleView?.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+            self.navigationController?.navigationBar.titleTextAttributes = textAttributes
+        }, completion: { (completed) in
+            self.navigationItem.titleView?.transform = (originalTitleTransform?.inverted())!
+        })
     }
     
     @objc private func handleKeyboardNotification(notification: NSNotification) {

@@ -27,6 +27,8 @@ class ConversationDataProvider: NSObject {
         let context = CoreDataManager.coreDataStack?.saveContext
         let model = context?.persistentStoreCoordinator?.managedObjectModel
         let fetchRequest = Message.fetchRequestMessages(with: conversationId, model: model!)
+        let dateSortDescriptor = NSSortDescriptor(key: "date", ascending: true)
+        fetchRequest?.sortDescriptors = [dateSortDescriptor]
         
         fetchedResultsController = NSFetchedResultsController<Message>(fetchRequest: fetchRequest!,
                                                                     managedObjectContext: context!,
