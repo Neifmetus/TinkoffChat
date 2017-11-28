@@ -45,6 +45,7 @@
 		73468A211FA771B4000446E2 /* ConversationAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73468A201FA771B4000446E2 /* ConversationAssembly.swift */; };
 		73468A231FA877D7000446E2 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73468A221FA877D7000446E2 /* ProfileModel.swift */; };
 		73468A251FA878E6000446E2 /* ProfileDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73468A241FA878E6000446E2 /* ProfileDataService.swift */; };
+		7362CD401FCD4FD50050E786 /* EmitterAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7362CD3F1FCD4FD50050E786 /* EmitterAnimator.swift */; };
 		7366D07D1F9DCDF4000FACAE /* CommunicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7366D07C1F9DCDF4000FACAE /* CommunicationManager.swift */; };
 		737601AA1FB9E17700AD584D /* ConversationListDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737601A91FB9E17700AD584D /* ConversationListDataProvider.swift */; };
 		737601AD1FB9EAB900AD584D /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737601AC1FB9EAB900AD584D /* Message.swift */; };
@@ -109,6 +110,7 @@
 		73468A201FA771B4000446E2 /* ConversationAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationAssembly.swift; sourceTree = "<group>"; };
 		73468A221FA877D7000446E2 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 		73468A241FA878E6000446E2 /* ProfileDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDataService.swift; sourceTree = "<group>"; };
+		7362CD3F1FCD4FD50050E786 /* EmitterAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmitterAnimator.swift; sourceTree = "<group>"; };
 		7366D07C1F9DCDF4000FACAE /* CommunicationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationManager.swift; sourceTree = "<group>"; };
 		737601A91FB9E17700AD584D /* ConversationListDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationListDataProvider.swift; sourceTree = "<group>"; };
 		737601AC1FB9EAB900AD584D /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				0C8712521F810CBF00565238 /* CameraHandler.swift */,
+				7362CD3F1FCD4FD50050E786 /* EmitterAnimator.swift */,
 				0C847B6A1FA4E5A6000283AA /* Modules */,
 			);
 			path = PresentationLayer;
@@ -507,6 +510,7 @@
 				0C20E94A1F72C96500AE940E /* ProfileViewController.swift in Sources */,
 				0C847B731FA52BC6000283AA /* ConversationListService.swift in Sources */,
 				0C847B711FA51B5E000283AA /* ConversationListAssembly.swift in Sources */,
+				7362CD401FCD4FD50050E786 /* EmitterAnimator.swift in Sources */,
 				0CD3A6041FC379080095F980 /* UIImage+Crop.swift in Sources */,
 				73F0EFFF1FC319980078FCFC /* ImageParser.swift in Sources */,
 				0C8E677D1FBA42B50067C7E1 /* ConversationDataProvider.swift in Sources */,

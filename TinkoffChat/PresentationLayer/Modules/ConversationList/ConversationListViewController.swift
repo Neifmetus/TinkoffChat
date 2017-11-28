@@ -16,6 +16,7 @@ class ConversationListViewController: UITableViewController, IConversationListMo
     private var onlineFriends: [Friend] = []
     private var historyFriends: [Friend] = []
     var delegate: CommunicationDelegate?
+    var emitter: EmitterAnimator?
     
     var dataProvider: ConversationListDataProvider?
 
@@ -27,6 +28,7 @@ class ConversationListViewController: UITableViewController, IConversationListMo
         
         model?.findOnlineFriends()
         
+        self.emitter = EmitterAnimator(view: self.view)
         self.tableView.rowHeight = UITableViewAutomaticDimension
     }
     

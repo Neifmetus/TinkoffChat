@@ -28,6 +28,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     let dataManager: DataManager = GCDManager()
     var model: ProfileModel?
     var profileInfo = ProfileInfo()
+    var emitterAnimator: EmitterAnimator?
     
     @IBAction func goBack(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
@@ -76,6 +77,8 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.emitterAnimator = EmitterAnimator(view: self.view)
         
         guard let uploadPhotoView = uploadPhotoView else {
             print("Unable to use uploadPhotoView")

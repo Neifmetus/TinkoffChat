@@ -19,9 +19,11 @@ class PicturesViewController: UICollectionViewController {
     var imageUrls: [String] = []
     var model: PicturesViewModel?
     var delegate: PicturesViewControllerDelegate?
+    var emitterAnimator: EmitterAnimator?
     
     override func viewDidLoad() {
         self.collectionView?.backgroundColor = UIColor.darkGray
+        self.emitterAnimator = EmitterAnimator(view: self.view)
         
         model = PicturesViewModel()
         
