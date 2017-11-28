@@ -22,7 +22,9 @@ class ConversationViewController: UIViewController, UITableViewDataSource, UITab
     
     var friend: Friend? {
         didSet {
-            navigationItem.title = friend?.name
+            let label = UILabel()
+            label.text = friend?.name
+            self.navigationItem.titleView = label
         }
     }
     
@@ -39,15 +41,15 @@ class ConversationViewController: UIViewController, UITableViewDataSource, UITab
             model?.delegate = self
         }
         
-//        if let friend = friend {
-//            sendMessageButton.isEnabled = friend.online
-//        }
-        
         self.dataProvider = ConversationDataProvider(delegate: self, conversationId: conversationId)
         
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: .UIKeyboardWillShow, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: .UIKeyboardWillHide, object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        //
     }
     
     @IBAction func sendMessageToFriend(_ sender: Any) {
@@ -84,14 +86,12 @@ class ConversationViewController: UIViewController, UITableViewDataSource, UITab
             self.sendMessageButton.isEnabled = status
         })
         
-        let originalTitleTransform = self.navigationItem.titleView?.transform
-        let scaledTitleTransform = originalTitleTransform?.scaledBy(x: 1.10, y: 1.10)
+        let originalTransform = (self.navigationItem.titleView as? UILabel)?.transform
+        let scaledTransform = originalTransform?.scaledBy(x: 1.15, y: 1.15)
         UIView.animate(withDuration: 1.0, animations: {
-            let textAttributes = [NSAttributedStringKey.foregroundColor:UIColor.green]
-            self.navigationController?.navigationItem.titleView?.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
-            self.navigationController?.navigationBar.titleTextAttributes = textAttributes
+            self.navigationItem.titleView?.transform = scaledTransform!
         }, completion: { (completed) in
-            self.navigationItem.titleView?.transform = (originalTitleTransform?.inverted())!
+            //self.navigationItem.titleView?.transform = (originalTitleTransform?.inverted())!
         })
     }
     

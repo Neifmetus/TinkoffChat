@@ -131,12 +131,6 @@ class ConversationListViewController: UITableViewController, IConversationListMo
             }
         }
         
-//        friends.sort { (item1, item2) -> Bool in
-//            let t1 = item1.messages.last?.date ?? Date.distantPast
-//            let t2 = item2.messages.last?.date ?? Date.distantPast
-//            return t1 > t2
-//        }
-        
         return friends
     }
 }
