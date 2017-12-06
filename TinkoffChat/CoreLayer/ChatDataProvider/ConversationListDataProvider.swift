@@ -22,9 +22,12 @@ protocol IConversationListDataProviderDelegate {
 class ConversationListDataProvider: NSObject {
     var delegate: IConversationListDataProviderDelegate?
     var fetchedResultsController: NSFetchedResultsController<User>
+    var tableView: UITableView
     
-    init(delegate: IConversationListDataProviderDelegate) {
+    init(delegate: IConversationListDataProviderDelegate, tableView: UITableView) {
         self.delegate = delegate
+        self.tableView = tableView
+        
         let context = CoreDataManager.coreDataStack?.saveContext
         let model = context?.persistentStoreCoordinator?.managedObjectModel
         let fetchRequest = User.fetchRequestFriends(model: model!)
@@ -37,7 +40,7 @@ class ConversationListDataProvider: NSObject {
                                                                       sectionNameKeyPath: "conversations.isOnline",
                                                                       cacheName: nil)
         super.init()
-        fetchedResultsController.delegate = self as? NSFetchedResultsControllerDelegate
+        fetchedResultsController.delegate = self
         self.performFetch()
     }
     
@@ -50,49 +53,53 @@ class ConversationListDataProvider: NSObject {
     }
 }
 
-//extension ConversationListDataProvider: NSFetchedResultsControllerDelegate {
-//
-//    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-//        DispatchQueue.main.async {
-//            self.delegate?.beginUpdates()
-//        }
-//    }
-//
-//    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-//        DispatchQueue.main.async {
-//            self.delegate?.endUpdates()
-//        }
-//    }
-//
-//    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
-//                                                didChange anObject: Any,
-//                                                at indexPath: IndexPath?,
-//                                                for type: NSFetchedResultsChangeType,
-//                                                newIndexPath: IndexPath?) {
-//        switch type {
-//            case .delete:
-//                if let indexPath = indexPath {
-//                    delegate?.deleteFriends(at: [indexPath])
-//                }
-//            case .insert:
-//                if let newIndexPath = newIndexPath {
+extension ConversationListDataProvider: NSFetchedResultsControllerDelegate {
+
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        //DispatchQueue.main.async {
+            self.tableView.beginUpdates()
+        //}
+    }
+
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        //DispatchQueue.main.async {
+            self.tableView.endUpdates()
+        //}
+    }
+
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
+                                                didChange anObject: Any,
+                                                at indexPath: IndexPath?,
+                                                for type: NSFetchedResultsChangeType,
+                                                newIndexPath: IndexPath?) {
+        switch type {
+            case .delete:
+                if let indexPath = indexPath {
+                    //delegate?.deleteFriends(at: [indexPath])
+                    self.tableView.deleteRows(at: [indexPath], with: .automatic)
+                }
+            case .insert:
+                if let newIndexPath = newIndexPath {
 //                    DispatchQueue.main.async {
 //                        self.delegate?.insertFriends(at: [newIndexPath])
 //                    }
-//                }
-//            case .move:
-//                if let indexPath = indexPath {
-//                    delegate?.deleteFriends(at: [indexPath])
-//                }
-//
-//                if let newIndexPath = newIndexPath {
-//                    delegate?.insertFriends(at: [newIndexPath])
-//                }
-//            case .update:
-//                if let indexPath = indexPath {
-//                    delegate?.updateFriends(at: [indexPath])
-//                }
-//        }
-//    }
-//}
+                    self.tableView.insertRows(at: [newIndexPath], with: .automatic)
+                }
+            case .move:
+                if let indexPath = indexPath {
+                    //delegate?.deleteFriends(at: [indexPath])
+                    self.tableView.deleteRows(at: [indexPath], with: .automatic)
+                }
+
+                if let newIndexPath = newIndexPath {
+                    self.tableView.insertRows(at: [newIndexPath], with: .automatic)
+                }
+            case .update:
+                if let indexPath = indexPath {
+                    //delegate?.updateFriends(at: [indexPath])
+                    self.tableView.reloadRows(at: [indexPath], with: .automatic)
+                }
+        }
+    }
+}
 

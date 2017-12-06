@@ -22,7 +22,11 @@ class ConversationViewController: UIViewController, UITableViewDataSource, UITab
     
     var friend: Friend? {
         didSet {
-            navigationItem.title = friend?.name
+            let label = UILabel()
+            label.text = friend?.name
+            label.textAlignment = .center
+            label.adjustsFontSizeToFitWidth = true
+            self.navigationItem.titleView = label
         }
     }
     
@@ -31,22 +35,24 @@ class ConversationViewController: UIViewController, UITableViewDataSource, UITab
     var conversationId: String = ""
     var dataProvider: ConversationDataProvider?
     
+    var emitterAnimator: EmitterAnimator?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let online = friend?.online {
+            self.moveUserTo(online: online)
+        }
         
         if let service = self.service {
             model = ConversationModel(service: service)
             model?.delegate = self
         }
         
-        if let friend = friend {
-            sendMessageButton.isEnabled = friend.online
-        }
-        
+        self.emitterAnimator = EmitterAnimator(view: self.view)
         self.dataProvider = ConversationDataProvider(delegate: self, conversationId: conversationId)
         
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: .UIKeyboardWillShow, object: nil)
-        
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: .UIKeyboardWillHide, object: nil)
     }
     
@@ -66,6 +72,32 @@ class ConversationViewController: UIViewController, UITableViewDataSource, UITab
     
     func receive(text: String, messageID: String?) {
         Message.saveMessage(with: conversationId, text: text, isIncoming: true)
+    }
+    
+    func moveUserTo(online status: Bool) {
+        let onlineColor = UIColor.blue
+        let offlineColor = UIColor.lightGray
+        
+        let originalButtonTransform = sendMessageButton.transform
+        let scaledButtonTransform = originalButtonTransform.scaledBy(x: 1.15, y: 1.15)
+        UIView.animate(withDuration: 0.5, animations: {
+            self.sendMessageButton.transform = scaledButtonTransform
+            self.sendMessageButton.setTitleColor(status ? onlineColor : offlineColor, for: .normal)
+
+        }, completion: { (completed) in
+            self.sendMessageButton.transform = originalButtonTransform.inverted()
+            self.sendMessageButton.isEnabled = status
+        })
+        
+        let titleLabel = self.navigationItem.titleView as? UILabel
+        let originalTransform = titleLabel?.transform
+        let scaledTransform = originalTransform?.scaledBy(x: 1.10, y: 1.10)
+        UIView.animate(withDuration: 1.0, animations: {
+            titleLabel?.transform = scaledTransform!
+            titleLabel?.textColor = status ? UIColor.green : UIColor.black
+        }, completion: { (completed) in
+            self.navigationItem.titleView?.transform = (originalTransform?.inverted())!
+        })
     }
     
     @objc private func handleKeyboardNotification(notification: NSNotification) {

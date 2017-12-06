@@ -16,6 +16,7 @@ class ConversationListViewController: UITableViewController, IConversationListMo
     private var onlineFriends: [Friend] = []
     private var historyFriends: [Friend] = []
     var delegate: CommunicationDelegate?
+    var emitter: EmitterAnimator?
     
     var dataProvider: ConversationListDataProvider?
 
@@ -23,10 +24,11 @@ class ConversationListViewController: UITableViewController, IConversationListMo
         self.model = ConversationListModel()
         model?.delegate = self
         
-        dataProvider = ConversationListDataProvider(delegate: self)
+        dataProvider = ConversationListDataProvider(delegate: self, tableView: self.tableView)
         
         model?.findOnlineFriends()
         
+        self.emitter = EmitterAnimator(view: self.view)
         self.tableView.rowHeight = UITableViewAutomaticDimension
     }
     
@@ -44,11 +46,8 @@ class ConversationListViewController: UITableViewController, IConversationListMo
     }
     
     open func reloadFriends(_ friends: [Friend]) {
-        do {
-            //try dataProvider?.performFetch()
-        } catch {
-            print("Unable to perform fetch")
-        }
+        //dataProvider?.performFetch()
+        self.tableView.reloadData()
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -133,12 +132,6 @@ class ConversationListViewController: UITableViewController, IConversationListMo
                 friends.append(friend)
             }
         }
-        
-//        friends.sort { (item1, item2) -> Bool in
-//            let t1 = item1.messages.last?.date ?? Date.distantPast
-//            let t2 = item2.messages.last?.date ?? Date.distantPast
-//            return t1 > t2
-//        }
         
         return friends
     }

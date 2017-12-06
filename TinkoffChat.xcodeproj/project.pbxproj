@@ -10,7 +10,7 @@
 		0C094F0F1F9B94A4008B6413 /* MPCHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C094F0E1F9B94A3008B6413 /* MPCHandler.swift */; };
 		0C20E9481F72C96500AE940E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C20E9471F72C96500AE940E /* AppDelegate.swift */; };
 		0C20E94A1F72C96500AE940E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C20E9491F72C96500AE940E /* ProfileViewController.swift */; };
-		0C20E94D1F72C96500AE940E /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C20E94B1F72C96500AE940E /* Profile.storyboard */; };
+		0C20E94D1F72C96500AE940E /* ConversationList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C20E94B1F72C96500AE940E /* ConversationList.storyboard */; };
 		0C20E94F1F72C96500AE940E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C20E94E1F72C96500AE940E /* Assets.xcassets */; };
 		0C20E9521F72C96500AE940E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C20E9501F72C96500AE940E /* LaunchScreen.storyboard */; };
 		0C20E95A1F72D1B400AE940E /* Catalog.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C20E9591F72D1B400AE940E /* Catalog.xcassets */; };
@@ -45,6 +45,7 @@
 		73468A211FA771B4000446E2 /* ConversationAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73468A201FA771B4000446E2 /* ConversationAssembly.swift */; };
 		73468A231FA877D7000446E2 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73468A221FA877D7000446E2 /* ProfileModel.swift */; };
 		73468A251FA878E6000446E2 /* ProfileDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73468A241FA878E6000446E2 /* ProfileDataService.swift */; };
+		7362CD401FCD4FD50050E786 /* EmitterAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7362CD3F1FCD4FD50050E786 /* EmitterAnimator.swift */; };
 		7366D07D1F9DCDF4000FACAE /* CommunicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7366D07C1F9DCDF4000FACAE /* CommunicationManager.swift */; };
 		737601AA1FB9E17700AD584D /* ConversationListDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737601A91FB9E17700AD584D /* ConversationListDataProvider.swift */; };
 		737601AD1FB9EAB900AD584D /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737601AC1FB9EAB900AD584D /* Message.swift */; };
@@ -71,7 +72,7 @@
 		0C20E9441F72C96500AE940E /* TinkoffChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinkoffChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C20E9471F72C96500AE940E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0C20E9491F72C96500AE940E /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		0C20E94C1F72C96500AE940E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Profile.storyboard; sourceTree = "<group>"; };
+		0C20E94C1F72C96500AE940E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ConversationList.storyboard; sourceTree = "<group>"; };
 		0C20E94E1F72C96500AE940E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0C20E9511F72C96500AE940E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0C20E9531F72C96500AE940E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -109,6 +110,7 @@
 		73468A201FA771B4000446E2 /* ConversationAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationAssembly.swift; sourceTree = "<group>"; };
 		73468A221FA877D7000446E2 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 		73468A241FA878E6000446E2 /* ProfileDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDataService.swift; sourceTree = "<group>"; };
+		7362CD3F1FCD4FD50050E786 /* EmitterAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmitterAnimator.swift; sourceTree = "<group>"; };
 		7366D07C1F9DCDF4000FACAE /* CommunicationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationManager.swift; sourceTree = "<group>"; };
 		737601A91FB9E17700AD584D /* ConversationListDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationListDataProvider.swift; sourceTree = "<group>"; };
 		737601AC1FB9EAB900AD584D /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
@@ -180,8 +182,8 @@
 			isa = PBXGroup;
 			children = (
 				0C8712521F810CBF00565238 /* CameraHandler.swift */,
+				7362CD3F1FCD4FD50050E786 /* EmitterAnimator.swift */,
 				0C847B6A1FA4E5A6000283AA /* Modules */,
-				0C20E94B1F72C96500AE940E /* Profile.storyboard */,
 			);
 			path = PresentationLayer;
 			sourceTree = "<group>";
@@ -236,6 +238,7 @@
 				0C8C99021F8806C500BDE770 /* ConversationListViewController.swift */,
 				0C847B6E1FA51B2E000283AA /* ConversationListModel.swift */,
 				0C847B701FA51B5E000283AA /* ConversationListAssembly.swift */,
+				0C20E94B1F72C96500AE940E /* ConversationList.storyboard */,
 			);
 			path = ConversationList;
 			sourceTree = "<group>";
@@ -455,7 +458,7 @@
 				0CE498831FC1991200021B5D /* Pictures.storyboard in Resources */,
 				0C20E94F1F72C96500AE940E /* Assets.xcassets in Resources */,
 				73468A1D1FA76F50000446E2 /* Conversation.storyboard in Resources */,
-				0C20E94D1F72C96500AE940E /* Profile.storyboard in Resources */,
+				0C20E94D1F72C96500AE940E /* ConversationList.storyboard in Resources */,
 				0C20E95A1F72D1B400AE940E /* Catalog.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -507,6 +510,7 @@
 				0C20E94A1F72C96500AE940E /* ProfileViewController.swift in Sources */,
 				0C847B731FA52BC6000283AA /* ConversationListService.swift in Sources */,
 				0C847B711FA51B5E000283AA /* ConversationListAssembly.swift in Sources */,
+				7362CD401FCD4FD50050E786 /* EmitterAnimator.swift in Sources */,
 				0CD3A6041FC379080095F980 /* UIImage+Crop.swift in Sources */,
 				73F0EFFF1FC319980078FCFC /* ImageParser.swift in Sources */,
 				0C8E677D1FBA42B50067C7E1 /* ConversationDataProvider.swift in Sources */,
@@ -534,12 +538,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		0C20E94B1F72C96500AE940E /* Profile.storyboard */ = {
+		0C20E94B1F72C96500AE940E /* ConversationList.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				0C20E94C1F72C96500AE940E /* Base */,
 			);
-			name = Profile.storyboard;
+			name = ConversationList.storyboard;
 			sourceTree = "<group>";
 		};
 		0C20E9501F72C96500AE940E /* LaunchScreen.storyboard */ = {
